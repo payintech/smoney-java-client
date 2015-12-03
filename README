@@ -29,13 +29,14 @@ on the directory "src/test/resources".
     smoney.api.token         = <YOUR_SMONEY_ACCESS_TOKEN>
     smoney.transport.timeout = 15
 
-To run tests, you have to type this command:
+To run unit tests, you have to type this command:
 
     #> mvn test
 
 Depending of your network speed, is it possible that some tests timeout. To
 avoid this issue, you can rise up the timeout value from 15 to a greater
 value.
+
 
 
 
