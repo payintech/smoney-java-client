@@ -1,0 +1,18 @@
+*.class
+
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+
+# Package Files #
+*.jar
+target/
+
+# Test properties file
+src/test/resources/*.properties
+
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
