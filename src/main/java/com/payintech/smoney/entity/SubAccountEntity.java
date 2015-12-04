@@ -36,6 +36,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class SubAccountEntity {
+
     public Long Id;
     public String AppAccountId;
     public String DisplayName;

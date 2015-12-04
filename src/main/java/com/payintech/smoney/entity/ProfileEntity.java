@@ -37,6 +37,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class ProfileEntity {
+
     public CivilityEnum Civility;
     public String FirstName;
     public String LastName;

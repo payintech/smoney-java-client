@@ -31,6 +31,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CardPaymentRefundApplicationEntity {
+
     public Long Amount;
     public String OrderId;
     public Boolean RefundFee;

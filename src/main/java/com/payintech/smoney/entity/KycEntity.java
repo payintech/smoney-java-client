@@ -38,6 +38,7 @@ import java.util.List;
  * @since 15.11
  */
 public class KycEntity {
+
     public long Id;
     public DateTime RequestDate;
     public KycStatusEnum Status;

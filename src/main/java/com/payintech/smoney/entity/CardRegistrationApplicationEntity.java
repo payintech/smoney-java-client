@@ -31,10 +31,16 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CardRegistrationApplicationEntity {
+
     public CardEntity Card;
     public String UrlReturn;
     public String AvailableCards;
 
+    /**
+     * Build a basic instance.
+     *
+     * @since 15.11
+     */
     public CardRegistrationApplicationEntity() {
         this.AvailableCards = "CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON";
     }

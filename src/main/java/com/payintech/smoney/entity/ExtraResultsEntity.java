@@ -31,6 +31,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class ExtraResultsEntity {
+
     Integer BankAuthResult;
     Integer RiskControlResult;
     Integer ThreedsResult;

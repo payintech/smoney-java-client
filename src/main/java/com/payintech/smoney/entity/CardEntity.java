@@ -32,6 +32,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CardEntity {
+
     public Long Id;
     public String AppCardId;
     public String Name;

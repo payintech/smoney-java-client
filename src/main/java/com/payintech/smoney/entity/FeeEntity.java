@@ -33,6 +33,7 @@ import com.payintech.smoney.enumeration.FeeStatusEnum;
  * @since 15.11
  */
 public class FeeEntity {
+
     public Long Amount;
     public Long AmountWithVAT;
     public Double VAT;

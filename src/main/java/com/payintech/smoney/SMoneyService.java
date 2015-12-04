@@ -46,6 +46,7 @@ public interface SMoneyService {
      * User.id was generate by API
      * Define Type for Account type (normal, Pro)
      * Field to fill on the user :
+     * <pre>
      * - AppUserId     (required)
      * - Type          (required)
      * - Profile       (required)
@@ -64,6 +65,7 @@ public interface SMoneyService {
      * - Company       (required when type == 2)
      * --- Name        (required)
      * --- Siret       (required)
+     * </pre>
      *
      * @param user A new user (local instance)
      * @return The User created (All information)
@@ -77,7 +79,7 @@ public interface SMoneyService {
     Call<UserEntity> createUser(@Body UserEntity user);
 
     /**
-     * Use S-money API to list all users
+     * Use S-money API to list all users.
      *
      * @return The list of all users registered (All information)
      * @since 15.11
@@ -89,7 +91,7 @@ public interface SMoneyService {
     Call<List<UserEntity>> listUsers();
 
     /**
-     * Use S-money API get a specified user by this ClientId (appUserId)
+     * Use S-money API get a specified user by this ClientId (appUserId).
      *
      * @param appUserId Local/Client Id
      * @return The asked user (All Information)
@@ -102,8 +104,8 @@ public interface SMoneyService {
     Call<UserEntity> getUser(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to update a existed user
-     * Only profile data can be updated
+     * Use S-money API to update a existed user.
+     * Only profile data can be updated.
      *
      * @param appUserId Local/Client Id
      * @param user      A user to update
@@ -118,10 +120,12 @@ public interface SMoneyService {
     Call<UserEntity> updateUser(@Path("appuserid") String appUserId, @Body UserEntity user);
 
     /**
-     * Use S-money API to find users by criteria
+     * Use S-money API to find users by criteria.
+     * <pre>
      * - firstname (optional)
      * - lastname  (optional)
      * - email     (optional)
+     * </pre>
      *
      * @param userOptions List of criteria (must be username, lastname, email)
      * @return The list of all users matched (All information)
@@ -135,7 +139,7 @@ public interface SMoneyService {
     Call<List<UserEntity>> findUsers(@QueryMap Map<String, String> userOptions);
 
     /**
-     * Use S-money API to list all sub accounts of an user
+     * Use S-money API to list all sub accounts of an user.
      *
      * @param appUserId The User Id
      * @return The list of all the sub accounts of the user
@@ -146,7 +150,7 @@ public interface SMoneyService {
     Call<List<SubAccountEntity>> listSubAccounts(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to get a sub accounts of an user
+     * Use S-money API to get a sub accounts of an user.
      *
      * @param appUserId    The User Id
      * @param appAccountId The Account Id
@@ -158,10 +162,12 @@ public interface SMoneyService {
     Call<SubAccountEntity> getSubAccount(@Path("appuserid") String appUserId, @Path("appaccountid") String appAccountId);
 
     /**
-     * Use S-money API to create a sub account for an user
+     * Use S-money API to create a sub account for an user.
      * Field to fill on the subAccount :
+     * <pre>
      * - AppAccountId (required)
      * - DisplayName (optional)
+     * </pre>
      *
      * @param appUserId  The User Id
      * @param subAccount The sub account information
@@ -176,9 +182,11 @@ public interface SMoneyService {
     Call<SubAccountEntity> createSubAccount(@Path("appuserid") String appUserId, @Body SubAccountEntity subAccount);
 
     /**
-     * Use S-money API to update a sub account for an user
+     * Use S-money API to update a sub account for an user.
      * Field to fill on the subAccount :
+     * <pre>
      * - DisplayName
+     * </pre>
      *
      * @param appUserId    The User Id
      * @param appAccountId The Account Id
@@ -194,7 +202,7 @@ public interface SMoneyService {
     Call<SubAccountEntity> updateSubAccount(@Path("appuserid") String appUserId, @Path("appaccountid") String appAccountId, @Body SubAccountEntity subAccount);
 
     /**
-     * Use S-money API to delete a sub account for an user
+     * Use S-money API to delete a sub account for an user.
      *
      * @param appUserId    The User Id
      * @param appAccountId The Account Id
@@ -209,7 +217,7 @@ public interface SMoneyService {
     Call<String> deleteSubAccount(@Path("appuserid") String appUserId, @Path("appaccountid") String appAccountId);
 
     /**
-     * Use S-money API to list all card registered on an user
+     * Use S-money API to list all card registered on an user.
      *
      * @param appUserId The User Id
      * @return The list of all the card registered for the user
@@ -219,13 +227,15 @@ public interface SMoneyService {
     Call<List<CardEntity>> listCards(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to create a card for an user
+     * Use S-money API to create a card for an user.
      * Field to fill on the card registration application :
+     * <pre>
      * - Card           (required)
      * --- AppCardId    (required)
      * --- Name         (optional)
      * - UrlReturn      (required)
      * - AvailableCards (optional)
+     * </pre>
      *
      * @param appUserId       The User Id
      * @param cardApplication The card application form
@@ -240,7 +250,7 @@ public interface SMoneyService {
     Call<CardRegistrationAnswerEntity> createCard(@Path("appuserid") String appUserId, @Body CardRegistrationApplicationEntity cardApplication);
 
     /**
-     * Use S-money API to get a card of an user
+     * Use S-money API to get a card of an user.
      *
      * @param appUserId The User Id
      * @param appCardId The Card Id
@@ -263,8 +273,9 @@ public interface SMoneyService {
     Call<String> deleteCard(@Path("appuserid") String appUserId, @Path("appcardid") String appCardId);
 
     /**
-     * Use S-money API to create a payment
+     * Use S-money API to create a payment.
      * Field to fill on the payment :
+     * <pre>
      * - OrderId         (required)
      * - Beneficiary     (required)
      * --- AppAccountId  (required)
@@ -275,6 +286,7 @@ public interface SMoneyService {
      * - fee             (optional)
      * --- AmountWithVAT (required)
      * --- VAT           (required)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param payment   An instantiated entity payment
@@ -289,8 +301,8 @@ public interface SMoneyService {
     Call<PaymentEntity> createPayment(@Path("appuserid") String appUserId, @Body PaymentEntity payment);
 
     /**
-     * Use S-money API to create a payment
-     * - Sender required in Payment Body
+     * Use S-money API to create a payment. The sender is
+     * required in Payment Body.
      *
      * @param appUserId The Client Id sender
      * @param payments  A list of instantiated entity payment
@@ -305,7 +317,7 @@ public interface SMoneyService {
     Call<List<PaymentEntity>> createPayments(@Path("appuserid") String appUserId, @Body List<PaymentEntity> payments);
 
     /**
-     * Use S-money API get a payment by Id
+     * Use S-money API get a payment by Id.
      *
      * @param appUserId User Client Id
      * @param orderId   Payment Client Id
@@ -317,7 +329,7 @@ public interface SMoneyService {
     Call<PaymentEntity> getPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId);
 
     /**
-     * Use S-money API list all payments for a given user
+     * Use S-money API list all payments for a given user.
      *
      * @param appUserId User Client Id
      * @return The list user payments
@@ -328,7 +340,7 @@ public interface SMoneyService {
     Call<List<PaymentEntity>> listPayments(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API list all bank accounts for a given user
+     * Use S-money API list all bank accounts for a given user.
      *
      * @param appUserId User Client Id
      * @return The list user bank account
@@ -339,24 +351,26 @@ public interface SMoneyService {
     Call<List<BankAccountEntity>> listBankAccounts(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API get a bank account
+     * Use S-money API get a bank account.
      *
      * @param appUserId     User Client Id
-     * @param bankAccountid The bank account Id
+     * @param bankAccountId The bank account Id
      * @return An user bank account
      * @since 15.11
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts/{bankaccountid}")
-    Call<BankAccountEntity> getBankAccount(@Path("appuserid") String appUserId, @Path("bankaccountid") Long bankAccountid);
+    Call<BankAccountEntity> getBankAccount(@Path("appuserid") String appUserId, @Path("bankaccountid") Long bankAccountId);
 
     /**
-     * Use S-money API to create a Bank Account
+     * Use S-money API to create a Bank Account.
      * Field to fill on the bank account :
+     * <pre>
      * - DisplayName  (required)
      * - Bic          (required)
      * - Iban         (required)
      * - IsMine       (required)
+     * </pre>
      *
      * @param appUserId   The Client Id Owner
      * @param bankAccount a BankAccount entity
@@ -371,7 +385,7 @@ public interface SMoneyService {
     Call<BankAccountEntity> createBankAccount(@Path("appuserid") String appUserId, @Body BankAccountEntity bankAccount);
 
     /**
-     * Use S-money API to update a Bank Account
+     * Use S-money API to update a Bank Account.
      *
      * @param appUserId   The Client Id Owner
      * @param bankAccount a BankAccount to update
@@ -386,7 +400,7 @@ public interface SMoneyService {
     Call<BankAccountEntity> updateBankAccount(@Path("appuserid") String appUserId, @Body BankAccountEntity bankAccount);
 
     /**
-     * Use S-money API to delete a Bank Account
+     * Use S-money API to delete a Bank Account.
      *
      * @param appUserId     The Client Id Owner
      * @param bankAccountId An Id of BankAccount to delete
@@ -397,7 +411,7 @@ public interface SMoneyService {
     Call<String> deleteBankAccount(@Path("appuserid") String appUserId, @Path("bankaccountid") Long bankAccountId);
 
     /**
-     * Use S-money API list all moneyouts for a given user
+     * Use S-money API list all moneyouts for a given user.
      *
      * @param appUserId User Client Id
      * @return The list moneyouts
@@ -408,8 +422,9 @@ public interface SMoneyService {
     Call<List<MoneyOutEntity>> listMoneyOuts(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to create a Money Out
+     * Use S-money API to create a Money Out.
      * Field to fill on the moneyout :
+     * <pre>
      * - Amount          (required)
      * - AccountId       (optional)
      * --- AppAccountId  (required)
@@ -419,6 +434,7 @@ public interface SMoneyService {
      * --- AmountWithVAT (required)
      * --- VAT           (required)
      * - Message         (optional)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param moneyOut  An instantiated entity MoneyOut
@@ -435,6 +451,7 @@ public interface SMoneyService {
     /**
      * Use S-money API to create a Money Out
      * Field to fill on the moneyout :
+     * <pre>
      * - Amount          (required)
      * - AccountId       (optional)
      * --- AppAccountId  (required)
@@ -447,6 +464,7 @@ public interface SMoneyService {
      * --- AmountWithVAT (required)
      * --- VAT           (required)
      * - Message         (optional)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param moneyOut  An instantiated entity MoneyOut
@@ -462,7 +480,7 @@ public interface SMoneyService {
 
 
     /**
-     * Use S-money API get MoneyOut by Id
+     * Use S-money API get MoneyOut by Id.
      *
      * @param appUserId  The Client Id sender
      * @param moneyOutId Id of MoneyOut
@@ -474,8 +492,9 @@ public interface SMoneyService {
     Call<MoneyOutEntity> getMoneyOut(@Path("appuserid") String appUserId, @Path("moneyoutid") Long moneyOutId);
 
     /**
-     * Use S-money API to create a Card Payment
+     * Use S-money API to create a Card Payment.
      * Field to fill on the card payment entity :
+     * <pre>
      * - Amount             (required)
      * - OrderId            (required)
      * - AvailableCards     (optional)
@@ -493,6 +512,7 @@ public interface SMoneyService {
      * --- Amount           (required)
      * --- Date             (required)
      * --- Fee              (optional)
+     * </pre>
      *
      * @param appUserId   The Client Id Owner
      * @param cardPayment A CardPayment entity
@@ -507,7 +527,7 @@ public interface SMoneyService {
     Call<CardPaymentEntity> createCardPayment(@Path("appuserid") String appUserId, @Body CardPaymentEntity cardPayment);
 
     /**
-     * Use S-money API list all the card payments for a given user
+     * Use S-money API list all the card payments for a given user.
      *
      * @param appUserId User Client Id
      * @return The list of the card payments
@@ -518,7 +538,7 @@ public interface SMoneyService {
     Call<List<CardPaymentEntity>> listCardPayments(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API get a card payments for a given user
+     * Use S-money API get a card payments for a given user.
      *
      * @param appUserId User Client Id
      * @param orderId   The Order Id
@@ -530,7 +550,7 @@ public interface SMoneyService {
     Call<CardPaymentEntity> getCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId);
 
     /**
-     * Use S-money API list a scheduled payment for a given user
+     * Use S-money API list a scheduled payment for a given user.
      *
      * @param appUserId      User Client Id
      * @param orderId        The Order Id
@@ -543,7 +563,7 @@ public interface SMoneyService {
     Call<PaymentScheduleEntity> getCardScheduledPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Path("sequencenumber") Integer sequenceNumber);
 
     /**
-     * Use S-money API to refund an card payment order
+     * Use S-money API to refund an card payment order.
      *
      * @param appUserId  The Client Id Owner
      * @param orderId    The Order Id
@@ -559,7 +579,7 @@ public interface SMoneyService {
     Call<CardPaymentRefundAnswerEntity> refundCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Body CardPaymentRefundApplicationEntity refundForm);
 
     /**
-     * Use S-money API to refund a scheduled payment of card payment order
+     * Use S-money API to refund a scheduled payment of card payment order.
      *
      * @param appUserId      The Client Id Owner
      * @param orderId        The Order Id
@@ -576,7 +596,7 @@ public interface SMoneyService {
     Call<CardPaymentRefundAnswerEntity> refundCardScheduledPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Path("sequencenumber") Integer sequenceNumber, @Body CardPaymentRefundApplicationEntity refundForm);
 
     /**
-     * Use S-money API to edit a scheduled payment of card payment order
+     * Use S-money API to edit a scheduled payment of card payment order.
      *
      * @param appUserId      The Client Id Owner
      * @param orderId        The Order Id
@@ -593,9 +613,11 @@ public interface SMoneyService {
     Call<PaymentScheduleEntity> refundCardScheduledPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Path("sequencenumber") Integer sequenceNumber, @Body PaymentScheduleEntity payment);
 
     /**
-     * Use S-money API to create KYC Request
+     * Use S-money API to create KYC Request.
      * Field to fill on the KYC request :
+     * <pre>
      * - MultiPart File (required)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param file      The file to upload
@@ -608,9 +630,11 @@ public interface SMoneyService {
     Call<KycEntity> createKYCRequest(@Path("appuserid") String appUserId, @Part("file1") RequestBody file);
 
     /**
-     * Use S-money API to create KYC Request
+     * Use S-money API to create KYC Request.
      * Field to fill on the KYC request :
+     * <pre>
      * - MultiPart File[] (required)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param files     The files to upload
@@ -623,7 +647,7 @@ public interface SMoneyService {
     Call<KycEntity> createKYCRequest(@Path("appuserid") String appUserId, @PartMap Map<String, RequestBody> files);
 
     /**
-     * Use S-money API to get a KYC
+     * Use S-money API to get a KYC.
      *
      * @param appUserId The Client Id sender
      * @return The KYC (entity)
@@ -634,7 +658,7 @@ public interface SMoneyService {
     Call<List<KycEntity>> getKYC(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to list payments by StoredCard
+     * Use S-money API to list payments by StoredCard.
      *
      * @param appUserId The Client Id sender
      * @return The list of payments by StoredCard
@@ -645,8 +669,9 @@ public interface SMoneyService {
     Call<List<StoredCardPaymentEntity>> listStoredCardPayment(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to create payment by StoredCard
+     * Use S-money API to create payment by StoredCard.
      * Field to fill on the payment by StoredCard :
+     * <pre>
      * - OrderId            (required)
      * - AccountId          (optional)
      * --- AppAccountId     (required)
@@ -657,6 +682,7 @@ public interface SMoneyService {
      * - Fee                (optional)
      * --- AmountWithVAT    (required)
      * --- VAT              (required)
+     * </pre>
      *
      * @param appUserId     The Client Id sender
      * @param storedCardPay The StoredCardPayment Entity
@@ -683,11 +709,13 @@ public interface SMoneyService {
     Call<StoredCardPaymentEntity> getStoredCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId);
 
     /**
-     * Use S-money API to create payment by StoredCard
+     * Use S-money API to create payment by StoredCard.
      * Field to fill on the refund by StoredCard :
+     * <pre>
      * - amount     (required)
      * - orderId    (optional)
      * - refundFee  (required)
+     * </pre>
      *
      * @param orderId       The Client OrderId for this refund
      * @param appUserId     The Client Id sender
@@ -703,7 +731,7 @@ public interface SMoneyService {
     Call<CardPaymentRefundAnswerEntity> refundStoredCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Body CardPaymentRefundApplicationEntity refundRequest);
 
     /**
-     * Use S-money API to get hitstory : all payments (All type: CB, moneyout...)
+     * Use S-money API to get history : all payments (All type: CB, moneyout...).
      *
      * @param appUserId The Client Id sender
      * @return The List of History Items
@@ -715,7 +743,7 @@ public interface SMoneyService {
 
 
     /**
-     * Use S-money API to get all reference
+     * Use S-money API to get all reference.
      *
      * @param appUserId The Client Id sender
      * @return The List of References
@@ -726,11 +754,13 @@ public interface SMoneyService {
     Call<List<ReferenceEntity>> listReferences(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to create a reference for bank transfer
+     * Use S-money API to create a reference for bank transfer.
      * Field to fill on the reference :
+     * <pre>
      * - Beneficiary    (optional)
      * --- AppAccountId (required)
      * - IsMine         (required)
+     * </pre>
      *
      * @param appUserId The Client Id sender
      * @param reference The reference for BankTransfer
@@ -745,7 +775,7 @@ public interface SMoneyService {
     Call<ReferenceEntity> createReference(@Path("appuserid") String appUserId, @Body ReferenceEntity reference);
 
     /**
-     * Use S-money API to get reference
+     * Use S-money API to get reference.
      *
      * @param appUserId   The Client Id sender
      * @param referenceId The reference Id (Generate by S-Money)
@@ -757,7 +787,7 @@ public interface SMoneyService {
     Call<ReferenceEntity> getReference(@Path("appuserid") String appUserId, @Path("referenceid") Long referenceId);
 
     /**
-     * Use S-money API to get reference
+     * Use S-money API to get reference.
      *
      * @param appUserId     The Client Id sender
      * @param referenceCode The reference Code (Generate by S-Money)
@@ -769,7 +799,7 @@ public interface SMoneyService {
     Call<ReferenceEntity> getReference(@Path("appuserid") String appUserId, @Path("referencecode") String referenceCode);
 
     /**
-     * Use S-money API to get all bank transfers
+     * Use S-money API to get all bank transfers.
      *
      * @param appUserId The Client Id sender
      * @return The List of bank transfers
@@ -780,7 +810,7 @@ public interface SMoneyService {
     Call<List<BankTransferEntity>> listBankTransfers(@Path("appuserid") String appUserId);
 
     /**
-     * Use S-money API to get all bank transfers
+     * Use S-money API to get all bank transfers.
      *
      * @param appUserId      The Client Id sender
      * @param bankTransferId The bank transfer Id

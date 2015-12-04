@@ -36,6 +36,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class BankTransferEntity {
+
     public Long Id;
     public DateTime PaymentDate;
     public BankTransferStatusEnum Status;

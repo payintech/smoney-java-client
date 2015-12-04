@@ -34,6 +34,7 @@ import com.payintech.smoney.enumeration.ErrorCodeEnum;
  * @since 15.11
  */
 public class CardRegistrationAnswerEntity {
+
     public CardEntity Card;
     public CardRegistrationStatusEnum Status;
     public ErrorCodeEnum ErrorCode;

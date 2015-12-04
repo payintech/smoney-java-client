@@ -31,6 +31,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class ReferenceEntity {
+
     public Long Id;
     public SubAccountEntity Beneficiary;
     public Boolean IsMine;

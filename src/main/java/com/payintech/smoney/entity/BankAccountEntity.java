@@ -32,6 +32,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class BankAccountEntity {
+
     public Long Id;
     public String Href;
     public String DisplayName;
@@ -40,10 +41,22 @@ public class BankAccountEntity {
     public String Iban;
     public Boolean IsMine;
 
+    /**
+     * Get the BIC number with mask.
+     *
+     * @return The masked BIC
+     * @since 15.11
+     */
     public String getMaskedBic() {
         return this.Bic.substring(0, 2) + "xxxx" + this.Bic.substring(6);
     }
 
+    /**
+     * Get the IBAN number with mask.
+     *
+     * @return The masked IBAN
+     * @since 15.11
+     */
     public String getMaskedIban() {
         return this.Iban.substring(0, 4) + "xxxxxxxxxxxxxxxx" + this.Iban.substring(20);
     }

@@ -53,7 +53,7 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
     /**
      * Build a converter instance with a specific format.
      *
-     * @param pattern Pattern respecting the Joda.DateTimeFormatter syntax.
+     * @param pattern Pattern respecting the {@code Joda.DateTimeFormatter} syntax.
      * @see DateTimeFormatter
      */
     public JodaDateTimeConverter(String pattern) {

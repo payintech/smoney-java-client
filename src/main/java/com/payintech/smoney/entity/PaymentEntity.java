@@ -36,6 +36,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class PaymentEntity {
+
     public Long Id;
     public String OrderId;
     public DateTime PaymentDate;

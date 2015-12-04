@@ -36,6 +36,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class PaymentScheduleEntity {
+
     public Integer SequenceNumber;
     public Long Amount;
     public DateTime Date;

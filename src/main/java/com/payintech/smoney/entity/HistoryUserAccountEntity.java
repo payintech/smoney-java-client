@@ -31,6 +31,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class HistoryUserAccountEntity {
+
     public Long Id;
     public String Alias;
     public String AppAccountId;

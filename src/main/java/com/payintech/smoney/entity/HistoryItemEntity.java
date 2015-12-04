@@ -40,6 +40,7 @@ import java.util.List;
  * @since 15.11
  */
 public class HistoryItemEntity {
+
     public HistoryUserAccountEntity Account;
     public HistoryUserAccountEntity Benificiary;
     public HistoryUserAccountEntity Sender;

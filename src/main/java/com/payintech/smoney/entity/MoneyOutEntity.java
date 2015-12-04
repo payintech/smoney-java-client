@@ -35,6 +35,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class MoneyOutEntity {
+
     public Long Id;
     public SubAccountEntity AccountId;
     public BankAccountEntity BankAccount;

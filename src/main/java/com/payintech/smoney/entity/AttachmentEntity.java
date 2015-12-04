@@ -31,6 +31,7 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class AttachmentEntity {
+
     public Long Id;
     public String name;
     public String Type;

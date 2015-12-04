@@ -40,6 +40,7 @@ import java.util.List;
  * @since 15.11
  */
 public class CardPaymentEntity {
+
     public Long Id;
     public String OrderId;
     public DateTime PaymentDate;

@@ -76,7 +76,7 @@ III. Linking to another project
 
 
 
-  B. Using SBT
+  C. Using SBT
   ^^^^^^^^^^^^
 
     resolvers += "jitpack" at "https://jitpack.io"

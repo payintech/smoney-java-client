@@ -35,6 +35,7 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class StoredCardPaymentEntity {
+
     public Long Id;
     public String OrderId;
     public SubAccountEntity AccountId;

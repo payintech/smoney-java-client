@@ -34,6 +34,7 @@ import com.payintech.smoney.enumeration.CountryCodeEnum;
  * @since 15.11
  */
 public class AddressEntity {
+
     public String Street;
     public String ZipCode;
     public String City;
