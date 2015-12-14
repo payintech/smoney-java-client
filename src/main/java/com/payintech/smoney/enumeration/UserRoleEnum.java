@@ -37,5 +37,5 @@ public enum UserRoleEnum {
     @SerializedName("1")
     CLIENT,
     @SerializedName("2")
-    EXTENDED_CLIENT;
+    EXTENDED_CLIENT
 }

@@ -46,6 +46,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class PaymentTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
     public static PaymentEntity payment;
     private static Boolean TEST_CREATION = true;
@@ -66,7 +67,7 @@ public class PaymentTest {
     }
 
     @Test
-    public void payment_002_get() throws IOException, IllegalAccessException {
+    public void payment_002_get() throws IOException {
         if (PaymentTest.payment == null) {
             System.out.println("Not Payment for diff...");
         }
@@ -87,7 +88,7 @@ public class PaymentTest {
     }
 
     @Test
-    public void payment_003_create() throws IOException, IllegalAccessException {
+    public void payment_003_create() throws IOException {
         if (!TEST_CREATION) {
             return;
         }
@@ -95,7 +96,7 @@ public class PaymentTest {
         p.OrderId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         p.Beneficiary = new SubAccountEntity();
         p.Beneficiary.AppAccountId = TestSettings.testUserAppUserId;
-        p.Amount = 20l;
+        p.Amount = 20L;
         p.Message = "Test";
 
         Call<PaymentEntity> call = service.createPayment(TestSettings.testCompanyAppUserId, p);
@@ -114,11 +115,11 @@ public class PaymentTest {
     }
 
     @Test
-    public void payment_004_create_multiple() throws IOException, IllegalAccessException {
+    public void payment_004_create_multiple() throws IOException {
         if (!TEST_CREATION) {
             return;
         }
-        List<PaymentEntity> ps = new ArrayList<PaymentEntity>();
+        List<PaymentEntity> ps = new ArrayList<>();
 
         PaymentEntity p1 = new PaymentEntity();
         p1.OrderId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
@@ -126,7 +127,7 @@ public class PaymentTest {
         p1.Beneficiary.AppAccountId = TestSettings.testCompanyAppUserId;
         p1.Sender = new SubAccountEntity();
         p1.Sender.AppAccountId = TestSettings.testUserAppUserId;
-        p1.Amount = 10l;
+        p1.Amount = 10L;
         p1.Message = "Test";
         ps.add(p1);
 
@@ -136,7 +137,7 @@ public class PaymentTest {
         p2.Beneficiary.AppAccountId = TestSettings.testCompanyAppUserId;
         p2.Sender = new SubAccountEntity();
         p2.Sender.AppAccountId = TestSettings.testUserAppUserId;
-        p2.Amount = 10l;
+        p2.Amount = 10L;
         p2.Message = "Test";
         ps.add(p2);
 

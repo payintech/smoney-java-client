@@ -45,7 +45,8 @@ import java.util.List;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BankTransferTest {
-    public static SMoneyService service = SMoneyServiceFactory.createService();
+
+    public static final SMoneyService service = SMoneyServiceFactory.createService();
 
     public static ReferenceEntity reference;
     public static BankTransferEntity banTransfer;

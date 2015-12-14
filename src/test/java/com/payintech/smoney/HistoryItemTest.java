@@ -43,6 +43,7 @@ import java.util.List;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HistoryItemTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     @Test

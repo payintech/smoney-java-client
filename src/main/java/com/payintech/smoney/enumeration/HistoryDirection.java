@@ -38,5 +38,5 @@ public enum HistoryDirection {
     @SerializedName("1")
     DEBIT,
     @SerializedName("2")
-    CREDIT;
+    CREDIT
 }

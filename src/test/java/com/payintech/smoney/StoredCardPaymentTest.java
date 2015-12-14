@@ -45,20 +45,21 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StoredCardPaymentTest {
+
     private static final Boolean TEST_REFUND = false;
     public static SMoneyService service = SMoneyServiceFactory.createService();
     public static StoredCardPaymentEntity scp;
 
     static {
         scp = new StoredCardPaymentEntity();
-        scp.Id = 0l; //Set On created (test 002)
+        scp.Id = 0L; //Set On created (test 002)
         scp.OrderId = String.format("order-test-%s", UUID.randomUUID().toString().split("-")[0]);
         scp.AccountId = new SubAccountEntity();
         scp.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         scp.Card = new CardEntity();
         scp.Card.AppCardId = TestSettings.testUserAppCardId;
         scp.IsMine = true;
-        scp.Amount = 10l;
+        scp.Amount = 10L;
     }
 
     @Test

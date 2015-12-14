@@ -55,6 +55,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
     private static Boolean TEST_CREATION = false;
 
@@ -88,7 +89,7 @@ public class UserTest {
     }
 
     @Test
-    public void user_002_get() throws IOException, IllegalAccessException {
+    public void user_002_get() throws IOException {
         Call<UserEntity> call = service.getUser(TestSettings.testUserAppUserId);
         Response<UserEntity> response = call.execute();
         if (response.code() != 200) {
@@ -100,7 +101,7 @@ public class UserTest {
     }
 
     @Test
-    public void user_003_get() throws IOException, IllegalAccessException {
+    public void user_003_get() throws IOException {
         Call<UserEntity> call = service.getUser(TestSettings.testCompanyAppUserId);
         Response<UserEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
@@ -121,7 +122,7 @@ public class UserTest {
 
     @Test
     public void user_005_find() throws IOException {
-        Map<String, String> options = new HashMap<String, String>();
+        Map<String, String> options = new HashMap<>();
         options.put("lastname", TestSettings.testUser.Profile.LastName);
         Call<List<UserEntity>> listCall = service.findUsers(options);
         Response<List<UserEntity>> response = listCall.execute();

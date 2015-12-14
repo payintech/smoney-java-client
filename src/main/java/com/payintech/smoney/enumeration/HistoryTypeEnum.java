@@ -41,5 +41,5 @@ public enum HistoryTypeEnum {
     @SerializedName("1")
     CARD, //Payement par CB
     @SerializedName("2")
-    MONEYOUT; //Payement par virement bancaire
+    MONEYOUT //Payement par virement bancaire
 }

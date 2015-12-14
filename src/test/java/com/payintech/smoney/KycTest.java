@@ -51,6 +51,7 @@ import java.util.Map;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KycTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
     public static Long kycId = 0L;
 
@@ -88,7 +89,7 @@ public class KycTest {
         bw2.close();
         RequestBody file2 = RequestBody.create(MediaType.parse("image/png"), tmpFile2);
 
-        Map<String, RequestBody> files = new HashMap<String, RequestBody>();
+        Map<String, RequestBody> files = new HashMap<>();
         files.put("file1", file1);
         files.put("file2", file2);
 

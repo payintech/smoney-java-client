@@ -44,7 +44,8 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BankAccountTest {
-    public static SMoneyService service = SMoneyServiceFactory.createService();
+
+    public static final SMoneyService service = SMoneyServiceFactory.createService();
 
     public static Long bankAccountId = 0L;
 
@@ -88,6 +89,7 @@ public class BankAccountTest {
         Response<BankAccountEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
         BankAccountEntity bankAccount = response.body();
+        Assert.assertNotNull(bankAccount);
     }
 
     @Test

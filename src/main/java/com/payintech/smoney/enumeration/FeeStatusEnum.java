@@ -45,5 +45,5 @@ public enum FeeStatusEnum {
     @SerializedName("4")
     EXPIRED,
     @SerializedName("5")
-    REFUNDED;
+    REFUNDED
 }

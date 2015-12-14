@@ -44,6 +44,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SubAccountTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     public static String TestAppAccountId;

@@ -77,5 +77,5 @@ public enum CountryCodeEnum {
     SK,
     US,
     ZA,
-    NONE;
+    NONE
 }

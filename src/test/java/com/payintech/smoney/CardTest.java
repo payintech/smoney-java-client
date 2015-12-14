@@ -47,6 +47,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CardTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     public static String appCardId;

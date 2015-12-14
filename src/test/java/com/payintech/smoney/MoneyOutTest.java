@@ -46,6 +46,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MoneyOutTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     public static Long moneyOutId = 0L;
@@ -74,7 +75,7 @@ public class MoneyOutTest {
     @Test
     public void moneyout_002_create_oneshot() throws IOException {
         MoneyOutEntity mo = new MoneyOutEntity();
-        mo.Amount = 10l;
+        mo.Amount = 10L;
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();
@@ -123,7 +124,7 @@ public class MoneyOutTest {
     @Test
     public void moneyout_004_create_recurring() throws IOException {
         MoneyOutEntity mo = new MoneyOutEntity();
-        mo.Amount = 10l;
+        mo.Amount = 10L;
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();

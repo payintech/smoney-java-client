@@ -43,5 +43,5 @@ public enum BankTransferStatusEnum {
     @SerializedName("3")
     FAILED,
     @SerializedName("4")
-    REFUNDED;
+    REFUNDED
 }

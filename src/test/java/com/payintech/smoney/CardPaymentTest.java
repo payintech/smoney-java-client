@@ -45,9 +45,10 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CardPaymentTest {
-    public static SMoneyService service = SMoneyServiceFactory.createService();
 
-    public static String orderId;
+    public static final SMoneyService service = SMoneyServiceFactory.createService();
+
+    public static final String orderId;
 
     static {
         orderId = UUID.randomUUID().toString();
