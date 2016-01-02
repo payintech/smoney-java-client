@@ -9,18 +9,52 @@
     <version>15.12</version>
     <packaging>jar</packaging>
     <name>S-Money API Client</name>
-    <description>A simple S-Money API client based on Retrofit</description>
+    <description>S-Money API client for Java and Android</description>
     <url>https://github.com/payintech/smoney-java-client</url>
+
+    <scm>
+        <connection>scm:git:https://github.com/payintech/smoney-java-client.git</connection>
+        <developerConnection>scm:git:https://github.com/payintech/smoney-java-client.git</developerConnection>
+        <url>https://github.com/payintech/smoney-java-client.git</url>
+    </scm>
+
+    <issueManagement>
+        <url>https://github.com/payintech/smoney-java-client/issues</url>
+        <system>GitHub Issues</system>
+    </issueManagement>
+
     <licenses>
         <license>
             <name>The MIT License (MIT)</name>
             <url>https://github.com/payintech/smoney-java-client/blob/master/LICENSE</url>
         </license>
     </licenses>
+
     <organization>
         <name>PayinTech</name>
         <url>http://www.payintech.com</url>
     </organization>
+
+    <developers>
+        <developer>
+            <name>Thibault Meyer</name>
+            <email>open-source@payintech.com</email>
+            <organization>PayinTech</organization>
+            <organizationUrl>http://www.payintech.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Pierre Adam</name>
+            <email>open-source@payintech.com</email>
+            <organization>PayinTech</organization>
+            <organizationUrl>http://www.payintech.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jean-Pierre Boudic</name>
+            <email>open-source@payintech.com</email>
+            <organization>PayinTech</organization>
+            <organizationUrl>http://www.payintech.com</organizationUrl>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
