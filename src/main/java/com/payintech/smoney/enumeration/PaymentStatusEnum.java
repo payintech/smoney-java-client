@@ -34,20 +34,51 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum PaymentStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("-1")
     UNKNOWN,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     PENDING,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     SUCCEEDED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     REFUNDED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     FAILED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("4")
     WAITING_VALIDATION,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("5")
     CANCELED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("6")
     WAITING_DELIVERY
 }

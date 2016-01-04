@@ -32,8 +32,32 @@ package com.payintech.smoney.entity;
  */
 public class ExtraResultsEntity {
 
+    /**
+     * Return code of the application for authorization
+     * returned by the bank.
+     *
+     * @since 15.11
+     */
     Integer BankAuthResult;
+
+    /**
+     * Numeric code of risk controls result.
+     *
+     * @since 15.11
+     */
     Integer RiskControlResult;
+
+    /**
+     * Final status of 3D-Secure process.
+     *
+     * @since 15.11
+     */
     Integer ThreedsResult;
+
+    /**
+     * Payment warranty.
+     *
+     * @since 15.11
+     */
     Boolean WarrantyResult;
 }

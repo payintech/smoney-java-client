@@ -51,30 +51,30 @@ public class BankAccountTest {
 
     @Test
     public void bankaccount_001_list() throws IOException {
-        Call<List<BankAccountEntity>> listCall = service.listBankAccounts(TestSettings.testUserAppUserId);
-        Response<List<BankAccountEntity>> response = listCall.execute();
+        final Call<List<BankAccountEntity>> listCall = service.listBankAccounts(TestSettings.testUserAppUserId);
+        final Response<List<BankAccountEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<BankAccountEntity> bankAccounts = response.body();
+        final List<BankAccountEntity> bankAccounts = response.body();
         Assert.assertNotNull(bankAccounts);
         Assert.assertTrue(bankAccounts.size() > 0);
     }
 
     @Test
     public void bankaccount_002_create() throws IOException {
-        BankAccountEntity ba = new BankAccountEntity();
+        final BankAccountEntity ba = new BankAccountEntity();
         ba.Bic = "CMCIFR2A";
         ba.DisplayName = "Test Account";
         ba.Iban = "FR7613106005002000743520962";
         ba.IsMine = true;
 
-        Call<BankAccountEntity> call = service.createBankAccount(TestSettings.testUserAppUserId, ba);
-        Response<BankAccountEntity> response = call.execute();
+        final Call<BankAccountEntity> call = service.createBankAccount(TestSettings.testUserAppUserId, ba);
+        final Response<BankAccountEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        BankAccountEntity bankAccount = response.body();
 
+        final BankAccountEntity bankAccount = response.body();
         Assert.assertEquals(bankAccount.getMaskedBic(), bankAccount.Bic);
         Assert.assertEquals(ba.DisplayName, bankAccount.DisplayName);
         Assert.assertEquals(bankAccount.getMaskedIban(), bankAccount.Iban);
@@ -85,28 +85,29 @@ public class BankAccountTest {
 
     @Test
     public void bankaccount_003_get() throws IOException {
-        Call<BankAccountEntity> call = service.getBankAccount(TestSettings.testUserAppUserId, BankAccountTest.bankAccountId);
-        Response<BankAccountEntity> response = call.execute();
+        final Call<BankAccountEntity> call = service.getBankAccount(TestSettings.testUserAppUserId, BankAccountTest.bankAccountId);
+        final Response<BankAccountEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
-        BankAccountEntity bankAccount = response.body();
+
+        final BankAccountEntity bankAccount = response.body();
         Assert.assertNotNull(bankAccount);
     }
 
     @Test
     public void bankaccount_004_update() throws IOException {
-        BankAccountEntity ba = new BankAccountEntity();
+        final BankAccountEntity ba = new BankAccountEntity();
         ba.Id = BankAccountTest.bankAccountId;
         ba.DisplayName = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         ba.IsMine = true;
 
-        Call<BankAccountEntity> call = service.updateBankAccount(TestSettings.testUserAppUserId, ba);
-        Response<BankAccountEntity> response = call.execute();
+        final Call<BankAccountEntity> call = service.updateBankAccount(TestSettings.testUserAppUserId, ba);
+        final Response<BankAccountEntity> response = call.execute();
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        BankAccountEntity bankAccount = response.body();
 
+        final BankAccountEntity bankAccount = response.body();
         Assert.assertEquals(bankAccount.getMaskedBic(), bankAccount.Bic);
         Assert.assertEquals(ba.DisplayName, bankAccount.DisplayName);
         Assert.assertEquals(bankAccount.getMaskedIban(), bankAccount.Iban);
@@ -116,8 +117,8 @@ public class BankAccountTest {
 
     @Test
     public void bankaccount_005_delete() throws IOException {
-        Call<String> call = service.deleteBankAccount(TestSettings.testUserAppUserId, BankAccountTest.bankAccountId);
-        Response<String> response = call.execute();
+        final Call<String> call = service.deleteBankAccount(TestSettings.testUserAppUserId, BankAccountTest.bankAccountId);
+        final Response<String> response = call.execute();
         if (response.code() != 204) {
             System.err.println(response.errorBody().string());
         }

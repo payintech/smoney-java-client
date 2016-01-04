@@ -37,12 +37,53 @@ import org.joda.time.DateTimeZone;
  */
 public class SubAccountEntity {
 
+    /**
+     * Account ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Account ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String AppAccountId;
+
+    /**
+     * Usual name of the account.
+     *
+     * @since 15.11
+     */
     public String DisplayName;
+
+    /**
+     * Account amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Is the user's principal account?
+     *
+     * @since 15.11
+     */
     public Boolean IsDefault;
+
+    /**
+     * Account creation date.
+     *
+     * @since 15.11
+     */
     public DateTime CreationDate;
+
+    /**
+     * Reference to the account details.
+     *
+     * @since 15.11
+     */
     public String Href;
 
     /**

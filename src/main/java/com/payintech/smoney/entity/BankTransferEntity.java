@@ -37,12 +37,57 @@ import org.joda.time.DateTimeZone;
  */
 public class BankTransferEntity {
 
+    /**
+     * S-Money bank transfer ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Bank transfer date.
+     *
+     * @since 15.11
+     */
     public DateTime PaymentDate;
+
+    /**
+     * Bank transfer status.
+     *
+     * @see BankTransferStatusEnum
+     * @since 15.11
+     */
     public BankTransferStatusEnum Status;
+
+    /**
+     * Transfer beneficiary.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Beneficiary;
+
+    /**
+     * {@code true} if the account owner is the
+     * same as the card owner.
+     *
+     * @since 15.11
+     */
     public Boolean IsMine;
+
+    /**
+     * Reference about the bank transfer.
+     *
+     * @since 15.11
+     */
     public String Reference;
+
+    /**
+     * Bank account to use for the transfer.
+     *
+     * @see BankTransferEntity
+     * @since 15.11
+     */
     public BankTransferEntity BankAccount;
 
     /**

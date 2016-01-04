@@ -34,8 +34,32 @@ import com.payintech.smoney.enumeration.FeeStatusEnum;
  */
 public class FeeEntity {
 
+    /**
+     * Net amount of the fee (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee's percentage (in percentage).
+     *
+     * @since 15.11
+     */
     public Long AmountWithVAT;
+
+    /**
+     * Tax price of the fee (in cents).
+     *
+     * @since 15.11
+     */
     public Double VAT;
+
+    /**
+     * Fee status.
+     *
+     * @see FeeStatusEnum
+     * @since 15.11
+     */
     public FeeStatusEnum Status;
 }

@@ -34,12 +34,27 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum KycStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     INCOMPLETE,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     IN_PROGRESS,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     REFUSED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     ACCEPTED,
 }

@@ -32,11 +32,17 @@ import com.google.gson.annotations.SerializedName;
  * @version 15.11
  * @since 15.11
  */
-//TODO: Not sure
 public enum HistoryDirection {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     DEBIT,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     CREDIT
 }

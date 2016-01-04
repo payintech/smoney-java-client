@@ -34,14 +34,33 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum BankTransferStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     PENDING,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     SUCCEEDED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     CANCELED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     FAILED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("4")
     REFUNDED
 }

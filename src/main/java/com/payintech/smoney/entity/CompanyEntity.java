@@ -32,6 +32,17 @@ package com.payintech.smoney.entity;
  */
 public class CompanyEntity {
 
+    /**
+     * Company name.
+     *
+     * @since 15.11
+     */
     public String Name;
+
+    /**
+     * Legal registration number: SIRET or RNA.
+     *
+     * @since 15.11
+     */
     public String Siret;
 }

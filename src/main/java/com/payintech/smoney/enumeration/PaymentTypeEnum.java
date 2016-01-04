@@ -34,8 +34,15 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum PaymentTypeEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     PAYMENT,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     REFUND
 }

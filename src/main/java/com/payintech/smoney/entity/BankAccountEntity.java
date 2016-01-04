@@ -33,16 +33,57 @@ package com.payintech.smoney.entity;
  */
 public class BankAccountEntity {
 
+    /**
+     * S-Money bank account ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Reference of the current bank account.
+     *
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * Bank account usual name.
+     *
+     * @since 15.11
+     */
     public String DisplayName;
+
+    /**
+     * Bank postal address details.
+     *
+     * @since 15.11
+     */
     public AddressEntity Address;
+
+    /**
+     * Bank International Code (ISO 9362).
+     *
+     * @since 15.11
+     */
     public String Bic;
+
+    /**
+     * International Bank Account Number (ISO 9362).
+     *
+     * @since 15.11
+     */
     public String Iban;
+
+    /**
+     * Is the bank account is owned by the user?
+     *
+     * @since 15.11
+     */
     public Boolean IsMine;
 
     /**
-     * Get the BIC number with mask.
+     * Get the Bank International Code (BIC) number with mask.
      *
      * @return The masked BIC
      * @since 15.11
@@ -52,7 +93,7 @@ public class BankAccountEntity {
     }
 
     /**
-     * Get the IBAN number with mask.
+     * Get the International Bank Account Number (IBAN) number with mask.
      *
      * @return The masked IBAN
      * @since 15.11

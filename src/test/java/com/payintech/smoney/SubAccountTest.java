@@ -55,20 +55,22 @@ public class SubAccountTest {
 
     @Test
     public void subAccount_001_list() throws IOException {
-        Call<List<SubAccountEntity>> listCall = service.listSubAccounts(TestSettings.testCompanyAppUserId);
-        Response<List<SubAccountEntity>> response = listCall.execute();
+        final Call<List<SubAccountEntity>> listCall = service.listSubAccounts(TestSettings.testCompanyAppUserId);
+        final Response<List<SubAccountEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<SubAccountEntity> subAccountEntityList = response.body();
+
+        final List<SubAccountEntity> subAccountEntityList = response.body();
         Assert.assertNotNull(subAccountEntityList);
         Assert.assertTrue(subAccountEntityList.size() > 0);
     }
 
     @Test
     public void subAccount_002_get() throws IOException {
-        Call<SubAccountEntity> call = service.getSubAccount(TestSettings.testCompanyAppUserId, TestSettings.testCompanyAppUserId);
-        Response<SubAccountEntity> response = call.execute();
+        final Call<SubAccountEntity> call = service.getSubAccount(TestSettings.testCompanyAppUserId, TestSettings.testCompanyAppUserId);
+        final Response<SubAccountEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
-        SubAccountEntity subAccountEntity = response.body();
+
+        final SubAccountEntity subAccountEntity = response.body();
         Assert.assertNotNull(subAccountEntity);
     }
 
@@ -78,8 +80,8 @@ public class SubAccountTest {
         subAccountEntity.AppAccountId = TestAppAccountId;
         subAccountEntity.DisplayName = "My sub account";
 
-        Call<SubAccountEntity> call = service.createSubAccount(TestSettings.testCompanyAppUserId, subAccountEntity);
-        Response<SubAccountEntity> response = call.execute();
+        final Call<SubAccountEntity> call = service.createSubAccount(TestSettings.testCompanyAppUserId, subAccountEntity);
+        final Response<SubAccountEntity> response = call.execute();
         Assert.assertEquals(response.code(), 201);
         subAccountEntity = response.body();
         Assert.assertNotNull(subAccountEntity);
@@ -92,8 +94,8 @@ public class SubAccountTest {
         subAccountEntity.AppAccountId = TestAppAccountId;
         subAccountEntity.DisplayName = "Reserve fund";
 
-        Call<SubAccountEntity> call = service.updateSubAccount(TestSettings.testCompanyAppUserId, TestAppAccountId, subAccountEntity);
-        Response<SubAccountEntity> response = call.execute();
+        final Call<SubAccountEntity> call = service.updateSubAccount(TestSettings.testCompanyAppUserId, TestAppAccountId, subAccountEntity);
+        final Response<SubAccountEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
         subAccountEntity = response.body();
         Assert.assertNotNull(subAccountEntity);
@@ -102,8 +104,8 @@ public class SubAccountTest {
 
     @Test
     public void subAccount_005_delete() throws IOException {
-        Call<String> call = service.deleteSubAccount(TestSettings.testCompanyAppUserId, TestAppAccountId);
-        Response<String> response = call.execute();
+        final Call<String> call = service.deleteSubAccount(TestSettings.testCompanyAppUserId, TestAppAccountId);
+        final Response<String> response = call.execute();
         Assert.assertEquals(response.code(), 204);
     }
 }

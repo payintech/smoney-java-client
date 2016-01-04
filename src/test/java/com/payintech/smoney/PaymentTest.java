@@ -53,13 +53,14 @@ public class PaymentTest {
 
     @Test
     public void payment_001_list() throws IOException {
-        Call<List<PaymentEntity>> listCall = service.listPayments(TestSettings.testUserAppUserId);
-        Response<List<PaymentEntity>> response = listCall.execute();
+        final Call<List<PaymentEntity>> listCall = service.listPayments(TestSettings.testUserAppUserId);
+        final Response<List<PaymentEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        List<PaymentEntity> payments = response.body();
+
+        final List<PaymentEntity> payments = response.body();
         Assert.assertTrue(payments.size() > 0);
         if (payments.size() > 0) {
             PaymentTest.payment = payments.get(0);
@@ -72,13 +73,15 @@ public class PaymentTest {
             System.out.println("Not Payment for diff...");
         }
         Assert.assertNotNull(PaymentTest.payment);
-        Call<PaymentEntity> call = service.getPayment(TestSettings.testUserAppUserId, PaymentTest.payment.OrderId);
-        Response<PaymentEntity> response = call.execute();
+
+        final Call<PaymentEntity> call = service.getPayment(TestSettings.testUserAppUserId, PaymentTest.payment.OrderId);
+        final Response<PaymentEntity> response = call.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        PaymentEntity payment = response.body();
+
+        final PaymentEntity payment = response.body();
         Assert.assertEquals(PaymentTest.payment.OrderId, payment.OrderId);
         Assert.assertEquals(PaymentTest.payment.Message, payment.Message);
         Assert.assertEquals(PaymentTest.payment.Amount, payment.Amount);
@@ -92,21 +95,21 @@ public class PaymentTest {
         if (!TEST_CREATION) {
             return;
         }
-        PaymentEntity p = new PaymentEntity();
+        final PaymentEntity p = new PaymentEntity();
         p.OrderId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         p.Beneficiary = new SubAccountEntity();
         p.Beneficiary.AppAccountId = TestSettings.testUserAppUserId;
         p.Amount = 20L;
         p.Message = "Test";
 
-        Call<PaymentEntity> call = service.createPayment(TestSettings.testCompanyAppUserId, p);
-        Response<PaymentEntity> response = call.execute();
+        final Call<PaymentEntity> call = service.createPayment(TestSettings.testCompanyAppUserId, p);
+        final Response<PaymentEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        PaymentEntity payment = response.body();
 
+        final PaymentEntity payment = response.body();
         Assert.assertEquals(payment.OrderId, p.OrderId);
         Assert.assertEquals(payment.Beneficiary.AppAccountId, p.Beneficiary.AppAccountId);
         Assert.assertEquals(payment.Message, p.Message);
@@ -119,9 +122,8 @@ public class PaymentTest {
         if (!TEST_CREATION) {
             return;
         }
-        List<PaymentEntity> ps = new ArrayList<>();
-
-        PaymentEntity p1 = new PaymentEntity();
+        final List<PaymentEntity> ps = new ArrayList<>();
+        final PaymentEntity p1 = new PaymentEntity();
         p1.OrderId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         p1.Beneficiary = new SubAccountEntity();
         p1.Beneficiary.AppAccountId = TestSettings.testCompanyAppUserId;
@@ -131,7 +133,7 @@ public class PaymentTest {
         p1.Message = "Test";
         ps.add(p1);
 
-        PaymentEntity p2 = new PaymentEntity();
+        final PaymentEntity p2 = new PaymentEntity();
         p2.OrderId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         p2.Beneficiary = new SubAccountEntity();
         p2.Beneficiary.AppAccountId = TestSettings.testCompanyAppUserId;
@@ -141,24 +143,24 @@ public class PaymentTest {
         p2.Message = "Test";
         ps.add(p2);
 
-        Call<List<PaymentEntity>> listCall = service.createPayments(TestSettings.testUserAppUserId, ps);
-        Response<List<PaymentEntity>> response = listCall.execute();
+        final Call<List<PaymentEntity>> listCall = service.createPayments(TestSettings.testUserAppUserId, ps);
+        final Response<List<PaymentEntity>> response = listCall.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        List<PaymentEntity> payments = response.body();
 
+        final List<PaymentEntity> payments = response.body();
         Assert.assertTrue(payments.size() == 2);
 
-        PaymentEntity payment1 = payments.stream().filter(p -> p.OrderId.equals(p1.OrderId)).findFirst().get();
+        final PaymentEntity payment1 = payments.stream().filter(p -> p.OrderId.equals(p1.OrderId)).findFirst().get();
         Assert.assertEquals(payment1.OrderId, p1.OrderId);
         Assert.assertEquals(payment1.Beneficiary.AppAccountId, p1.Beneficiary.AppAccountId);
         Assert.assertEquals(payment1.Message, p1.Message);
         Assert.assertEquals(payment1.Amount, p1.Amount);
         Assert.assertTrue(payment1.Id > 0);
 
-        PaymentEntity payment2 = payments.stream().filter(p -> p.OrderId.equals(p2.OrderId)).findFirst().get();
+        final PaymentEntity payment2 = payments.stream().filter(p -> p.OrderId.equals(p2.OrderId)).findFirst().get();
         Assert.assertEquals(payment2.OrderId, p2.OrderId);
         Assert.assertEquals(payment2.Beneficiary.AppAccountId, p2.Beneficiary.AppAccountId);
         Assert.assertEquals(payment2.Message, p2.Message);

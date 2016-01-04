@@ -41,20 +41,79 @@ import java.util.List;
  */
 public class HistoryItemEntity {
 
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Account;
+
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Benificiary;
+
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Sender;
+
+    /**
+     * @since 15.11
+     */
     public String AccountLabel;
+
+    /**
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * @since 15.11
+     */
     public AttachmentEntity Attachment;
+
+    /**
+     * @since 15.11
+     */
     public HistoryDirection Direction;
+
+    /**
+     * @since 15.11
+     */
     public Boolean IsNew;
+
+    /**
+     * @since 15.11
+     */
     public String Label;
+
+    /**
+     * @since 15.11
+     */
     public DateTime OperationDate;
+
+    /**
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * @since 15.11
+     */
     public HistoryTypeEnum Type;
+
+    /**
+     * @since 15.11
+     */
     public String PaymentRequest;
+
+    /**
+     * @since 15.11
+     */
     public List<String> ChatMessages;
 
     /**

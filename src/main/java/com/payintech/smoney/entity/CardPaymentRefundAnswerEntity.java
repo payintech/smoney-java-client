@@ -37,13 +37,61 @@ import org.joda.time.DateTimeZone;
  */
 public class CardPaymentRefundAnswerEntity {
 
+    /**
+     * S-Money card payment refund ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Card payment refund ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * Refund amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Is fee amount has been refunded?
+     *
+     * @since 15.11
+     */
     public Boolean RefundedFee;
+
+    /**
+     * Card refund status.
+     *
+     * @see PaymentStatusEnum
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * Refund date.
+     *
+     * @since 15.11
+     */
     public DateTime PaymentDate;
+
+    /**
+     * The original payment linked to this refund.
+     *
+     * @since 15.11
+     */
     public CardPaymentEntity OriginalPayment;
+
+    /**
+     * Refund type.
+     *
+     * @since 15.11
+     */
     public Long Type;
 
     /**

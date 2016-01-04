@@ -56,7 +56,7 @@ public class CardPaymentTest {
 
     @Test
     public void cardPayment_001_create() throws IOException {
-        CardPaymentEntity cardPaymentEntity = new CardPaymentEntity();
+        final CardPaymentEntity cardPaymentEntity = new CardPaymentEntity();
         cardPaymentEntity.Amount = 500L;
         cardPaymentEntity.OrderId = orderId;
         cardPaymentEntity.Beneficiary = new SubAccountEntity();
@@ -66,38 +66,41 @@ public class CardPaymentTest {
         cardPaymentEntity.UrlReturn = "http://127.0.0.1";
         cardPaymentEntity.Fee = 0L;
 
-        Call<CardPaymentEntity> call = service.createCardPayment(TestSettings.testUserAppUserId, cardPaymentEntity);
-        Response<CardPaymentEntity> response = call.execute();
+        final Call<CardPaymentEntity> call = service.createCardPayment(TestSettings.testUserAppUserId, cardPaymentEntity);
+        final Response<CardPaymentEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        CardPaymentEntity cardPaymentEntityCreated = response.body();
+
+        final CardPaymentEntity cardPaymentEntityCreated = response.body();
         Assert.assertNotNull(cardPaymentEntityCreated.Id);
         Assert.assertNotNull(cardPaymentEntityCreated.Href);
     }
 
     @Test
     public void cardPayment_002_list() throws IOException {
-        Call<List<CardPaymentEntity>> listCall = service.listCardPayments(TestSettings.testUserAppUserId);
-        Response<List<CardPaymentEntity>> response = listCall.execute();
+        final Call<List<CardPaymentEntity>> listCall = service.listCardPayments(TestSettings.testUserAppUserId);
+        final Response<List<CardPaymentEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        List<CardPaymentEntity> cardPaymentEntityList = response.body();
+
+        final List<CardPaymentEntity> cardPaymentEntityList = response.body();
         Assert.assertTrue(cardPaymentEntityList.size() > 0);
     }
 
     @Test
     public void cardPayment_003_get() throws IOException {
-        Call<CardPaymentEntity> call = service.getCardPayment(TestSettings.testUserAppUserId, orderId);
-        Response<CardPaymentEntity> response = call.execute();
+        final Call<CardPaymentEntity> call = service.getCardPayment(TestSettings.testUserAppUserId, orderId);
+        final Response<CardPaymentEntity> response = call.execute();
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        CardPaymentEntity cardPaymentEntity = response.body();
+
+        final CardPaymentEntity cardPaymentEntity = response.body();
         Assert.assertEquals(cardPaymentEntity.Message, "Recharge test");
     }
 }

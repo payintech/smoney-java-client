@@ -42,11 +42,15 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
 
     /**
      * The date formatter.
+     *
+     * @since 15.11
      */
     private DateTimeFormatter formatter;
 
     /**
      * ISO Date formatter.
+     *
+     * @since 15.11
      */
     private DateTimeFormatter isoFormatter;
 
@@ -55,6 +59,7 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
      *
      * @param pattern Pattern respecting the {@code Joda.DateTimeFormatter} syntax.
      * @see DateTimeFormatter
+     * @since 15.11
      */
     public JodaDateTimeConverter(String pattern) {
         this.formatter = DateTimeFormat.forPattern(pattern);

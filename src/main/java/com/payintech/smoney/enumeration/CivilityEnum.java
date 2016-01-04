@@ -34,8 +34,15 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum CivilityEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     MISTER,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     MISS
 }

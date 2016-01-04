@@ -221,6 +221,7 @@ public interface SMoneyService {
      *
      * @param appUserId The User Id
      * @return The list of all the card registered for the user
+     * @since 15.11
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards")

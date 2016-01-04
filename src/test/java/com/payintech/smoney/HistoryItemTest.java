@@ -48,10 +48,11 @@ public class HistoryItemTest {
 
     @Test
     public void hystoryitem_001_list() throws IOException {
-        Call<List<HistoryItemEntity>> listCall = service.listHistoryItems(TestSettings.testUserAppUserId);
-        Response<List<HistoryItemEntity>> response = listCall.execute();
+        final Call<List<HistoryItemEntity>> listCall = service.listHistoryItems(TestSettings.testUserAppUserId);
+        final Response<List<HistoryItemEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<HistoryItemEntity> historyItems = response.body();
+
+        final List<HistoryItemEntity> historyItems = response.body();
         Assert.assertTrue(historyItems.size() > 0);
     }
 }

@@ -39,9 +39,34 @@ import java.util.List;
  */
 public class KycEntity {
 
+    /**
+     * S-Money KYC request ID.
+     *
+     * @since 15.11
+     */
     public long Id;
+
+    /**
+     * KYC request date.
+     *
+     * @since 15.11
+     */
     public DateTime RequestDate;
+
+    /**
+     * KYC request status.
+     *
+     * @see KycStatusEnum
+     * @since 15.11
+     */
     public KycStatusEnum Status;
+
+    /**
+     * Files attached to this KYC request.
+     *
+     * @see AttachmentEntity
+     * @since 15.11
+     */
     public List<AttachmentEntity> VoucherCopies;
 
     /**

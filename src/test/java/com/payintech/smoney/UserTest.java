@@ -46,7 +46,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * SMoneyTest.
+ * UserTest.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
@@ -81,53 +81,58 @@ public class UserTest {
 
     @Test
     public void user_001_list() throws IOException {
-        Call<List<UserEntity>> listCall = service.listUsers();
-        Response<List<UserEntity>> response = listCall.execute();
+        final Call<List<UserEntity>> listCall = service.listUsers();
+        final Response<List<UserEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<UserEntity> users = response.body();
+
+        final List<UserEntity> users = response.body();
         Assert.assertTrue(users.size() > 0);
     }
 
     @Test
     public void user_002_get() throws IOException {
-        Call<UserEntity> call = service.getUser(TestSettings.testUserAppUserId);
-        Response<UserEntity> response = call.execute();
+        final Call<UserEntity> call = service.getUser(TestSettings.testUserAppUserId);
+        final Response<UserEntity> response = call.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        UserEntity user = response.body();
+
+        final UserEntity user = response.body();
         UserTest.assertUser(user, TestSettings.testUser);
     }
 
     @Test
     public void user_003_get() throws IOException {
-        Call<UserEntity> call = service.getUser(TestSettings.testCompanyAppUserId);
-        Response<UserEntity> response = call.execute();
+        final Call<UserEntity> call = service.getUser(TestSettings.testCompanyAppUserId);
+        final Response<UserEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
-        UserEntity user = response.body();
+
+        final UserEntity user = response.body();
         UserTest.assertUser(user, TestSettings.testCompany);
     }
 
     @Test
     public void user_004_update() throws IOException {
         TestSettings.testUser.Profile.Alias = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
-        Call<UserEntity> call = service.updateUser(TestSettings.testUserAppUserId, TestSettings.testUser);
-        Response<UserEntity> response = call.execute();
+        final Call<UserEntity> call = service.updateUser(TestSettings.testUserAppUserId, TestSettings.testUser);
+        final Response<UserEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
 
-        UserEntity user = response.body();
+        final UserEntity user = response.body();
         UserTest.assertUser(user, TestSettings.testUser);
     }
 
     @Test
     public void user_005_find() throws IOException {
-        Map<String, String> options = new HashMap<>();
+        final Map<String, String> options = new HashMap<>();
         options.put("lastname", TestSettings.testUser.Profile.LastName);
-        Call<List<UserEntity>> listCall = service.findUsers(options);
-        Response<List<UserEntity>> response = listCall.execute();
+
+        final Call<List<UserEntity>> listCall = service.findUsers(options);
+        final Response<List<UserEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<UserEntity> users = response.body();
+
+        final List<UserEntity> users = response.body();
         Assert.assertTrue(users.size() > 0);
     }
 
@@ -136,7 +141,7 @@ public class UserTest {
         if (!TEST_CREATION) {
             return;
         }
-        UserEntity u = new UserEntity();
+        final UserEntity u = new UserEntity();
         u.AppUserId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         u.Profile = new ProfileEntity();
         u.Profile.FirstName = "TEST";
@@ -145,11 +150,11 @@ public class UserTest {
         u.Profile.Address = new AddressEntity();
         u.Profile.Address.Country = CountryCodeEnum.FR;
 
-        Call<UserEntity> call = service.createUser(u);
-        Response<UserEntity> response = call.execute();
+        final Call<UserEntity> call = service.createUser(u);
+        final Response<UserEntity> response = call.execute();
         Assert.assertEquals(response.code(), 201);
 
-        UserEntity user = response.body();
+        final UserEntity user = response.body();
         Assert.assertEquals(user.AppUserId, u.AppUserId);
         Assert.assertEquals(user.Profile.FirstName, u.Profile.FirstName);
         Assert.assertEquals(user.Role, UserRoleEnum.CLIENT);
@@ -161,7 +166,7 @@ public class UserTest {
         if (!TEST_CREATION) {
             return;
         }
-        UserEntity u = new UserEntity();
+        final UserEntity u = new UserEntity();
         u.AppUserId = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
         u.Type = UserTypeEnum.PROFESSIONAL;
         u.Profile = new ProfileEntity();
@@ -174,10 +179,11 @@ public class UserTest {
         u.Company.Name = "Test";
         u.Company.Siret = "Test";
 
-        Call<UserEntity> call = service.createUser(u);
-        Response<UserEntity> response = call.execute();
+        final Call<UserEntity> call = service.createUser(u);
+        final Response<UserEntity> response = call.execute();
         Assert.assertEquals(response.code(), 201);
-        UserEntity user = response.body();
+
+        final UserEntity user = response.body();
         Assert.assertEquals(user.AppUserId, u.AppUserId);
         Assert.assertEquals(user.Profile.FirstName, u.Profile.FirstName);
         Assert.assertEquals(user.Type, UserTypeEnum.PROFESSIONAL);

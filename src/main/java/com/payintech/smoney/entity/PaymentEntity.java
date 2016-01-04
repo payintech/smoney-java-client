@@ -37,14 +37,71 @@ import org.joda.time.DateTimeZone;
  */
 public class PaymentEntity {
 
+    /**
+     * S-Money payment ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Payment ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * Payment date.
+     *
+     * @since 15.11
+     */
     public DateTime PaymentDate;
+
+    /**
+     * Payment amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee information.
+     *
+     * @see FeeEntity
+     * @since 15.11
+     */
     public FeeEntity Fee;
+
+    /**
+     * Details about the beneficiary.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Beneficiary;
+
+    /**
+     * A customizable message (ie: {@code Lunch with Renata}).
+     *
+     * @since 15.11
+     */
     public String Message;
+
+    /**
+     * Details about the payment emitter.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Sender;
+
+    /**
+     * Payment status.
+     *
+     * @see PaymentStatusEnum
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
 
     /**

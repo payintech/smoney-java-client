@@ -35,9 +35,42 @@ import com.payintech.smoney.enumeration.ErrorCodeEnum;
  */
 public class CardRegistrationAnswerEntity {
 
+    /**
+     * Card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * Card registration status.
+     *
+     * @see CardRegistrationStatusEnum
+     * @since 15.11
+     */
     public CardRegistrationStatusEnum Status;
+
+    /**
+     * Error code. Useful to determine what happened during the
+     * card registration.
+     *
+     * @see ErrorCodeEnum
+     * @since 15.11
+     */
     public ErrorCodeEnum ErrorCode;
+
+    /**
+     * Reference to the newly registered card.
+     *
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * More information about the returned status codes.
+     *
+     * @since 15.11
+     */
     public ExtraResultsEntity ExtraResults;
 }

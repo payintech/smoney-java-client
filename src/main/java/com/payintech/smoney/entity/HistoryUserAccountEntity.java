@@ -32,11 +32,38 @@ package com.payintech.smoney.entity;
  */
 public class HistoryUserAccountEntity {
 
+    /**
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * @since 15.11
+     */
     public String Alias;
+
+    /**
+     * @since 15.11
+     */
     public String AppAccountId;
+
+    /**
+     * @since 15.11
+     */
     public String DisplayName;
+
+    /**
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * @since 15.11
+     */
     public String PhoneNumber;
+
+    /**
+     * @since 15.11
+     */
     public String Email;
 }

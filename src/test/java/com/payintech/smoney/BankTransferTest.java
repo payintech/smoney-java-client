@@ -49,34 +49,36 @@ public class BankTransferTest {
     public static final SMoneyService service = SMoneyServiceFactory.createService();
 
     public static ReferenceEntity reference;
-    public static BankTransferEntity banTransfer;
 
     @Test
     public void banktransfer_001_listRef() throws IOException {
-        Call<List<ReferenceEntity>> listCall = service.listReferences(TestSettings.testUserAppUserId);
-        Response<List<ReferenceEntity>> response = listCall.execute();
+        final Call<List<ReferenceEntity>> listCall = service.listReferences(TestSettings.testUserAppUserId);
+        final Response<List<ReferenceEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
-        List<ReferenceEntity> references = response.body();
+
+        final List<ReferenceEntity> references = response.body();
         Assert.assertNotNull(references);
         Assert.assertTrue(references.size() > 0);
     }
 
     @Test
     public void banktransfer_002_createRef() throws IOException {
-        ReferenceEntity r = new ReferenceEntity();
+        final ReferenceEntity r = new ReferenceEntity();
         r.Beneficiary = new SubAccountEntity();
         r.Beneficiary.AppAccountId = TestSettings.testUserAppUserId;
         r.IsMine = true;
-        Call<ReferenceEntity> call = service.createReference(TestSettings.testUserAppUserId, r);
-        Response<ReferenceEntity> response = call.execute();
+
+        final Call<ReferenceEntity> call = service.createReference(TestSettings.testUserAppUserId, r);
+        final Response<ReferenceEntity> response = call.execute();
         Assert.assertEquals(response.code(), 201);
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
-        ReferenceEntity reference = response.body();
+
+        final ReferenceEntity reference = response.body();
         Assert.assertTrue(reference.Id > 0);
         Assert.assertEquals(reference.Beneficiary.AppAccountId, r.Beneficiary.AppAccountId);
         Assert.assertEquals(reference.IsMine, r.IsMine);
@@ -87,14 +89,14 @@ public class BankTransferTest {
 
     @Test
     public void banktransfer_003_getRef() throws IOException {
-        Call<ReferenceEntity> call = service.getReference(TestSettings.testUserAppUserId, BankTransferTest.reference.Id);
-        Response<ReferenceEntity> response = call.execute();
+        final Call<ReferenceEntity> call = service.getReference(TestSettings.testUserAppUserId, BankTransferTest.reference.Id);
+        final Response<ReferenceEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
-        ReferenceEntity reference = response.body();
 
+        final ReferenceEntity reference = response.body();
         Assert.assertEquals(reference.Id, reference.Id);
         Assert.assertEquals(reference.Beneficiary.Id, reference.Beneficiary.Id);
         Assert.assertEquals(reference.Beneficiary.AppAccountId, reference.Beneficiary.AppAccountId);
@@ -108,13 +110,14 @@ public class BankTransferTest {
 
     @Test
     public void banktransfer_004_get() throws IOException {
-        Call<ReferenceEntity> call = service.getReference(TestSettings.testUserAppUserId, BankTransferTest.reference.Reference);
-        Response<ReferenceEntity> response = call.execute();
+        final Call<ReferenceEntity> call = service.getReference(TestSettings.testUserAppUserId, BankTransferTest.reference.Reference);
+        final Response<ReferenceEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
-        ReferenceEntity reference = response.body();
+
+        final ReferenceEntity reference = response.body();
         Assert.assertEquals(reference.Id, reference.Id);
         Assert.assertEquals(reference.Beneficiary.Id, reference.Beneficiary.Id);
         Assert.assertEquals(reference.Beneficiary.AppAccountId, reference.Beneficiary.AppAccountId);
@@ -128,8 +131,8 @@ public class BankTransferTest {
 
     @Test
     public void banktransfer_005_list() throws IOException {
-        Call<List<BankTransferEntity>> listCall = service.listBankTransfers(TestSettings.testUserAppUserId);
-        Response<List<BankTransferEntity>> response = listCall.execute();
+        final Call<List<BankTransferEntity>> listCall = service.listBankTransfers(TestSettings.testUserAppUserId);
+        final Response<List<BankTransferEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
     }
 }

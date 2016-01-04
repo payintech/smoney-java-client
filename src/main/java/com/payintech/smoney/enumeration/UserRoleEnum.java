@@ -34,8 +34,15 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum UserRoleEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     CLIENT,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     EXTENDED_CLIENT
 }

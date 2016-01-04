@@ -36,12 +36,55 @@ import org.joda.time.DateTimeZone;
  */
 public class MoneyOutEntity {
 
+    /**
+     * S-Money money-out transfer ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Used S-Money account for the transfer.
+     *
+     * @since 15.11
+     */
     public SubAccountEntity AccountId;
+
+    /**
+     * Used bank account as receiver.
+     *
+     * @since 15.11
+     */
     public BankAccountEntity BankAccount;
+
+    /**
+     * Transfer amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee details.
+     *
+     * @see FeeEntity
+     * @since 15.11
+     */
     public FeeEntity Fee;
+
+    /**
+     * Transfer date.
+     *
+     * @since 15.11
+     */
     public DateTime OperationDate;
+
+    /**
+     * Customizable message (ie: {@code S-Money 2015-12-22}). This message
+     * will be displayed on the bank account activity log.
+     *
+     * @since 15.11
+     */
     public String Message;
 
     /**

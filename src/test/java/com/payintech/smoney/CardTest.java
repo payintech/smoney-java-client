@@ -58,35 +58,39 @@ public class CardTest {
 
     @Test
     public void card_001_list() throws IOException {
-        Call<List<CardEntity>> listCall = service.listCards(TestSettings.testUserAppUserId);
-        Response<List<CardEntity>> response = listCall.execute();
+        final Call<List<CardEntity>> listCall = service.listCards(TestSettings.testUserAppUserId);
+        final Response<List<CardEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<CardEntity> cardEntityList = response.body();
+
+        final List<CardEntity> cardEntityList = response.body();
         Assert.assertNotNull(cardEntityList);
         Assert.assertTrue(cardEntityList.size() > 0);
     }
 
     @Test
     public void card_002_registration() throws IOException {
-        CardRegistrationApplicationEntity cardApplication = new CardRegistrationApplicationEntity();
+        final CardRegistrationApplicationEntity cardApplication = new CardRegistrationApplicationEntity();
         cardApplication.Card = new CardEntity();
         cardApplication.UrlReturn = "http://127.0.0.1";
         cardApplication.Card.AppCardId = CardTest.appCardId;
         cardApplication.Card.Name = "Testing card";
-        Call<CardRegistrationAnswerEntity> call = service.createCard(TestSettings.testUserAppUserId, cardApplication);
-        Response<CardRegistrationAnswerEntity> response = call.execute();
+
+        final Call<CardRegistrationAnswerEntity> call = service.createCard(TestSettings.testUserAppUserId, cardApplication);
+        final Response<CardRegistrationAnswerEntity> response = call.execute();
         Assert.assertEquals(response.code(), 201);
-        CardRegistrationAnswerEntity cardAnswer = response.body();
+
+        final CardRegistrationAnswerEntity cardAnswer = response.body();
         Assert.assertNotNull(cardAnswer);
         Assert.assertEquals(cardAnswer.Status, CardRegistrationStatusEnum.WAITING);
     }
 
     @Test
     public void card_003_get() throws IOException {
-        Call<CardEntity> call = service.getCard(TestSettings.testUserAppUserId, TestSettings.testUserAppCardId);
-        Response<CardEntity> response = call.execute();
+        final Call<CardEntity> call = service.getCard(TestSettings.testUserAppUserId, TestSettings.testUserAppCardId);
+        final Response<CardEntity> response = call.execute();
         Assert.assertEquals(response.code(), 200);
-        CardEntity card = response.body();
+
+        final CardEntity card = response.body();
         Assert.assertEquals(card.Name, "Testing card");
     }
 }

@@ -34,18 +34,45 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum UserStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     NOT_CONFIRMED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     OK,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     FROZEN,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     ON_THE_FLY,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("4")
     BEING_CLOSED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("5")
     CLOSED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("6")
     WAITING_KYC,
 }

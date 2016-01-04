@@ -38,14 +38,68 @@ import org.joda.time.DateTimeZone;
  */
 public class ProfileEntity {
 
+    /**
+     * Civility.
+     *
+     * @see CivilityEnum
+     * @since 15.11
+     */
     public CivilityEnum Civility;
+
+    /**
+     * User first name.
+     *
+     * @since 15.11
+     */
     public String FirstName;
+
+    /**
+     * User last name.
+     *
+     * @since 15.11
+     */
     public String LastName;
+
+    /**
+     * User birthdate.
+     *
+     * @since 15.11
+     */
     public DateTime Birthdate;
+
+    /**
+     * Phone number to contact user.
+     *
+     * @since 15.11
+     */
     public String PhoneNumber;
+
+    /**
+     * A valid email address used to contact user.
+     *
+     * @since 15.11
+     */
     public String Email;
+
+    /**
+     * User nickname.
+     *
+     * @since 15.11
+     */
     public String Alias;
+
+    /**
+     * Link to the user picture.
+     *
+     * @since 15.11
+     */
     public String Photo;
+
+    /**
+     * Postal address.
+     *
+     * @since 15.11
+     */
     public AddressEntity Address;
 
     /**

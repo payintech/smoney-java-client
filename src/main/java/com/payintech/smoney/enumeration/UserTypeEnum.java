@@ -34,12 +34,21 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum UserTypeEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     NA,
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     PARTICULAR,
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     PROFESSIONAL
 }

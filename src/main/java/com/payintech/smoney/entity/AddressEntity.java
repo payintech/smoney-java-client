@@ -35,8 +35,32 @@ import com.payintech.smoney.enumeration.CountryCodeEnum;
  */
 public class AddressEntity {
 
+    /**
+     * Number and street name.
+     *
+     * @since 15.11
+     */
     public String Street;
+
+    /**
+     * City zipcode.
+     *
+     * @since 15.11
+     */
     public String ZipCode;
+
+    /**
+     * City name.
+     *
+     * @since 15.11
+     */
     public String City;
+
+    /**
+     * Country where is located the city.
+     *
+     * @see CountryCodeEnum
+     * @since 15.11
+     */
     public CountryCodeEnum Country;
 }

@@ -34,10 +34,21 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum CardRegistrationStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     WAITING,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     SUCCESS,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     FAILURE
 }

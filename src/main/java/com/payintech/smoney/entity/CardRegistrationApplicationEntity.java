@@ -32,8 +32,27 @@ package com.payintech.smoney.entity;
  */
 public class CardRegistrationApplicationEntity {
 
+    /**
+     * Card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * URL to redirect user at the process end.
+     *
+     * @since 15.11
+     */
     public String UrlReturn;
+
+    /**
+     * List of allowed cards on the S-Money web page. By default, all cards
+     * are allowed ({@code CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON}).
+     *
+     * @since 15.11
+     */
     public String AvailableCards;
 
     /**

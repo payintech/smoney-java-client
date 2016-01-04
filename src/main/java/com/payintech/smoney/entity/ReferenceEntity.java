@@ -32,9 +32,37 @@ package com.payintech.smoney.entity;
  */
 public class ReferenceEntity {
 
+    /**
+     * S-Money reference ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Beneficiary details.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Beneficiary;
+
+    /**
+     * @since 15.11
+     */
     public Boolean IsMine;
+
+    /**
+     * Reference.
+     *
+     * @since 15.11
+     */
     public String Reference;
+
+    /**
+     * Bank account to use.
+     *
+     * @since 15.11
+     */
     public BankAccountEntity BankAccount;
 }

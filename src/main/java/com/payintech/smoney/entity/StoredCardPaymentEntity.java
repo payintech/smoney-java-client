@@ -36,13 +36,64 @@ import org.joda.time.DateTimeZone;
  */
 public class StoredCardPaymentEntity {
 
+    /**
+     * S-Money stored card payment ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Stored card payment ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * Account used to receive the payment amount.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity AccountId;
+
+    /**
+     * Used card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * Payment amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee details.
+     *
+     * @see FeeEntity
+     * @since 15.11
+     */
     public FeeEntity Fee;
+
+    /**
+     * Stored card payment date.
+     *
+     * @since 15.11
+     */
     public DateTime OperationDate;
+
+    /**
+     * {@code true} if the account owner is the
+     * same as the card owner.
+     *
+     * @since 15.11
+     */
     public Boolean IsMine;
 
     /**

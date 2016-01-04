@@ -37,10 +37,41 @@ import org.joda.time.DateTimeZone;
  */
 public class PaymentScheduleEntity {
 
+    /**
+     * Payment number. For a payment in 3 times, the value would
+     * be 1, 2 or 3.
+     *
+     * @since 15.11
+     */
     public Integer SequenceNumber;
+
+    /**
+     * Amount (in cents) of the current occurrence.
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Date when the payment will be processed.
+     *
+     * @since 15.11
+     */
     public DateTime Date;
+
+    /**
+     * Payment status.
+     *
+     * @see PaymentStatusEnum
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * Fee amount.
+     *
+     * @since 15.11
+     */
     public Long Fee;
 
     /**

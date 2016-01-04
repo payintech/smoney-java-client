@@ -52,12 +52,16 @@ import java.util.concurrent.TimeUnit;
 public final class SMoneyServiceFactory {
 
     /**
-     * Define the date format to use with S-Money API.
+     * Define the date format to use with S-Money API: {@code yyyy-MM-dd'T'HH:mm:ss}.
+     *
+     * @since 15.11
      */
     public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     /**
      * Define the default API URL.
+     *
+     * @since 15.11
      */
     private static final String DEFAULT_API_URL = "https://rest-pp.s-money.fr/api/";
 

@@ -95,13 +95,13 @@ public class TestSettings {
     public static void createOrReset(SMoneyService service, UserEntity user) {
         try {
             if (service.getUser(user.AppUserId).execute().code() == 200) {
-                Response<UserEntity> response = service.updateUser(user.AppUserId, user).execute();
+                final Response<UserEntity> response = service.updateUser(user.AppUserId, user).execute();
                 if (response.code() != 200) {
                     System.err.println(String.format("[TestSettings] Unable to reset user \"%s\"", user.AppUserId));
                     System.err.println(response.errorBody().string());
                 }
             } else {
-                Response<UserEntity> response = service.createUser(user).execute();
+                final Response<UserEntity> response = service.createUser(user).execute();
                 if (response.code() != 201) {
                     System.err.println(String.format("[TestSettings] Unable to create user \"%s\"", user.AppUserId));
                     System.err.println(response.errorBody().string());
@@ -114,7 +114,7 @@ public class TestSettings {
 
     public static void migrateAmount(SMoneyService service, UserEntity sender, UserEntity beneficiary) {
         try {
-            Response<UserEntity> response1 = service.getUser(sender.AppUserId).execute();
+            final Response<UserEntity> response1 = service.getUser(sender.AppUserId).execute();
             if (response1.code() != 200) {
                 System.err.println(String.format("[TestSettings] Unable to find user \"%s\"", sender.AppUserId));
                 System.err.println(response1.errorBody().string());
@@ -127,7 +127,7 @@ public class TestSettings {
                 p.Beneficiary.AppAccountId = beneficiary.AppUserId;
                 p.Message = "RESET - Migration du solde.";
 
-                Response<PaymentEntity> response2 = service.createPayment(sender.AppUserId, p).execute();
+                final Response<PaymentEntity> response2 = service.createPayment(sender.AppUserId, p).execute();
                 if (response2.code() != 201) {
                     System.err.println(String.format("[TestSettings] Unable to recredit subaccount \"%s\" from subaccount \"%s\"", beneficiary.AppUserId, sender.AppUserId));
                     System.err.println(response1.errorBody().string());
