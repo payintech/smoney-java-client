@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,20 +40,80 @@ import java.util.List;
  * @since 15.11
  */
 public class HistoryItemEntity {
+
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Account;
+
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Benificiary;
+
+    /**
+     * @since 15.11
+     */
     public HistoryUserAccountEntity Sender;
+
+    /**
+     * @since 15.11
+     */
     public String AccountLabel;
+
+    /**
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * @since 15.11
+     */
     public AttachmentEntity Attachment;
+
+    /**
+     * @since 15.11
+     */
     public HistoryDirection Direction;
+
+    /**
+     * @since 15.11
+     */
     public Boolean IsNew;
+
+    /**
+     * @since 15.11
+     */
     public String Label;
+
+    /**
+     * @since 15.11
+     */
     public DateTime OperationDate;
+
+    /**
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * @since 15.11
+     */
     public HistoryTypeEnum Type;
+
+    /**
+     * @since 15.11
+     */
     public String PaymentRequest;
+
+    /**
+     * @since 15.11
+     */
     public List<String> ChatMessages;
 
     /**

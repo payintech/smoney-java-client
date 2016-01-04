@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,13 +27,44 @@ package com.payintech.smoney.entity;
  * AttachmentEntity.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.01
  * @since 15.11
  */
 public class AttachmentEntity {
+
+    /**
+     * S-Money attachment ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Usual name.
+     *
+     * @since 15.11
+     */
     public String name;
+
+    /**
+     * Attachment type (ie: {@code image/png}).
+     *
+     * @since 15.11
+     */
     public String Type;
-    public Long Sise;
+
+    /**
+     * Attachment size (in octets).
+     *
+     * @since 15.11
+     */
+    public Long Size;
+
+    /**
+     * URL to download attachment.
+     *
+     * @since 15.11
+     */
     public String Url;
 }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,14 +43,16 @@ import java.util.List;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class HistoryItemTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     @Test
     public void hystoryitem_001_list() throws IOException {
-        Call<List<HistoryItemEntity>> listCall = service.listHistoryItems(TestSettings.testUserAppUserId);
-        Response<List<HistoryItemEntity>> response = listCall.execute();
+        final Call<List<HistoryItemEntity>> listCall = service.listHistoryItems(TestSettings.testUserAppUserId);
+        final Response<List<HistoryItemEntity>> response = listCall.execute();
         Assert.assertEquals(response.code(), 200);
-        List<HistoryItemEntity> historyItems = response.body();
+
+        final List<HistoryItemEntity> historyItems = response.body();
         Assert.assertTrue(historyItems.size() > 0);
     }
 }

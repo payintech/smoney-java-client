@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,17 +40,86 @@ import java.util.List;
  */
 public class UserEntity {
 
+    /**
+     * S-Money user ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * User ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String AppUserId;
+
+    /**
+     * Current role of the user.
+     *
+     * @see UserRoleEnum
+     * @since 15.11
+     */
     @SerializedName("Role")
     public UserRoleEnum Role;
+
+    /**
+     * User type.
+     *
+     * @see UserTypeEnum
+     * @since 15.11
+     */
     @SerializedName("Type")
     public UserTypeEnum Type;
+
+    /**
+     * User profile information.
+     *
+     * @since 15.11
+     */
     public ProfileEntity Profile;
+
+    /**
+     * Cumulative amount from all sub-accounts (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * List of user's associated sub-accounts.
+     *
+     * @since 15.11
+     */
     public List<SubAccountEntity> SubAccounts;
+
+    /**
+     * List of user's associated bank accounts.
+     *
+     * @since 15.11
+     */
     public List<BankAccountEntity> BankAccounts;
+
+    /**
+     * List of user's associated bank cards.
+     *
+     * @since 15.11
+     */
     public List<CardEntity> CBCards;
+
+    /**
+     * User status.
+     *
+     * @see UserStatusEnum
+     * @since 15.11
+     */
     public UserStatusEnum Status;
+
+    /**
+     * Information about the company. This field is only used
+     * if the user have created a company.
+     *
+     * @since 15.11
+     */
     public CompanyEntity Company;
 }

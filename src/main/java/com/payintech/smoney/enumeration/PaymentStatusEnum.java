@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,20 +34,51 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum PaymentStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("-1")
     UNKNOWN,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     PENDING,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     SUCCEEDED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     REFUNDED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     FAILED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("4")
     WAITING_VALIDATION,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("5")
     CANCELED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("6")
     WAITING_DELIVERY
 }

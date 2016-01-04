@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,12 +34,27 @@ import com.google.gson.annotations.SerializedName;
  */
 public enum KycStatusEnum {
 
+    /**
+     * @since 15.11
+     */
     @SerializedName("0")
     INCOMPLETE,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("1")
     IN_PROGRESS,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("2")
     REFUSED,
+
+    /**
+     * @since 15.11
+     */
     @SerializedName("3")
     ACCEPTED,
 }

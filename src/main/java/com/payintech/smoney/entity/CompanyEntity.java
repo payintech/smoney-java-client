@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,18 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CompanyEntity {
+
+    /**
+     * Company name.
+     *
+     * @since 15.11
+     */
     public String Name;
+
+    /**
+     * Legal registration number: SIRET or RNA.
+     *
+     * @since 15.11
+     */
     public String Siret;
 }

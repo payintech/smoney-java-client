@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,24 +40,147 @@ import java.util.List;
  * @since 15.11
  */
 public class CardPaymentEntity {
+
+    /**
+     * S-Money card payment ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Card payment ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * Card payment date.
+     *
+     * @since 15.11
+     */
     public DateTime PaymentDate;
+
+    /**
+     * Payment amount (in cents) without fee.
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee amount (int cents)
+     *
+     * @since 15.11
+     */
     public Long Fee;
+
+    /**
+     * Payment status.
+     *
+     * @see PaymentStatusEnum
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * Beneficiary details.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Beneficiary;
+
+    /**
+     * Customizable message.
+     *
+     * @since 15.11
+     */
     public String Message;
+
+    /**
+     * {@code true} if the account owner is the
+     * same as the card owner.
+     *
+     * @since 15.11
+     */
     public Boolean IsMine;
+
+    /**
+     * Card payment error code.
+     *
+     * @see ErrorCodeEnum
+     * @since 15.11
+     */
     public ErrorCodeEnum ErrorCode;
+
+    /**
+     * More information about results.
+     *
+     * @see ExtraResultsEntity
+     * @since 15.11
+     */
     public ExtraResultsEntity ExtraResults;
+
+    /**
+     * URL used to redirect user at the process end.
+     *
+     * @since 15.11
+     */
     public String UrlReturn;
+
+    /**
+     * Callback URL to use (only server to server).
+     *
+     * @since 15.11
+     */
     public String UrlCallback;
+
+    /**
+     * List of allowed cards on the S-Money web page. By default, all cards
+     * are allowed ({@code CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON}).
+     *
+     * @since 15.11
+     */
     public String AvailableCards;
+
+    /**
+     * Reference to this card payment.
+     *
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * Card payment type.
+     *
+     * @see PaymentTypeEnum
+     * @since 15.11
+     */
     public PaymentTypeEnum Type;
+
+    /**
+     * Card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * List of scheduled payments (if applicable).
+     *
+     * @see PaymentScheduleEntity
+     * @since 15.11
+     */
     public List<PaymentScheduleEntity> PaymentSchedule;
+
+    /**
+     * List of payments in case of multiple beneficiaries (if applicable).
+     *
+     * @since 15.11
+     */
     public List<PaymentEntity> Payments;
 
     /**

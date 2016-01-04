@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,8 +33,33 @@ import com.payintech.smoney.enumeration.FeeStatusEnum;
  * @since 15.11
  */
 public class FeeEntity {
+
+    /**
+     * Net amount of the fee (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Fee's percentage (in percentage).
+     *
+     * @since 15.11
+     */
     public Long AmountWithVAT;
+
+    /**
+     * Tax price of the fee (in cents).
+     *
+     * @since 15.11
+     */
     public Double VAT;
+
+    /**
+     * Fee status.
+     *
+     * @see FeeStatusEnum
+     * @since 15.11
+     */
     public FeeStatusEnum Status;
 }

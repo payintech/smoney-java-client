@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -45,43 +45,46 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StoredCardPaymentTest {
+
     private static final Boolean TEST_REFUND = false;
     public static SMoneyService service = SMoneyServiceFactory.createService();
     public static StoredCardPaymentEntity scp;
 
     static {
         scp = new StoredCardPaymentEntity();
-        scp.Id = 0l; //Set On created (test 002)
+        scp.Id = 0L; //Set On created (test 002)
         scp.OrderId = String.format("order-test-%s", UUID.randomUUID().toString().split("-")[0]);
         scp.AccountId = new SubAccountEntity();
         scp.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         scp.Card = new CardEntity();
         scp.Card.AppCardId = TestSettings.testUserAppCardId;
         scp.IsMine = true;
-        scp.Amount = 10l;
+        scp.Amount = 10L;
     }
 
     @Test
     public void storedcardpayment_001_list() throws IOException {
-        Call<List<StoredCardPaymentEntity>> listCall = service.listStoredCardPayment(TestSettings.testUserAppUserId);
-        Response<List<StoredCardPaymentEntity>> response = listCall.execute();
+        final Call<List<StoredCardPaymentEntity>> listCall = service.listStoredCardPayment(TestSettings.testUserAppUserId);
+        final Response<List<StoredCardPaymentEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        List<StoredCardPaymentEntity> payments = response.body();
+
+        final List<StoredCardPaymentEntity> payments = response.body();
         Assert.assertTrue(payments.size() > 0);
     }
 
     @Test
     public void storedcardpayment_002_create() throws IOException {
-        Call<StoredCardPaymentEntity> call = service.createStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp);
-        Response<StoredCardPaymentEntity> response = call.execute();
+        final Call<StoredCardPaymentEntity> call = service.createStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp);
+        final Response<StoredCardPaymentEntity> response = call.execute();
         if (response.code() != 201) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        StoredCardPaymentEntity storedCardPay = response.body();
+
+        final StoredCardPaymentEntity storedCardPay = response.body();
         Assert.assertEquals(StoredCardPaymentTest.scp.OrderId, storedCardPay.OrderId);
         Assert.assertEquals(StoredCardPaymentTest.scp.AccountId.AppAccountId, storedCardPay.AccountId.AppAccountId);
         Assert.assertEquals(StoredCardPaymentTest.scp.Card.AppCardId, storedCardPay.Card.AppCardId);
@@ -95,13 +98,14 @@ public class StoredCardPaymentTest {
 
     @Test
     public void storedcardpayment_003_get() throws IOException {
-        Call<StoredCardPaymentEntity> call = service.getStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp.OrderId);
-        Response<StoredCardPaymentEntity> response = call.execute();
+        final Call<StoredCardPaymentEntity> call = service.getStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp.OrderId);
+        final Response<StoredCardPaymentEntity> response = call.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        StoredCardPaymentEntity storedCardPay = response.body();
+
+        final StoredCardPaymentEntity storedCardPay = response.body();
         Assert.assertEquals(StoredCardPaymentTest.scp.OrderId, storedCardPay.OrderId);
         Assert.assertEquals(StoredCardPaymentTest.scp.AccountId.AppAccountId, storedCardPay.AccountId.AppAccountId);
         Assert.assertEquals(StoredCardPaymentTest.scp.Card.AppCardId, storedCardPay.Card.AppCardId);
@@ -116,17 +120,19 @@ public class StoredCardPaymentTest {
         if (!StoredCardPaymentTest.TEST_REFUND) {
             return;
         }
-        CardPaymentRefundApplicationEntity refund = new CardPaymentRefundApplicationEntity();
+        final CardPaymentRefundApplicationEntity refund = new CardPaymentRefundApplicationEntity();
         refund.OrderId = String.format("order-test-%s", UUID.randomUUID().toString().split("-")[0]);
         refund.RefundFee = false;
         refund.Amount = StoredCardPaymentTest.scp.Amount;
-        Call<CardPaymentRefundAnswerEntity> call = service.refundStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp.OrderId, refund);
-        Response<CardPaymentRefundAnswerEntity> response = call.execute();
+
+        final Call<CardPaymentRefundAnswerEntity> call = service.refundStoredCardPayment(TestSettings.testUserAppUserId, StoredCardPaymentTest.scp.OrderId, refund);
+        final Response<CardPaymentRefundAnswerEntity> response = call.execute();
         if (response.code() != 201) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(201, response.code());
-        CardPaymentRefundAnswerEntity refunded = response.body();
+
+        final CardPaymentRefundAnswerEntity refunded = response.body();
         Assert.assertEquals(refund.OrderId, refunded.OrderId);
         Assert.assertEquals(StoredCardPaymentTest.scp.Amount, refunded.Amount);
         Assert.assertEquals(PaymentStatusEnum.SUCCEEDED, refunded.Status);

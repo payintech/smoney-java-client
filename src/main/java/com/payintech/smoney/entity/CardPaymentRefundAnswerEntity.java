@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,13 +36,62 @@ import org.joda.time.DateTimeZone;
  * @since 15.11
  */
 public class CardPaymentRefundAnswerEntity {
+
+    /**
+     * S-Money card payment refund ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Card payment refund ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String OrderId;
+
+    /**
+     * Refund amount (in cents).
+     *
+     * @since 15.11
+     */
     public Long Amount;
+
+    /**
+     * Is fee amount has been refunded?
+     *
+     * @since 15.11
+     */
     public Boolean RefundedFee;
+
+    /**
+     * Card refund status.
+     *
+     * @see PaymentStatusEnum
+     * @since 15.11
+     */
     public PaymentStatusEnum Status;
+
+    /**
+     * Refund date.
+     *
+     * @since 15.11
+     */
     public DateTime PaymentDate;
+
+    /**
+     * The original payment linked to this refund.
+     *
+     * @since 15.11
+     */
     public CardPaymentEntity OriginalPayment;
+
+    /**
+     * Refund type.
+     *
+     * @since 15.11
+     */
     public Long Type;
 
     /**

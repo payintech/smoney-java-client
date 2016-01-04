@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,54 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CardEntity {
+
+    /**
+     * S-Money card ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Card ID on the 3rd party application.
+     *
+     * @since 15.11
+     */
     public String AppCardId;
+
+    /**
+     * Usual card name.
+     *
+     * @since 15.11
+     */
     public String Name;
+
+    /**
+     * Masked card number (ie: {@code 597010XXXXXX0009}).
+     *
+     * @since 15.11
+     */
     public String Hint;
+
+    /**
+     * Country where the card come from.
+     *
+     * @since 15.11
+     */
+    //TODO: Use CountryCodeEnum rather than String?
     public String Country;
+
+    /**
+     * Reference of the current card.
+     *
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * TODO: Add documentation about this variable.
+     *
+     * @since 15.11
+     */
     public Long Network;
 }

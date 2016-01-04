@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,9 +31,38 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class ReferenceEntity {
+
+    /**
+     * S-Money reference ID.
+     *
+     * @since 15.11
+     */
     public Long Id;
+
+    /**
+     * Beneficiary details.
+     *
+     * @see SubAccountEntity
+     * @since 15.11
+     */
     public SubAccountEntity Beneficiary;
+
+    /**
+     * @since 15.11
+     */
     public Boolean IsMine;
+
+    /**
+     * Reference.
+     *
+     * @since 15.11
+     */
     public String Reference;
+
+    /**
+     * Bank account to use.
+     *
+     * @since 15.11
+     */
     public BankAccountEntity BankAccount;
 }

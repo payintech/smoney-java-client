@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,6 +46,7 @@ import java.util.UUID;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MoneyOutTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     public static Long moneyOutId = 0L;
@@ -61,20 +62,21 @@ public class MoneyOutTest {
 
     @Test
     public void moneyout_001_list() throws IOException {
-        Call<List<MoneyOutEntity>> listCall = service.listMoneyOuts(TestSettings.testUserAppUserId);
-        Response<List<MoneyOutEntity>> response = listCall.execute();
+        final Call<List<MoneyOutEntity>> listCall = service.listMoneyOuts(TestSettings.testUserAppUserId);
+        final Response<List<MoneyOutEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        List<MoneyOutEntity> users = response.body();
+
+        final List<MoneyOutEntity> users = response.body();
         Assert.assertTrue(users.size() > 0);
     }
 
     @Test
     public void moneyout_002_create_oneshot() throws IOException {
-        MoneyOutEntity mo = new MoneyOutEntity();
-        mo.Amount = 10l;
+        final MoneyOutEntity mo = new MoneyOutEntity();
+        mo.Amount = 10L;
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();
@@ -84,13 +86,14 @@ public class MoneyOutTest {
         mo.BankAccount.IsMine = true;
         mo.Message = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
 
-        Call<MoneyOutEntity> call = service.createMoneyOutOneShot(TestSettings.testUserAppUserId, mo);
-        Response<MoneyOutEntity> response = call.execute();
+        final Call<MoneyOutEntity> call = service.createMoneyOutOneShot(TestSettings.testUserAppUserId, mo);
+        final Response<MoneyOutEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        MoneyOutEntity moneyOut = response.body();
+
+        final MoneyOutEntity moneyOut = response.body();
         Assert.assertEquals(mo.Amount, moneyOut.Amount);
         Assert.assertEquals(mo.BankAccount.getMaskedBic(), moneyOut.BankAccount.Bic);
         Assert.assertEquals(mo.BankAccount.DisplayName, moneyOut.BankAccount.DisplayName);
@@ -105,13 +108,14 @@ public class MoneyOutTest {
 
     @Test
     public void moneyout_003_get_oneshot() throws IOException {
-        Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
-        Response<MoneyOutEntity> response = call.execute();
+        final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
+        final Response<MoneyOutEntity> response = call.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        MoneyOutEntity moneyOut = response.body();
+
+        final MoneyOutEntity moneyOut = response.body();
         Assert.assertEquals(moneyOut.Amount, new Long(10));
         Assert.assertEquals(moneyOut.AccountId.AppAccountId, TestSettings.testUserAppUserId);
         Assert.assertEquals(moneyOut.BankAccount.Bic, testUserDefaultBankAccount.getMaskedBic());
@@ -122,21 +126,22 @@ public class MoneyOutTest {
 
     @Test
     public void moneyout_004_create_recurring() throws IOException {
-        MoneyOutEntity mo = new MoneyOutEntity();
-        mo.Amount = 10l;
+        final MoneyOutEntity mo = new MoneyOutEntity();
+        mo.Amount = 10L;
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();
         mo.BankAccount.Id = testUserDefaultBankAccount.Id;
         mo.Message = String.format("Test-%s", UUID.randomUUID().toString().split("-")[0]);
 
-        Call<MoneyOutEntity> call = service.createMoneyOutRecurring(TestSettings.testUserAppUserId, mo);
-        Response<MoneyOutEntity> response = call.execute();
+        final Call<MoneyOutEntity> call = service.createMoneyOutRecurring(TestSettings.testUserAppUserId, mo);
+        final Response<MoneyOutEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        MoneyOutEntity moneyOut = response.body();
+
+        final MoneyOutEntity moneyOut = response.body();
         Assert.assertEquals(mo.Amount, moneyOut.Amount);
         Assert.assertEquals(testUserDefaultBankAccount.getMaskedBic(), moneyOut.BankAccount.Bic);
         Assert.assertEquals(testUserDefaultBankAccount.DisplayName, moneyOut.BankAccount.DisplayName);
@@ -151,13 +156,14 @@ public class MoneyOutTest {
 
     @Test
     public void moneyout_005_get_recurring() throws IOException {
-        Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
-        Response<MoneyOutEntity> response = call.execute();
+        final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
+        final Response<MoneyOutEntity> response = call.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        MoneyOutEntity moneyOut = response.body();
+
+        final MoneyOutEntity moneyOut = response.body();
         Assert.assertEquals(moneyOut.Amount, new Long(10));
         Assert.assertEquals(moneyOut.AccountId.AppAccountId, TestSettings.testUserAppUserId);
         Assert.assertEquals(moneyOut.BankAccount.Bic, testUserDefaultBankAccount.getMaskedBic());
@@ -165,5 +171,4 @@ public class MoneyOutTest {
         Assert.assertEquals(moneyOut.BankAccount.Iban, testUserDefaultBankAccount.getMaskedIban());
         Assert.assertEquals(moneyOut.BankAccount.IsMine, testUserDefaultBankAccount.IsMine);
     }
-
 }

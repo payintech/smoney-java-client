@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,9 +34,43 @@ import com.payintech.smoney.enumeration.ErrorCodeEnum;
  * @since 15.11
  */
 public class CardRegistrationAnswerEntity {
+
+    /**
+     * Card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * Card registration status.
+     *
+     * @see CardRegistrationStatusEnum
+     * @since 15.11
+     */
     public CardRegistrationStatusEnum Status;
+
+    /**
+     * Error code. Useful to determine what happened during the
+     * card registration.
+     *
+     * @see ErrorCodeEnum
+     * @since 15.11
+     */
     public ErrorCodeEnum ErrorCode;
+
+    /**
+     * Reference to the newly registered card.
+     *
+     * @since 15.11
+     */
     public String Href;
+
+    /**
+     * More information about the returned status codes.
+     *
+     * @since 15.11
+     */
     public ExtraResultsEntity ExtraResults;
 }

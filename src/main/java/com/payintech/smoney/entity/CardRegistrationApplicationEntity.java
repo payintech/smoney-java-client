@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,10 +31,35 @@ package com.payintech.smoney.entity;
  * @since 15.11
  */
 public class CardRegistrationApplicationEntity {
+
+    /**
+     * Card details.
+     *
+     * @see CardEntity
+     * @since 15.11
+     */
     public CardEntity Card;
+
+    /**
+     * URL to redirect user at the process end.
+     *
+     * @since 15.11
+     */
     public String UrlReturn;
+
+    /**
+     * List of allowed cards on the S-Money web page. By default, all cards
+     * are allowed ({@code CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON}).
+     *
+     * @since 15.11
+     */
     public String AvailableCards;
 
+    /**
+     * Build a basic instance.
+     *
+     * @since 15.11
+     */
     public CardRegistrationApplicationEntity() {
         this.AvailableCards = "CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON";
     }

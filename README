@@ -1,0 +1,84 @@
+S-Money API client
+==================
+
+
+I. How to compile
+-----------------
+
+To compile this project, you need to have Maven (version 3 or superior) and
+Java (version 8 and superior) installed on your computer.
+
+    #> mvn compile
+    #> mvn package -DskipTests=true
+
+
+
+
+II. How to run unit tests?
+--------------------------
+
+In order to run unit tests, you have to create the following properties file
+on the directory "src/test/resources".
+
+    ##
+    ## S-Money properties file
+    ## ~~~~~
+    ## Filename: smoney.properties
+    ##
+    smoney.api.endpoint      = https://rest-pp.s-money.fr/api/sandbox/
+    smoney.api.token         = <YOUR_SMONEY_ACCESS_TOKEN>
+    smoney.transport.timeout = 15
+
+To run unit tests, you have to type this command:
+
+    #> mvn test
+
+Depending of your network speed, is it possible that some tests timeout. To
+avoid this issue, you can rise up the timeout value from 15 to a greater
+value.
+
+
+
+
+III. Linking to another project
+-------------------------------
+
+  A. Using Gradle
+  ^^^^^^^^^^^^^^^
+
+    allprojects {
+        repositories {
+    	    maven { url "https://jitpack.io" }
+    	}
+    }
+
+    dependencies {
+        compile 'com.github.payintech:smoney-java-client:release~YY.MM'
+    }
+
+
+
+  B. Using Maven
+  ^^^^^^^^^^^^^^
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependency>
+        <groupId>com.github.payintech</groupId>
+        <artifactId>smoney-java-client</artifactId>
+        <version>release~YY.MM</version>
+    </dependency>
+
+
+
+  C. Using SBT
+  ^^^^^^^^^^^^
+
+    resolvers += "jitpack" at "https://jitpack.io"
+
+    libraryDependencies += "com.github.payintech" % "smoney-java-client" % "release~YY.MM"

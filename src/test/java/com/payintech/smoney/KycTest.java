@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,23 +51,26 @@ import java.util.Map;
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KycTest {
+
     public static SMoneyService service = SMoneyServiceFactory.createService();
     public static Long kycId = 0L;
 
     @Test
     public void kyc_001_create_one_file() throws IOException {
-        File tmpFile = File.createTempFile("file1", ".jpg");
-        BufferedWriter bw = new BufferedWriter(new FileWriter(tmpFile));
+        final File tmpFile = File.createTempFile("file1", ".jpg");
+        final BufferedWriter bw = new BufferedWriter(new FileWriter(tmpFile));
         bw.write("This is the temporary file content");
         bw.close();
-        RequestBody file1 = RequestBody.create(MediaType.parse("image/jpeg"), tmpFile);
-        Call<KycEntity> call = service.createKYCRequest(TestSettings.testUserAppUserId, file1);
-        Response<KycEntity> response = call.execute();
+
+        final RequestBody file1 = RequestBody.create(MediaType.parse("image/jpeg"), tmpFile);
+        final Call<KycEntity> call = service.createKYCRequest(TestSettings.testUserAppUserId, file1);
+        final Response<KycEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        KycEntity kyc = response.body();
+
+        final KycEntity kyc = response.body();
         Assert.assertTrue(kyc.Id > 0);
         Assert.assertTrue(kyc.VoucherCopies.size() > 0);
         Assert.assertEquals(kyc.Status, KycStatusEnum.IN_PROGRESS);
@@ -77,28 +80,30 @@ public class KycTest {
 
     @Test
     public void kyc_002_create_multiple_files() throws IOException {
-        File tmpFile1 = File.createTempFile("file1", ".jpg");
-        BufferedWriter bw1 = new BufferedWriter(new FileWriter(tmpFile1));
+        final File tmpFile1 = File.createTempFile("file1", ".jpg");
+        final BufferedWriter bw1 = new BufferedWriter(new FileWriter(tmpFile1));
         bw1.write("This is the temporary file content");
         bw1.close();
-        RequestBody file1 = RequestBody.create(MediaType.parse("image/jpeg"), tmpFile1);
-        File tmpFile2 = File.createTempFile("file2", ".png");
-        BufferedWriter bw2 = new BufferedWriter(new FileWriter(tmpFile2));
+
+        final RequestBody file1 = RequestBody.create(MediaType.parse("image/jpeg"), tmpFile1);
+        final File tmpFile2 = File.createTempFile("file2", ".png");
+        final BufferedWriter bw2 = new BufferedWriter(new FileWriter(tmpFile2));
         bw2.write("This is the temporary file content");
         bw2.close();
-        RequestBody file2 = RequestBody.create(MediaType.parse("image/png"), tmpFile2);
 
-        Map<String, RequestBody> files = new HashMap<String, RequestBody>();
+        final RequestBody file2 = RequestBody.create(MediaType.parse("image/png"), tmpFile2);
+        final Map<String, RequestBody> files = new HashMap<>();
         files.put("file1", file1);
         files.put("file2", file2);
 
-        Call<KycEntity> call = service.createKYCRequest(TestSettings.testUserAppUserId, files);
-        Response<KycEntity> response = call.execute();
+        final Call<KycEntity> call = service.createKYCRequest(TestSettings.testUserAppUserId, files);
+        final Response<KycEntity> response = call.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 201);
-        KycEntity kyc = response.body();
+
+        final KycEntity kyc = response.body();
         Assert.assertTrue(kyc.Id > 0);
         Assert.assertTrue(kyc.VoucherCopies.size() > 0);
         Assert.assertEquals(kyc.Status, KycStatusEnum.IN_PROGRESS);
@@ -108,13 +113,14 @@ public class KycTest {
 
     @Test
     public void kyc_002_list() throws IOException {
-        Call<List<KycEntity>> listCall = service.getKYC(TestSettings.testUserAppUserId);
-        Response<List<KycEntity>> response = listCall.execute();
+        final Call<List<KycEntity>> listCall = service.getKYC(TestSettings.testUserAppUserId);
+        final Response<List<KycEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());
         }
         Assert.assertEquals(response.code(), 200);
-        List<KycEntity> kycs = response.body();
+
+        final List<KycEntity> kycs = response.body();
         Assert.assertNotNull(kycs);
         Assert.assertTrue(kycs.size() > 0);
     }

@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2013 - 2015 PayinTech
+ * Copyright (c) 2013 - 2016 PayinTech
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,19 +42,24 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
 
     /**
      * The date formatter.
+     *
+     * @since 15.11
      */
     private DateTimeFormatter formatter;
 
     /**
      * ISO Date formatter.
+     *
+     * @since 15.11
      */
     private DateTimeFormatter isoFormatter;
 
     /**
      * Build a converter instance with a specific format.
      *
-     * @param pattern Pattern respecting the Joda.DateTimeFormatter syntax.
+     * @param pattern Pattern respecting the {@code Joda.DateTimeFormatter} syntax.
      * @see DateTimeFormatter
+     * @since 15.11
      */
     public JodaDateTimeConverter(String pattern) {
         this.formatter = DateTimeFormat.forPattern(pattern);
