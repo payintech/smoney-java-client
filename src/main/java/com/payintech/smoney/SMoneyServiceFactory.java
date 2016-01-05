@@ -101,7 +101,7 @@ public final class SMoneyServiceFactory {
             return SMoneyServiceFactory.createService(
                     properties.getProperty("smoney.api.token"),
                     properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
-                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "10")));
+                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "8")));
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;

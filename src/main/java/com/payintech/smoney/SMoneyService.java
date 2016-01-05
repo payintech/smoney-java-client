@@ -88,6 +88,7 @@ public interface SMoneyService {
             "Accept: application/vnd.s-money.v1+json",
     })
     @GET("users")
+    //TODO: Implement pagination
     Call<List<UserEntity>> listUsers();
 
     /**
@@ -147,6 +148,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/subaccounts")
+    //TODO: Implement pagination
     Call<List<SubAccountEntity>> listSubAccounts(@Path("appuserid") String appUserId);
 
     /**
@@ -225,6 +227,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards")
+    //TODO: Implement pagination
     Call<List<CardEntity>> listCards(@Path("appuserid") String appUserId);
 
     /**
@@ -338,6 +341,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payments")
+    //TODO: Implement pagination
     Call<List<PaymentEntity>> listPayments(@Path("appuserid") String appUserId);
 
     /**
@@ -349,6 +353,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts")
+    //TODO: Implement pagination
     Call<List<BankAccountEntity>> listBankAccounts(@Path("appuserid") String appUserId);
 
     /**
@@ -420,6 +425,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts")
+    //TODO: Implement pagination
     Call<List<MoneyOutEntity>> listMoneyOuts(@Path("appuserid") String appUserId);
 
     /**
@@ -536,6 +542,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments")
+    //TODO: Implement pagination
     Call<List<CardPaymentEntity>> listCardPayments(@Path("appuserid") String appUserId);
 
     /**
@@ -667,6 +674,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments")
+    //TODO: Implement pagination
     Call<List<StoredCardPaymentEntity>> listStoredCardPayment(@Path("appuserid") String appUserId);
 
     /**
@@ -752,6 +760,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references")
+    //TODO: Implement pagination
     Call<List<ReferenceEntity>> listReferences(@Path("appuserid") String appUserId);
 
     /**
@@ -808,6 +817,7 @@ public interface SMoneyService {
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers")
+    //TODO: Implement pagination
     Call<List<BankTransferEntity>> listBankTransfers(@Path("appuserid") String appUserId);
 
     /**
