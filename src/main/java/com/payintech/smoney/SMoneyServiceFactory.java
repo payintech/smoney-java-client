@@ -46,7 +46,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.11
+ * @version 16.01
  * @since 15.11
  */
 public final class SMoneyServiceFactory {
@@ -69,32 +69,42 @@ public final class SMoneyServiceFactory {
      * Build the SMoneyService instance. This method will use the file
      * "smoney.properties" found on the "resources" directory.
      *
-     * @return The instance of the SMoneyService
+     * @return The instance of the {@code SMoneyService} in case of success
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService() {
-        InputStream fis = null;
-        if (SMoneyService.class.getResource("/smoney.properties") == null) {
-            if (System.getProperty("smoney.properties", null) == null) {
-                try {
-                    final Path path = Paths.get(SMoneyService.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-                    final URL u = new URL(String.format("file:%s/smoney.properties", path.getParent()));
-                    fis = u.openStream();
-                } catch (URISyntaxException | IOException ignore) {
-                }
-            }
-        } else {
-            fis = SMoneyService.class.getResourceAsStream("/smoney.properties");
-        }
         final Properties properties = new Properties();
+        InputStream fis = null;
         try {
-            properties.load(fis);
+            if (System.getProperty("smoney.properties", null) == null) {
+                if (SMoneyService.class.getResource("/smoney.properties") == null) {
+                    try {
+                        final Path path = Paths.get(SMoneyService.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+                        final URL u = new URL(String.format("file:%s/smoney.properties", path.getParent()));
+                        fis = u.openStream();
+                    } catch (URISyntaxException ignore) {
+                    }
+                } else {
+                    fis = SMoneyService.class.getResourceAsStream("/smoney.properties");
+                }
+            } else {
+                final URL u = new URL(System.getProperty("smoney.properties"));
+                fis = u.openStream();
+            }
+
+            if (fis != null) {
+                properties.load(fis);
+                fis.close();
+            }
+
             return SMoneyServiceFactory.createService(
                     properties.getProperty("smoney.api.token"),
                     properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
-                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "8")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "10")));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 
@@ -103,7 +113,8 @@ public final class SMoneyServiceFactory {
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
-     * @return The instance of the SMoneyService
+     * @return The instance of the {@code SMoneyService}
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl) {
@@ -116,11 +127,14 @@ public final class SMoneyServiceFactory {
      * @param token   The token for the API
      * @param baseUrl The base URL to use
      * @param timeout The http transport timeout value
-     * @return The instance of the SMoneyService
+     * @return The instance of the {@code SMoneyService}
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl, final int timeout) {
         final OkHttpClient httpClient = new OkHttpClient();
+        final String authBearer = String.format("Bearer %s", token);
+        final String userAgent = String.format("PayinTech-SMoneyJavaClient/%s", "16.01");
 
         httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
         httpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
@@ -128,7 +142,8 @@ public final class SMoneyServiceFactory {
         httpClient.interceptors().add(chain -> {
             final Request original = chain.request();
             final Request.Builder requestBuilder = original.newBuilder()
-                    .header("Authorization", String.format("Bearer %s", token))
+                    .header("Authorization", authBearer)
+                    .header("User-Agent", userAgent)
                     .method(original.method(), original.body());
             final Request request = requestBuilder.build();
             return chain.proceed(request);
