@@ -69,7 +69,7 @@ public final class SMoneyServiceFactory {
      * Build the SMoneyService instance. This method will use the file
      * "smoney.properties" found on the "resources" directory.
      *
-     * @return The instance of the {@code SMoneyService} in case of success
+     * @return The newly created {@code SMoneyService} instance or {@code null}
      * @see SMoneyService
      * @since 15.11
      */
@@ -113,7 +113,7 @@ public final class SMoneyServiceFactory {
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
-     * @return The instance of the {@code SMoneyService}
+     * @return The newly created {@code SMoneyService} instance
      * @see SMoneyService
      * @since 15.11
      */
@@ -127,7 +127,7 @@ public final class SMoneyServiceFactory {
      * @param token   The token for the API
      * @param baseUrl The base URL to use
      * @param timeout The http transport timeout value
-     * @return The instance of the {@code SMoneyService}
+     * @return The newly created {@code SMoneyService} instance
      * @see SMoneyService
      * @since 15.11
      */

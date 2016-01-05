@@ -113,7 +113,7 @@ public class KycTest {
 
     @Test
     public void kyc_002_list() throws IOException {
-        final Call<List<KycEntity>> listCall = service.getKYC(TestSettings.testUserAppUserId);
+        final Call<List<KycEntity>> listCall = service.listKYCRequests(TestSettings.testUserAppUserId);
         final Response<List<KycEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.err.println(response.errorBody().string());

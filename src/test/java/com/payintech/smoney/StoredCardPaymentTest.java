@@ -64,7 +64,7 @@ public class StoredCardPaymentTest {
 
     @Test
     public void storedcardpayment_001_list() throws IOException {
-        final Call<List<StoredCardPaymentEntity>> listCall = service.listStoredCardPayment(TestSettings.testUserAppUserId);
+        final Call<List<StoredCardPaymentEntity>> listCall = service.listStoredCardPayments(TestSettings.testUserAppUserId);
         final Response<List<StoredCardPaymentEntity>> response = listCall.execute();
         if (response.code() != 200) {
             System.out.println(response.errorBody().string());
