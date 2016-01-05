@@ -120,6 +120,8 @@ public final class SMoneyServiceFactory {
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl, final int timeout) {
+        final String userAgent = String.format("SMoneyJavaClient/%s", Version.projectVersion);
+        final String authBearer = String.format("Bearer %s", token);
         final OkHttpClient httpClient = new OkHttpClient();
 
         httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
@@ -128,7 +130,8 @@ public final class SMoneyServiceFactory {
         httpClient.interceptors().add(chain -> {
             final Request original = chain.request();
             final Request.Builder requestBuilder = original.newBuilder()
-                    .header("Authorization", String.format("Bearer %s", token))
+                    .header("User-Agent", userAgent)
+                    .header("Authorization", authBearer)
                     .method(original.method(), original.body());
             final Request request = requestBuilder.build();
             return chain.proceed(request);
