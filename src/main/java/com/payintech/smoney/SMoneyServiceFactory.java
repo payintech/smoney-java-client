@@ -26,8 +26,10 @@ package com.payintech.smoney;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.payintech.smoney.toolbox.JodaDateTimeConverter;
+import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import org.joda.time.DateTime;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -139,14 +141,18 @@ public final class SMoneyServiceFactory {
         httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
         httpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
         httpClient.interceptors().clear();
-        httpClient.interceptors().add(chain -> {
-            final Request original = chain.request();
-            final Request.Builder requestBuilder = original.newBuilder()
-                    .header("User-Agent", userAgent)
-                    .header("Authorization", authBearer)
-                    .method(original.method(), original.body());
-            final Request request = requestBuilder.build();
-            return chain.proceed(request);
+        httpClient.interceptors().add(new Interceptor() {
+
+            @Override
+            public Response intercept(final Chain chain) throws IOException {
+                final Request original = chain.request();
+                final Request.Builder requestBuilder = original.newBuilder()
+                        .header("User-Agent", userAgent)
+                        .header("Authorization", authBearer)
+                        .method(original.method(), original.body());
+                final Request request = requestBuilder.build();
+                return chain.proceed(request);
+            }
         });
 
         final Gson gson = new GsonBuilder()

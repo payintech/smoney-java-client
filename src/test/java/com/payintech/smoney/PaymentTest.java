@@ -153,18 +153,24 @@ public class PaymentTest {
         final List<PaymentEntity> payments = response.body();
         Assert.assertTrue(payments.size() == 2);
 
-        final PaymentEntity payment1 = payments.stream().filter(p -> p.OrderId.equals(p1.OrderId)).findFirst().get();
-        Assert.assertEquals(payment1.OrderId, p1.OrderId);
-        Assert.assertEquals(payment1.Beneficiary.AppAccountId, p1.Beneficiary.AppAccountId);
-        Assert.assertEquals(payment1.Message, p1.Message);
-        Assert.assertEquals(payment1.Amount, p1.Amount);
-        Assert.assertTrue(payment1.Id > 0);
+        for (final PaymentEntity p : payments) {
+            if (p.OrderId.equals(p1.OrderId)) {
+                Assert.assertEquals(p.OrderId, p1.OrderId);
+                Assert.assertEquals(p.Beneficiary.AppAccountId, p1.Beneficiary.AppAccountId);
+                Assert.assertEquals(p.Message, p1.Message);
+                Assert.assertEquals(p.Amount, p1.Amount);
+                Assert.assertTrue(p.Id > 0);
+            }
+        }
 
-        final PaymentEntity payment2 = payments.stream().filter(p -> p.OrderId.equals(p2.OrderId)).findFirst().get();
-        Assert.assertEquals(payment2.OrderId, p2.OrderId);
-        Assert.assertEquals(payment2.Beneficiary.AppAccountId, p2.Beneficiary.AppAccountId);
-        Assert.assertEquals(payment2.Message, p2.Message);
-        Assert.assertEquals(payment2.Amount, p2.Amount);
-        Assert.assertTrue(payment2.Id > 0);
+        for (final PaymentEntity p : payments) {
+            if (p.OrderId.equals(p2.OrderId)) {
+                Assert.assertEquals(p.OrderId, p2.OrderId);
+                Assert.assertEquals(p.Beneficiary.AppAccountId, p2.Beneficiary.AppAccountId);
+                Assert.assertEquals(p.Message, p2.Message);
+                Assert.assertEquals(p.Amount, p2.Amount);
+                Assert.assertTrue(p.Id > 0);
+            }
+        }
     }
 }

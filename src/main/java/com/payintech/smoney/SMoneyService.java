@@ -485,7 +485,6 @@ public interface SMoneyService {
     @POST("users/{appuserid}/moneyouts/recurring")
     Call<MoneyOutEntity> createMoneyOutRecurring(@Path("appuserid") String appUserId, @Body MoneyOutEntity moneyOut);
 
-
     /**
      * Use S-money API get MoneyOut by Id.
      *
@@ -749,7 +748,6 @@ public interface SMoneyService {
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/historyitems")
     Call<List<HistoryItemEntity>> listHistoryItems(@Path("appuserid") String appUserId);
-
 
     /**
      * Use S-money API to get all reference.
