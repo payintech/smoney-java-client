@@ -13,8 +13,8 @@ the usage of the REST API provided by S-Money ([s-money.fr](http://www.s-money.f
 ## Questions and issues
 The GitHub issue tracker is only for bug reports and feature requests. Anything
 else, such as questions for help in using the library, should be posted in
-StackOverflow under tags `s-money-client`, `java` and `android` (if
-applicable).
+[StackOverflow](http://stackoverflow.com/questions/tagged/s-money-client?sort=active)
+under tags `s-money-client`, `java` and `android` (if applicable).
 
 
 
@@ -59,38 +59,23 @@ the timeout value from 15 to a greater value.
 
 ### Gradle
 
-    allprojects {
-        repositories {
-            maven { url "https://jitpack.io" }
-        }
-    }
-
     dependencies {
-        compile 'com.github.payintech:smoney-java-client:release~YY.MM'
+        compile 'com.payintech:s-money-client:16.01'
     }
 
 
 ### Maven
 
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
-
     <dependency>
-        <groupId>com.github.payintech</groupId>
-        <artifactId>smoney-java-client</artifactId>
-        <version>release~YY.MM</version>
+        <groupId>com.payintech</groupId>
+        <artifactId>s-money-client</artifactId>
+        <version>16.01</version>
     </dependency>
 
 
 ### SBT
 
-    resolvers += "jitpack" at "https://jitpack.io"
-
-    libraryDependencies += "com.github.payintech" % "smoney-java-client" % "release~YY.MM"
+    libraryDependencies += "com.payintech" % "s-money-client" % "16.01"
 
 
 
@@ -120,7 +105,7 @@ final Call<List<UserEntity>> listCall = service.listUsers();
 listCall.enqueue(new Callback<List<UserEntity>>() {
 
     @Override
-    public void onResponse(Response<List<UserEntity>> response, Retrofit retrofit) {
+    public void onResponse(final Response<List<UserEntity>> response, final Retrofit retrofit) {
         if (response.code() == 200) {
             for (final UserEntity user : response.body()) {
                 System.out.println(user.AppUserId);
@@ -129,7 +114,7 @@ listCall.enqueue(new Callback<List<UserEntity>>() {
     }
 
     @Override
-    public void onFailure(Throwable t) {
+    public void onFailure(final Throwable t) {
         t.printStackTrace();
     }
 });
