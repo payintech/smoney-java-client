@@ -69,7 +69,9 @@ public final class SMoneyServiceFactory {
 
     /**
      * Build the SMoneyService instance. This method will use the file
-     * "smoney.properties" found on the "resources" directory.
+     * "smoney.properties" found on the "resources" directory. You can specify
+     * another properties file location by using the "smoney.properties"
+     * property: {@code -Dsmoney.properties=file:/etc/conf/smoney.properties}
      *
      * @return The instance of the {@code SMoneyService} in case of success
      * @see SMoneyService
