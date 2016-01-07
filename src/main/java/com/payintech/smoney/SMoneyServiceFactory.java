@@ -26,8 +26,10 @@ package com.payintech.smoney;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.payintech.smoney.toolbox.JodaDateTimeConverter;
+import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import org.joda.time.DateTime;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -77,8 +79,10 @@ public final class SMoneyServiceFactory {
     }
 
     /**
-     * Build the SMoneyService instance. This method will use the file
-     * "smoney.properties" found on the "resources" directory.
+     * Build the {@code SMoneyService} instance. This method will use the file
+     * "smoney.properties" found on the "resources" directory. You can specify
+     * another properties file location by using the "smoney.properties"
+     * property: {@code -Dsmoney.properties=file:/etc/conf/smoney.properties}
      *
      * @return The newly created {@code SMoneyService} instance or {@code null}
      * @see SMoneyService
@@ -120,7 +124,7 @@ public final class SMoneyServiceFactory {
     }
 
     /**
-     * Build the SMoneyService instance.
+     * Build the {@code SMoneyService} instance.
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
@@ -133,7 +137,7 @@ public final class SMoneyServiceFactory {
     }
 
     /**
-     * Build the SMoneyService instance.
+     * Build the {@code SMoneyService} instance.
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
@@ -150,14 +154,18 @@ public final class SMoneyServiceFactory {
         httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
         httpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
         httpClient.interceptors().clear();
-        httpClient.interceptors().add(chain -> {
-            final Request original = chain.request();
-            final Request.Builder requestBuilder = original.newBuilder()
-                    .header("User-Agent", userAgent)
-                    .header("Authorization", authBearer)
-                    .method(original.method(), original.body());
-            final Request request = requestBuilder.build();
-            return chain.proceed(request);
+        httpClient.interceptors().add(new Interceptor() {
+
+            @Override
+            public Response intercept(final Chain chain) throws IOException {
+                final Request original = chain.request();
+                final Request.Builder requestBuilder = original.newBuilder()
+                        .header("User-Agent", userAgent)
+                        .header("Authorization", authBearer)
+                        .method(original.method(), original.body());
+                final Request request = requestBuilder.build();
+                return chain.proceed(request);
+            }
         });
 
         final Gson gson = new GsonBuilder()

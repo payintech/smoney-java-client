@@ -28,14 +28,6 @@ final class Version {
     public static String buildDate;
 
     /**
-     * Default constructor.
-     *
-     * @since 16.01
-     */
-    private Version() {
-    }
-
-    /**
      * Static constructor.
      *
      * @since 16.01
@@ -55,5 +47,13 @@ final class Version {
             fis.close();
         } catch (IOException ignore) {
         }
+    }
+
+    /**
+     * Default constructor.
+     *
+     * @since 16.01
+     */
+    private Version() {
     }
 }

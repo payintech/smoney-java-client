@@ -654,7 +654,6 @@ public interface SMoneyService {
     @POST("users/{appuserid}/moneyouts/recurring")
     Call<MoneyOutEntity> createMoneyOutRecurring(@Path("appuserid") String appUserId, @Body MoneyOutEntity moneyOut);
 
-
     /**
      * Get money out entry by its Id.
      *

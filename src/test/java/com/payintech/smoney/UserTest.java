@@ -44,7 +44,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 /**
  * UserTest.
@@ -96,8 +95,9 @@ public class UserTest {
         final Call<List<UserEntity>> listCallPage1 = service.listUsers(1, 1);
         final Response<List<UserEntity>> response0 = listCallPage0.execute();
         final Response<List<UserEntity>> response1 = listCallPage1.execute();
-        Assert.assertEquals(response0.body().stream().map(m -> m.AppUserId).collect(Collectors.joining()),
-                response1.body().stream().map(m -> m.AppUserId).collect(Collectors.joining()));
+        Assert.assertTrue(response0.body().size() == 1);
+        Assert.assertTrue(response1.body().size() == 1);
+        Assert.assertEquals(response0.body().get(0).AppUserId, response1.body().get(0).AppUserId);
     }
 
     @Test
@@ -106,8 +106,9 @@ public class UserTest {
         final Call<List<UserEntity>> listCallPage1 = service.listUsers(2, 1);
         final Response<List<UserEntity>> response0 = listCallPage0.execute();
         final Response<List<UserEntity>> response1 = listCallPage1.execute();
-        Assert.assertNotEquals(response0.body().stream().map(m -> m.AppUserId).collect(Collectors.joining()),
-                response1.body().stream().map(m -> m.AppUserId).collect(Collectors.joining()));
+        Assert.assertTrue(response0.body().size() == 1);
+        Assert.assertTrue(response1.body().size() == 1);
+        Assert.assertNotEquals(response0.body().get(0).AppUserId, response1.body().get(0).AppUserId);
     }
 
     @Test
