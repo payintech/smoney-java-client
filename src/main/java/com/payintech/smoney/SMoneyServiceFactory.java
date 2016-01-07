@@ -42,11 +42,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
- * SMoneyServiceFactory.
+ * This class consists exclusively of static methods that return an object
+ * providing implementation of methods defined on the {@code SMoneyService}
+ * interface.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
  * @version 16.01
+ * @see SMoneyService
  * @since 15.11
  */
 public final class SMoneyServiceFactory {
@@ -56,7 +59,7 @@ public final class SMoneyServiceFactory {
      *
      * @since 15.11
      */
-    public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     /**
      * Define the default API URL.
@@ -64,6 +67,14 @@ public final class SMoneyServiceFactory {
      * @since 15.11
      */
     private static final String DEFAULT_API_URL = "https://rest-pp.s-money.fr/api/";
+
+    /**
+     * Default constructor.
+     *
+     * @since 16.01
+     */
+    private SMoneyServiceFactory() {
+    }
 
     /**
      * Build the SMoneyService instance. This method will use the file
@@ -150,7 +161,7 @@ public final class SMoneyServiceFactory {
         });
 
         final Gson gson = new GsonBuilder()
-                .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(DATE_FORMAT))
+                .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(SMoneyServiceFactory.DATE_FORMAT))
                 .create();
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)

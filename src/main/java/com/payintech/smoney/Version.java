@@ -11,7 +11,7 @@ import java.util.Properties;
  * @version 16.01
  * @since 16.01
  */
-class Version {
+final class Version {
 
     /**
      * Version of the server.
@@ -26,6 +26,14 @@ class Version {
      * @since 16.01
      */
     public static String buildDate;
+
+    /**
+     * Default constructor.
+     *
+     * @since 16.01
+     */
+    private Version() {
+    }
 
     /**
      * Static constructor.
