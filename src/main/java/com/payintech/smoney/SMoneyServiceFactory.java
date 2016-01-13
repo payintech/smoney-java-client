@@ -71,6 +71,13 @@ public final class SMoneyServiceFactory {
     private static final String DEFAULT_API_URL = "https://rest-pp.s-money.fr/api/";
 
     /**
+     * Define the default network transport timeout value (in seconds).
+     *
+     * @since 16.01
+     */
+    private static final int DEFAULT_TRANSPORT_TIMEOUT = 8;
+
+    /**
      * Default constructor.
      *
      * @since 16.01
@@ -116,7 +123,7 @@ public final class SMoneyServiceFactory {
             return SMoneyServiceFactory.createService(
                     properties.getProperty("smoney.api.token"),
                     properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
-                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "8")));
+                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", String.valueOf(SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT))));
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
@@ -133,7 +140,7 @@ public final class SMoneyServiceFactory {
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl) {
-        return SMoneyServiceFactory.createService(token, baseUrl, 8);
+        return SMoneyServiceFactory.createService(token, baseUrl, SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT);
     }
 
     /**
