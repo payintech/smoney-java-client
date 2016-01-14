@@ -43,7 +43,7 @@ public class AttachmentEntity {
     /**
      * Usual name.
      *
-     * @since 16.01
+     * @since 15.11
      */
     public String Name;
 
