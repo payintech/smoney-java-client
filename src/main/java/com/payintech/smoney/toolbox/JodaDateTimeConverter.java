@@ -79,7 +79,7 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
 
         try {
             return this.formatter.parseDateTime(jsonElement.getAsString());
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ignore) {
             return this.isoFormatter.parseDateTime(jsonElement.getAsString());
         }
     }
