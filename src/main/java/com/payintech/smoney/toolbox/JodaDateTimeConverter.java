@@ -61,25 +61,25 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
      * @see DateTimeFormatter
      * @since 15.11
      */
-    public JodaDateTimeConverter(String pattern) {
+    public JodaDateTimeConverter(final String pattern) {
         this.formatter = DateTimeFormat.forPattern(pattern);
         this.isoFormatter = ISODateTimeFormat.dateTime();
     }
 
     @Override
-    public JsonElement serialize(DateTime dateTime, Type type, JsonSerializationContext jsonSerializationContext) {
+    public JsonElement serialize(final DateTime dateTime, final Type type, final JsonSerializationContext jsonSerializationContext) {
         return new JsonPrimitive(this.formatter.print(dateTime));
     }
 
     @Override
-    public DateTime deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+    public DateTime deserialize(final JsonElement jsonElement, final Type type, final JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
         if (jsonElement.getAsString() == null || jsonElement.getAsString().isEmpty()) {
             return null;
         }
 
         try {
             return this.formatter.parseDateTime(jsonElement.getAsString());
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException ignore) {
             return this.isoFormatter.parseDateTime(jsonElement.getAsString());
         }
     }

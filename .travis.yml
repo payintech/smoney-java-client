@@ -5,6 +5,7 @@ jdk:
 
 install:
     - mvn clean
+    - mvn checkstyle:check
     - mvn compile
 
 script:

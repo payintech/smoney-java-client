@@ -26,8 +26,10 @@ package com.payintech.smoney;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.payintech.smoney.toolbox.JodaDateTimeConverter;
+import com.squareup.okhttp.Interceptor;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import org.joda.time.DateTime;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -42,11 +44,14 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 /**
- * SMoneyServiceFactory.
+ * This class consists exclusively of static methods that return an object
+ * providing implementation of methods defined on the {@code SMoneyService}
+ * interface.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.11
+ * @version 16.01
+ * @see SMoneyService
  * @since 15.11
  */
 public final class SMoneyServiceFactory {
@@ -56,7 +61,7 @@ public final class SMoneyServiceFactory {
      *
      * @since 15.11
      */
-    public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+    private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     /**
      * Define the default API URL.
@@ -66,76 +71,112 @@ public final class SMoneyServiceFactory {
     private static final String DEFAULT_API_URL = "https://rest-pp.s-money.fr/api/";
 
     /**
-     * Build the SMoneyService instance. This method will use the file
-     * "smoney.properties" found on the "resources" directory.
+     * Define the default network transport timeout value (in seconds).
      *
-     * @return The instance of the SMoneyService
+     * @since 16.01
+     */
+    private static final int DEFAULT_TRANSPORT_TIMEOUT = 8;
+
+    /**
+     * Default constructor.
+     *
+     * @since 16.01
+     */
+    private SMoneyServiceFactory() {
+    }
+
+    /**
+     * Build the {@code SMoneyService} instance. This method will use the file
+     * "smoney.properties" found on the "resources" directory. You can specify
+     * another properties file location by using the "smoney.properties"
+     * property: {@code -Dsmoney.properties=file:/etc/conf/smoney.properties}
+     *
+     * @return The newly created {@code SMoneyService} instance or {@code null}
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService() {
-        InputStream fis = null;
-        if (SMoneyService.class.getResource("/smoney.properties") == null) {
-            if (System.getProperty("smoney.properties", null) == null) {
-                try {
-                    final Path path = Paths.get(SMoneyService.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-                    final URL u = new URL(String.format("file:%s/smoney.properties", path.getParent()));
-                    fis = u.openStream();
-                } catch (URISyntaxException | IOException ignore) {
-                }
-            }
-        } else {
-            fis = SMoneyService.class.getResourceAsStream("/smoney.properties");
-        }
         final Properties properties = new Properties();
+        InputStream fis = null;
         try {
-            properties.load(fis);
+            if (System.getProperty("smoney.properties", null) == null) {
+                if (SMoneyService.class.getResource("/smoney.properties") == null) {
+                    try {
+                        final Path path = Paths.get(SMoneyService.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+                        final URL u = new URL(String.format("file:%s/smoney.properties", path.getParent()));
+                        fis = u.openStream();
+                    } catch (URISyntaxException ignore) {
+                    }
+                } else {
+                    fis = SMoneyService.class.getResourceAsStream("/smoney.properties");
+                }
+            } else {
+                final URL u = new URL(System.getProperty("smoney.properties"));
+                fis = u.openStream();
+            }
+
+            if (fis != null) {
+                properties.load(fis);
+                fis.close();
+            }
+
             return SMoneyServiceFactory.createService(
                     properties.getProperty("smoney.api.token"),
                     properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
-                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", "8")));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", String.valueOf(SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT))));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
         }
     }
 
     /**
-     * Build the SMoneyService instance.
+     * Build the {@code SMoneyService} instance.
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
-     * @return The instance of the SMoneyService
+     * @return The newly created {@code SMoneyService} instance
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl) {
-        return SMoneyServiceFactory.createService(token, baseUrl, 8);
+        return SMoneyServiceFactory.createService(token, baseUrl, SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT);
     }
 
     /**
-     * Build the SMoneyService instance.
+     * Build the {@code SMoneyService} instance.
      *
      * @param token   The token for the API
      * @param baseUrl The base URL to use
      * @param timeout The http transport timeout value
-     * @return The instance of the SMoneyService
+     * @return The newly created {@code SMoneyService} instance
+     * @see SMoneyService
      * @since 15.11
      */
     public static SMoneyService createService(final String token, final String baseUrl, final int timeout) {
+        final String userAgent = String.format("SMoneyJavaClient/%s", Version.projectVersion);
+        final String authBearer = String.format("Bearer %s", token);
         final OkHttpClient httpClient = new OkHttpClient();
 
         httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
         httpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
         httpClient.interceptors().clear();
-        httpClient.interceptors().add(chain -> {
-            final Request original = chain.request();
-            final Request.Builder requestBuilder = original.newBuilder()
-                    .header("Authorization", String.format("Bearer %s", token))
-                    .method(original.method(), original.body());
-            final Request request = requestBuilder.build();
-            return chain.proceed(request);
+        httpClient.interceptors().add(new Interceptor() {
+
+            @Override
+            public Response intercept(final Chain chain) throws IOException {
+                final Request original = chain.request();
+                final Request.Builder requestBuilder = original.newBuilder()
+                        .header("User-Agent", userAgent)
+                        .header("Authorization", authBearer)
+                        .method(original.method(), original.body());
+                final Request request = requestBuilder.build();
+                return chain.proceed(request);
+            }
         });
 
         final Gson gson = new GsonBuilder()
-                .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(DATE_FORMAT))
+                .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(SMoneyServiceFactory.DATE_FORMAT))
                 .create();
         final Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
