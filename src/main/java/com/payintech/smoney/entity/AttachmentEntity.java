@@ -43,16 +43,16 @@ public class AttachmentEntity {
     /**
      * Usual name.
      *
-     * @since 15.11
+     * @since 16.01
      */
-    public String name;
+    public String Name;
 
     /**
      * Attachment type (ie: {@code image/png}).
      *
-     * @since 15.11
+     * @since 16.01
      */
-    public String Type;
+    public String ContentType;
 
     /**
      * Attachment size (in octets).
@@ -64,7 +64,7 @@ public class AttachmentEntity {
     /**
      * URL to download attachment.
      *
-     * @since 15.11
+     * @since 16.01
      */
-    public String Url;
+    public String Href;
 }

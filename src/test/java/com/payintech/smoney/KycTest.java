@@ -23,6 +23,7 @@
  */
 package com.payintech.smoney;
 
+import com.payintech.smoney.entity.AttachmentEntity;
 import com.payintech.smoney.entity.KycEntity;
 import com.payintech.smoney.enumeration.KycStatusEnum;
 import com.squareup.okhttp.MediaType;
@@ -46,14 +47,13 @@ import java.util.Map;
  * KycTest.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @version 16.01
  * @since 15.11
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KycTest {
 
     public static SMoneyService service = SMoneyServiceFactory.createService();
-    public static Long kycId = 0L;
 
     @Test
     public void kyc_001_create_one_file() throws IOException {
@@ -75,7 +75,13 @@ public class KycTest {
         Assert.assertTrue(kyc.VoucherCopies.size() > 0);
         Assert.assertEquals(kyc.Status, KycStatusEnum.IN_PROGRESS);
         Assert.assertNotNull(kyc.RequestDate);
-        KycTest.kycId = kyc.Id;
+
+        AttachmentEntity attachment = kyc.VoucherCopies.get(0);
+        Assert.assertTrue(attachment.Id > 0);
+        Assert.assertTrue(attachment.Href != null);
+        Assert.assertTrue(attachment.Name != null);
+        Assert.assertTrue(attachment.ContentType.startsWith("image/"));
+        Assert.assertTrue(attachment.Size > 0);
     }
 
     @Test
@@ -108,7 +114,13 @@ public class KycTest {
         Assert.assertTrue(kyc.VoucherCopies.size() > 0);
         Assert.assertEquals(kyc.Status, KycStatusEnum.IN_PROGRESS);
         Assert.assertNotNull(kyc.RequestDate);
-        KycTest.kycId = kyc.Id;
+
+        AttachmentEntity attachment = kyc.VoucherCopies.get(0);
+        Assert.assertTrue(attachment.Id > 0);
+        Assert.assertTrue(attachment.Href != null);
+        Assert.assertTrue(attachment.Name != null);
+        Assert.assertTrue(attachment.ContentType.startsWith("image/"));
+        Assert.assertTrue(attachment.Size > 0);
     }
 
     @Test
@@ -123,5 +135,18 @@ public class KycTest {
         final List<KycEntity> kycs = response.body();
         Assert.assertNotNull(kycs);
         Assert.assertTrue(kycs.size() > 0);
+
+        KycEntity kyc = kycs.get(0);
+        Assert.assertTrue(kyc.Id > 0);
+        Assert.assertTrue(kyc.VoucherCopies.size() > 0);
+        Assert.assertEquals(kyc.Status, KycStatusEnum.IN_PROGRESS);
+        Assert.assertNotNull(kyc.RequestDate);
+
+        AttachmentEntity attachment = kyc.VoucherCopies.get(0);
+        Assert.assertTrue(attachment.Id > 0);
+        Assert.assertTrue(attachment.Href != null);
+        Assert.assertTrue(attachment.Name != null);
+        Assert.assertTrue(attachment.ContentType.startsWith("image/"));
+        Assert.assertTrue(attachment.Size > 0);
     }
 }
