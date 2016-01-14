@@ -60,7 +60,7 @@ the timeout value from 15 to a greater value.
 ### Gradle
 
     dependencies {
-        compile 'com.payintech:s-money-client:16.01'
+        compile 'com.payintech:s-money-client:16.01u1'
     }
 
 
@@ -69,13 +69,13 @@ the timeout value from 15 to a greater value.
     <dependency>
         <groupId>com.payintech</groupId>
         <artifactId>s-money-client</artifactId>
-        <version>16.01</version>
+        <version>16.01u1</version>
     </dependency>
 
 
 ### SBT
 
-    libraryDependencies += "com.payintech" % "s-money-client" % "16.01"
+    libraryDependencies += "com.payintech" % "s-money-client" % "16.01u1"
 
 
 
