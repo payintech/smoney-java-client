@@ -1,6 +1,6 @@
 # S-Money API client
 
-[![Latest release](https://img.shields.io/badge/latest_release-16.01-orange.svg)](https://github.com/payintech/smoney-java-client/releases)
+[![Latest release](https://img.shields.io/badge/latest_release-16.01u1-orange.svg)](https://github.com/payintech/smoney-java-client/releases)
 [![Build](https://img.shields.io/travis-ci/payintech/smoney-java-client.svg?branch=master&style=flat)](https://travis-ci.org/payintech/smoney-java-client)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/payintech/smoney-java-client/master/LICENSE)
 
