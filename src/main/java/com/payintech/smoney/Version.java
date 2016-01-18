@@ -60,8 +60,8 @@ final class Version {
         try {
             final Properties properties = new Properties();
             properties.load(fis);
-            Version.projectVersion = (String) properties.getOrDefault("MAVEN_PROJECT_VERSION", "00.00");
-            Version.buildDate = (String) properties.getOrDefault("MAVEN_PROJECT_BUILD", "1970-01-01T00:00:00UTC");
+            Version.projectVersion = (String) properties.get("MAVEN_PROJECT_VERSION");
+            Version.buildDate = (String) properties.get("MAVEN_PROJECT_BUILD");
         } catch (IOException ignore) {
             Version.projectVersion = "00.00";
             Version.buildDate = "1970-01-01T00:00:00UTC";
