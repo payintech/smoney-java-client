@@ -1,9 +1,7 @@
 package com.payintech.smoney;
 
-import com.payintech.smoney.entity.BankAccountEntity;
 import com.payintech.smoney.entity.CardEntity;
 import com.payintech.smoney.entity.StoredCardPaymentEntity;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
