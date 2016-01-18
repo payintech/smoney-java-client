@@ -40,8 +40,9 @@ import java.util.UUID;
 /**
  * MoneyOutTest.
  *
+ * @author Pierre Adam
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @version 16.01
  * @since 15.11
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -50,6 +51,7 @@ public class MoneyOutTest {
     public static SMoneyService service = SMoneyServiceFactory.createService();
 
     public static Long moneyOutId = 0L;
+    public static String moneyOutOderId = "";
     public static BankAccountEntity testUserDefaultBankAccount;
 
     static {
@@ -77,6 +79,7 @@ public class MoneyOutTest {
     public void moneyout_002_create_oneshot() throws IOException {
         final MoneyOutEntity mo = new MoneyOutEntity();
         mo.Amount = 10L;
+        mo.OrderId = UUID.randomUUID().toString();
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();
@@ -95,6 +98,7 @@ public class MoneyOutTest {
 
         final MoneyOutEntity moneyOut = response.body();
         Assert.assertEquals(mo.Amount, moneyOut.Amount);
+        Assert.assertEquals(mo.OrderId, moneyOut.OrderId);
         Assert.assertEquals(mo.BankAccount.getMaskedBic(), moneyOut.BankAccount.Bic);
         Assert.assertEquals(mo.BankAccount.DisplayName, moneyOut.BankAccount.DisplayName);
         Assert.assertEquals(mo.BankAccount.getMaskedIban(), moneyOut.BankAccount.Iban);
@@ -104,10 +108,11 @@ public class MoneyOutTest {
         Assert.assertNotNull(moneyOut.OperationDate);
 
         MoneyOutTest.moneyOutId = moneyOut.Id;
+        MoneyOutTest.moneyOutOderId = moneyOut.OrderId;
     }
 
     @Test
-    public void moneyout_003_get_oneshot() throws IOException {
+    public void moneyout_003_get_oneshot_id() throws IOException {
         final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
         final Response<MoneyOutEntity> response = call.execute();
         if (response.code() != 200) {
@@ -125,10 +130,29 @@ public class MoneyOutTest {
     }
 
     @Test
-    public void moneyout_004_create_recurring() throws IOException {
+    public void moneyout_004_get_oneshot_orderid() throws IOException {
+        final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutOderId);
+        final Response<MoneyOutEntity> response = call.execute();
+        if (response.code() != 200) {
+            System.out.println(response.errorBody().string());
+        }
+        Assert.assertEquals(response.code(), 200);
+
+        final MoneyOutEntity moneyOut = response.body();
+        Assert.assertEquals(moneyOut.Amount, new Long(10));
+        Assert.assertEquals(moneyOut.AccountId.AppAccountId, TestSettings.testUserAppUserId);
+        Assert.assertEquals(moneyOut.BankAccount.Bic, testUserDefaultBankAccount.getMaskedBic());
+        Assert.assertEquals(moneyOut.BankAccount.DisplayName, testUserDefaultBankAccount.DisplayName);
+        Assert.assertEquals(moneyOut.BankAccount.Iban, testUserDefaultBankAccount.getMaskedIban());
+        Assert.assertEquals(moneyOut.BankAccount.IsMine, testUserDefaultBankAccount.IsMine);
+    }
+
+    @Test
+    public void moneyout_005_create_recurring() throws IOException {
         final MoneyOutEntity mo = new MoneyOutEntity();
         MoneyOutTest.moneyOutId = 0L;
         mo.Amount = 10L;
+        mo.OrderId = UUID.randomUUID().toString();
         mo.AccountId = new SubAccountEntity();
         mo.AccountId.AppAccountId = TestSettings.testUserAppUserId;
         mo.BankAccount = new BankAccountEntity();
@@ -148,6 +172,7 @@ public class MoneyOutTest {
         } else {
             final MoneyOutEntity moneyOut = response.body();
             Assert.assertEquals(mo.Amount, moneyOut.Amount);
+            Assert.assertEquals(mo.OrderId, moneyOut.OrderId);
             Assert.assertEquals(testUserDefaultBankAccount.getMaskedBic(), moneyOut.BankAccount.Bic);
             Assert.assertEquals(testUserDefaultBankAccount.DisplayName, moneyOut.BankAccount.DisplayName);
             Assert.assertEquals(testUserDefaultBankAccount.getMaskedIban(), moneyOut.BankAccount.Iban);
@@ -157,13 +182,34 @@ public class MoneyOutTest {
             Assert.assertNotNull(moneyOut.OperationDate);
 
             MoneyOutTest.moneyOutId = moneyOut.Id;
+            MoneyOutTest.moneyOutOderId = moneyOut.OrderId;
         }
     }
 
     @Test
-    public void moneyout_005_get_recurring() throws IOException {
+    public void moneyout_006_get_recurring_id() throws IOException {
         if (MoneyOutTest.moneyOutId > 0L) {
             final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutId);
+            final Response<MoneyOutEntity> response = call.execute();
+            if (response.code() != 200) {
+                System.out.println(response.errorBody().string());
+            }
+            Assert.assertEquals(response.code(), 200);
+
+            final MoneyOutEntity moneyOut = response.body();
+            Assert.assertEquals(moneyOut.Amount, new Long(10));
+            Assert.assertEquals(moneyOut.AccountId.AppAccountId, TestSettings.testUserAppUserId);
+            Assert.assertEquals(moneyOut.BankAccount.Bic, testUserDefaultBankAccount.getMaskedBic());
+            Assert.assertEquals(moneyOut.BankAccount.DisplayName, testUserDefaultBankAccount.DisplayName);
+            Assert.assertEquals(moneyOut.BankAccount.Iban, testUserDefaultBankAccount.getMaskedIban());
+            Assert.assertEquals(moneyOut.BankAccount.IsMine, testUserDefaultBankAccount.IsMine);
+        }
+    }
+
+    @Test
+    public void moneyout_007_get_recurring_orderid() throws IOException {
+        if (MoneyOutTest.moneyOutId > 0L) {
+            final Call<MoneyOutEntity> call = service.getMoneyOut(TestSettings.testUserAppUserId, MoneyOutTest.moneyOutOderId);
             final Response<MoneyOutEntity> response = call.execute();
             if (response.code() != 200) {
                 System.out.println(response.errorBody().string());
