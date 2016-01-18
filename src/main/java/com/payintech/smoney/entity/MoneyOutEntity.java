@@ -31,7 +31,8 @@ import org.joda.time.DateTimeZone;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @author Pierre Adam
+ * @version 16.01
  * @since 15.11
  */
 public class MoneyOutEntity {
@@ -42,6 +43,13 @@ public class MoneyOutEntity {
      * @since 15.11
      */
     public Long Id;
+
+    /**
+     * Money out ID on the 3rd party application.
+     *
+     * @since 16.01
+     */
+    public String OrderId;
 
     /**
      * Used S-Money account for the transfer.

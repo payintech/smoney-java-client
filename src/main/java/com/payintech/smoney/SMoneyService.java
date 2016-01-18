@@ -667,6 +667,18 @@ public interface SMoneyService {
     Call<MoneyOutEntity> getMoneyOut(@Path("appuserid") String appUserId, @Path("moneyoutid") Long moneyOutId);
 
     /**
+     * Get money out entry by its Id.
+     *
+     * @param appUserId       3rd party user ID
+     * @param moneyOutOrderId 3rd party money out orderId
+     * @return The requested money out information as {@code MoneyOutEntity}
+     * @since 16.01
+     */
+    @Headers("Accept: application/vnd.s-money.v1+json")
+    @GET("users/{appuserid}/moneyouts/{moneyoutid}")
+    Call<MoneyOutEntity> getMoneyOut(@Path("appuserid") String appUserId, @Path("moneyoutid") String moneyOutOrderId);
+
+    /**
      * Create a Card Payment.
      * Field to fill on the card payment entity :
      * <pre>
