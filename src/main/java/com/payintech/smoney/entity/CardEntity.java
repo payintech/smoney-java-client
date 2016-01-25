@@ -23,12 +23,16 @@
  */
 package com.payintech.smoney.entity;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
 /**
  * CardEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.01
  * @since 15.11
  */
 public class CardEntity {
@@ -82,4 +86,35 @@ public class CardEntity {
      * @since 15.11
      */
     public Long Network;
+
+    /**
+     * Card expiry date. In some cases, this variable could be {@code null}.
+     *
+     * @since 16.01
+     */
+    public DateTime ExpiryDate;
+
+    /**
+     * Get the card expiry date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.01
+     */
+    public DateTime getExpiryDate(final String timeZone) {
+        if (this.ExpiryDate == null) {
+            return null;
+        }
+        return this.ExpiryDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Check if the card is expired.
+     *
+     * @return {@code true} if the card is expired, otherwise, {@code false}
+     * @since 16.01
+     */
+    public boolean isExpired() {
+        return this.ExpiryDate != null && this.ExpiryDate.isBeforeNow();
+    }
 }

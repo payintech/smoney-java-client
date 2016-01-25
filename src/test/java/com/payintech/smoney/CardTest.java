@@ -92,5 +92,6 @@ public class CardTest {
 
         final CardEntity card = response.body();
         Assert.assertEquals(card.Name, "Testing card");
+        Assert.assertFalse(card.isExpired());
     }
 }
