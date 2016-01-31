@@ -29,6 +29,7 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,10 +37,10 @@ import java.util.List;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class HistoryItemEntity {
+public class HistoryItemEntity implements Serializable {
 
     /**
      * @since 15.11

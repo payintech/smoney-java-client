@@ -27,15 +27,17 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * PaymentScheduleEntity.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class PaymentScheduleEntity {
+public class PaymentScheduleEntity implements Serializable {
 
     /**
      * Payment number. For a payment in 3 times, the value would

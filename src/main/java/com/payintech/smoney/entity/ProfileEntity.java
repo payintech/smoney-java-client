@@ -27,16 +27,18 @@ import com.payintech.smoney.enumeration.CivilityEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * ProfileEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class ProfileEntity {
+public class ProfileEntity implements Serializable {
 
     /**
      * Civility.

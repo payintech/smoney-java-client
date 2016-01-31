@@ -25,14 +25,17 @@ package com.payintech.smoney.entity;
 
 import com.payintech.smoney.enumeration.FeeStatusEnum;
 
+import java.io.Serializable;
+
 /**
  * FeeEntity.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class FeeEntity {
+public class FeeEntity implements Serializable {
 
     /**
      * Net amount of the fee (in cents).

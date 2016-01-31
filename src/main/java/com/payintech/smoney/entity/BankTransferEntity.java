@@ -27,15 +27,17 @@ import com.payintech.smoney.enumeration.BankTransferStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * BankTransferEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class BankTransferEntity {
+public class BankTransferEntity implements Serializable {
 
     /**
      * S-Money bank transfer ID.

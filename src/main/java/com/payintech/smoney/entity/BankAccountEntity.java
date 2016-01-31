@@ -23,15 +23,18 @@
  */
 package com.payintech.smoney.entity;
 
+import java.io.Serializable;
+
 /**
  * BankAccountEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Pierre Adam
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class BankAccountEntity {
+public class BankAccountEntity implements Serializable {
 
     /**
      * S-Money bank account ID.

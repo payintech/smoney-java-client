@@ -27,15 +27,17 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * PaymentEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class PaymentEntity {
+public class PaymentEntity implements Serializable {
 
     /**
      * S-Money payment ID.

@@ -27,15 +27,17 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * CardPaymentRefundAnswerEntity.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class CardPaymentRefundAnswerEntity {
+public class CardPaymentRefundAnswerEntity implements Serializable {
 
     /**
      * S-Money card payment refund ID.

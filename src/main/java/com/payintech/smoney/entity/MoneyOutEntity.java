@@ -26,16 +26,18 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * MoneyOutEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @author Pierre Adam
- * @version 16.01
+ * @version 16.02
  * @since 15.11
  */
-public class MoneyOutEntity {
+public class MoneyOutEntity implements Serializable {
 
     /**
      * S-Money money-out transfer ID.

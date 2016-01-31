@@ -26,15 +26,17 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * StoredCardPaymentEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class StoredCardPaymentEntity {
+public class StoredCardPaymentEntity implements Serializable {
 
     /**
      * S-Money stored card payment ID.

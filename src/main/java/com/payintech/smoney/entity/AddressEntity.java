@@ -25,15 +25,18 @@ package com.payintech.smoney.entity;
 
 import com.payintech.smoney.enumeration.CountryCodeEnum;
 
+import java.io.Serializable;
+
 /**
  * AddressEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class AddressEntity {
+public class AddressEntity implements Serializable {
 
     /**
      * Number and street name.

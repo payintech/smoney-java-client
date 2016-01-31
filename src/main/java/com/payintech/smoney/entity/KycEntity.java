@@ -27,6 +27,7 @@ import com.payintech.smoney.enumeration.KycStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -34,10 +35,10 @@ import java.util.List;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class KycEntity {
+public class KycEntity implements Serializable {
 
     /**
      * S-Money KYC request ID.

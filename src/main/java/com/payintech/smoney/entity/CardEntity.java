@@ -26,16 +26,18 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * CardEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.01
+ * @version 16.02
  * @since 15.11
  */
-public class CardEntity {
+public class CardEntity implements Serializable {
 
     /**
      * S-Money card ID.

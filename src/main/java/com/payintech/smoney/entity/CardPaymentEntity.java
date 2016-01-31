@@ -29,6 +29,7 @@ import com.payintech.smoney.enumeration.PaymentTypeEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -36,10 +37,10 @@ import java.util.List;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class CardPaymentEntity {
+public class CardPaymentEntity implements Serializable {
 
     /**
      * S-Money card payment ID.

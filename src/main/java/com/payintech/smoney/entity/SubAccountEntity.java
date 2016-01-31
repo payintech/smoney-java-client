@@ -26,16 +26,18 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+
 /**
  * SubAccountEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class SubAccountEntity {
+public class SubAccountEntity implements Serializable {
 
     /**
      * Account ID.
