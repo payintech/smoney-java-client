@@ -91,7 +91,8 @@ public class CardTest {
         Assert.assertEquals(response.code(), 200);
 
         final CardEntity card = response.body();
-        Assert.assertEquals(card.Name, "Testing card");
+        Assert.assertEquals("Testing card", card.Name);
+        Assert.assertNotNull(card.Network);
         Assert.assertFalse(card.isExpired());
     }
 }

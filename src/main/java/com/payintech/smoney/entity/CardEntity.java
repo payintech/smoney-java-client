@@ -23,7 +23,7 @@
  */
 package com.payintech.smoney.entity;
 
-import com.payintech.smoney.enumeration.CardTypeEnum;
+import com.payintech.smoney.enumeration.NetworkEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
@@ -85,11 +85,11 @@ public class CardEntity implements Serializable {
     public String Href;
 
     /**
-     * TODO: Add documentation about this variable.
+     * The card type (ie: Mastercard).
      *
      * @since 15.11
      */
-    public Long Network;
+    public NetworkEnum Network;
 
     /**
      * Card expiry date. In some cases, this variable could be {@code null}.
@@ -134,22 +134,5 @@ public class CardEntity implements Serializable {
      */
     public boolean isExpired() {
         return this.ExpiryDate != null && this.ExpiryDate.isBeforeNow();
-    }
-
-    /**
-     * Try to resolve the card type (ie: MasterCard). In case of failure,
-     * {@code null} value will be returned.
-     *
-     * @return The card type in case of success, otherwise, {@code null}
-     * @see CardTypeEnum
-     * @since 16.02
-     */
-    public CardTypeEnum getCardType() {
-        for (final CardTypeEnum cardType : CardTypeEnum.values()) {
-            if (cardType.checkCardNumber(this.Hint)) {
-                return cardType;
-            }
-        }
-        return null;
     }
 }

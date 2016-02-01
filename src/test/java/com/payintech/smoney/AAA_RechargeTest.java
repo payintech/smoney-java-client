@@ -52,22 +52,23 @@ public class AAA_RechargeTest {
 
     @Test
     public void recharge_001_create() throws IOException {
-        CardEntity card = null;
+        assert (service != null);
+        final CardEntity card;
         Call<List<CardEntity>> listCardsCall = service.listCards(TestSettings.testUserAppUserId);
         try {
             Response<List<CardEntity>> listCardsResponse = listCardsCall.execute();
             if (!listCardsResponse.isSuccess()) {
-                System.out.println("Failed to get the list of registered cards. " + listCardsResponse.errorBody().string());
+                System.err.println("Failed to get the list of registered cards. " + listCardsResponse.errorBody().string());
                 return;
             }
             List<CardEntity> listCards = listCardsResponse.body();
             if (listCards.size() == 0) {
-                System.out.println("No card registered. Unable to recharge.");
+                System.err.println("No card registered. Unable to recharge.");
                 return;
             }
             card = listCards.get(0);
         } catch (IOException e) {
-            System.out.println("Can't get the list of registered cards.");
+            System.err.println("Can't get the list of registered cards.");
             return;
         }
         final StoredCardPaymentEntity storedCardPaymentEntity = new StoredCardPaymentEntity();
@@ -84,7 +85,6 @@ public class AAA_RechargeTest {
             }
         } catch (IOException e) {
             System.out.println("Can't recharge the account.");
-            return;
         }
     }
 }
