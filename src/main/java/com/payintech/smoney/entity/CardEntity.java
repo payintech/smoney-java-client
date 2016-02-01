@@ -23,10 +23,12 @@
  */
 package com.payintech.smoney.entity;
 
+import com.payintech.smoney.enumeration.CardTypeEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
+import java.util.TimeZone;
 
 /**
  * CardEntity.
@@ -111,6 +113,20 @@ public class CardEntity implements Serializable {
     }
 
     /**
+     * Get the card expiry date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getExpiryDate(final TimeZone timeZone) {
+        if (this.ExpiryDate == null) {
+            return null;
+        }
+        return this.ExpiryDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
+    }
+
+    /**
      * Check if the card is expired.
      *
      * @return {@code true} if the card is expired, otherwise, {@code false}
@@ -118,5 +134,22 @@ public class CardEntity implements Serializable {
      */
     public boolean isExpired() {
         return this.ExpiryDate != null && this.ExpiryDate.isBeforeNow();
+    }
+
+    /**
+     * Try to resolve the card type (ie: MasterCard). In case of failure,
+     * {@code null} value will be returned.
+     *
+     * @return The card type in case of success, otherwise, {@code null}
+     * @see CardTypeEnum
+     * @since 16.02
+     */
+    public CardTypeEnum getCardType() {
+        for (final CardTypeEnum cardType : CardTypeEnum.values()) {
+            if (cardType.checkCardNumber(this.Hint)) {
+                return cardType;
+            }
+        }
+        return null;
     }
 }

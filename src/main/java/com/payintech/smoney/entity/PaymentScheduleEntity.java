@@ -28,6 +28,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
+import java.util.TimeZone;
 
 /**
  * PaymentScheduleEntity.
@@ -85,5 +86,16 @@ public class PaymentScheduleEntity implements Serializable {
      */
     public DateTime getDate(final String timeZone) {
         return this.Date.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getDate(final TimeZone timeZone) {
+        return this.Date.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

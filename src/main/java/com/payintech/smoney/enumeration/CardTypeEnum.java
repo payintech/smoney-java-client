@@ -21,75 +21,84 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.payintech.smoney.entity;
-
-import com.payintech.smoney.enumeration.KycStatusEnum;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-
-import java.io.Serializable;
-import java.util.List;
-import java.util.TimeZone;
+package com.payintech.smoney.enumeration;
 
 /**
- * KycEntity.
+ * CardTypeEnum.
  *
- * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 16.02
  */
-public class KycEntity implements Serializable {
+public enum CardTypeEnum {
 
     /**
-     * S-Money KYC request ID.
+     * American Express.
      *
-     * @since 15.11
+     * @since 16.02
      */
-    public long Id;
+    AMEX("3[47][0-9X]{13}"),
 
     /**
-     * KYC request date.
+     * Visa Electron.
      *
-     * @since 15.11
+     * @since 16.02
      */
-    public DateTime RequestDate;
+    ELECTRON("(4026|417500|4405|4508|4844|4913|4917)XXXXXX[0-9]{4}"),
 
     /**
-     * KYC request status.
+     * Mastercard Maestro.
      *
-     * @see KycStatusEnum
-     * @since 15.11
+     * @since 16.02
      */
-    public KycStatusEnum Status;
+    MAESTRO("(5[0678]|6304|6390|67)\\S+{8,15}"),
 
     /**
-     * Files attached to this KYC request.
+     * Mastercard.
      *
-     * @see AttachmentEntity
-     * @since 15.11
+     * @since 16.02
      */
-    public List<AttachmentEntity> VoucherCopies;
+    MASTERCARD("5[1-5][0-9X]{14}"),
 
     /**
-     * Get the request date on a specific timezone.
+     * Visa
      *
-     * @param timeZone The timezone to use
-     * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 16.02
      */
-    public DateTime getRequestDate(final String timeZone) {
-        return this.RequestDate.toDateTime(DateTimeZone.forID(timeZone));
+    VISA("4[0-9X]{12}(?:[0-9]{3})?"),
+
+    /**
+     * Unknown card type.
+     *
+     * @since 16.01
+     */
+    UNKNOWN("(.*)");
+
+    /**
+     * Pattern used to resolve card type.
+     *
+     * @since 16.02
+     */
+    private String pattern;
+
+    /**
+     * Build a default instance.
+     *
+     * @param pattern The pattern to assign to this card type
+     * @since 16.02
+     */
+    CardTypeEnum(final String pattern) {
+        this.pattern = pattern;
     }
 
     /**
-     * Get the request date on a specific timezone.
+     * Check if the card number match the pattern for the given card type.
      *
-     * @param timeZone The timezone to use
-     * @return The datetime converted to the specific timezone
+     * @param cardNumber The card number to check
+     * @return {@code true} if pattern match, otherwise, {@code false}
      * @since 16.02
      */
-    public DateTime getRequestDate(final TimeZone timeZone) {
-        return this.RequestDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
+    public boolean checkCardNumber(final String cardNumber) {
+        return cardNumber.matches(this.pattern);
     }
 }

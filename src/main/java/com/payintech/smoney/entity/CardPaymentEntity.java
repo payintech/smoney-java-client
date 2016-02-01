@@ -31,6 +31,7 @@ import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * CardPaymentEntity.
@@ -202,5 +203,16 @@ public class CardPaymentEntity implements Serializable {
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the payment date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getPaymentDate(final TimeZone timeZone) {
+        return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

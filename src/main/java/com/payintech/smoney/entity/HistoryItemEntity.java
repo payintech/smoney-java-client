@@ -31,6 +31,7 @@ import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * HistoryItemEntity.
@@ -126,5 +127,16 @@ public class HistoryItemEntity implements Serializable {
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the operation date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getOperationDate(final TimeZone timeZone) {
+        return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

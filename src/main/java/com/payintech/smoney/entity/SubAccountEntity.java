@@ -27,6 +27,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
+import java.util.TimeZone;
 
 /**
  * SubAccountEntity.
@@ -97,5 +98,16 @@ public class SubAccountEntity implements Serializable {
      */
     public DateTime getCreationDate(final String timeZone) {
         return this.CreationDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the creation date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getCreationDate(final TimeZone timeZone) {
+        return this.CreationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

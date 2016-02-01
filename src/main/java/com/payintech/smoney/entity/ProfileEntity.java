@@ -28,6 +28,7 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.io.Serializable;
+import java.util.TimeZone;
 
 /**
  * ProfileEntity.
@@ -112,6 +113,23 @@ public class ProfileEntity implements Serializable {
      * @since 15.12
      */
     public DateTime getBirthdate(final String timeZone) {
-        return this.Birthdate.toDateTime(DateTimeZone.forID(timeZone));
+        if (this.Birthdate != null) {
+            return this.Birthdate.toDateTime(DateTimeZone.forID(timeZone));
+        }
+        return null;
+    }
+
+    /**
+     * Get the birthdate date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getBirthdate(final TimeZone timeZone) {
+        if (this.Birthdate != null) {
+            return this.Birthdate.toDateTime(DateTimeZone.forTimeZone(timeZone));
+        }
+        return null;
     }
 }
