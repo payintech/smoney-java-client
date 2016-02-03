@@ -153,7 +153,7 @@ public enum NetworkEnum {
      * @since 16.02
      */
     @SerializedName("13")
-    PAYPAL_SB,
+    PAYPAL_SANDBOX,
 
     /**
      * Paysafe.
@@ -185,7 +185,7 @@ public enum NetworkEnum {
      * @since 16.02
      */
     @SerializedName("17")
-    COF3XCB_SB,
+    COF3XCB_SANDBOX,
 
     /**
      * Sofort.
