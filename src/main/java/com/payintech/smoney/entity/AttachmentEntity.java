@@ -23,15 +23,17 @@
  */
 package com.payintech.smoney.entity;
 
+import java.io.Serializable;
+
 /**
  * AttachmentEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.01
+ * @version 16.02
  * @since 15.11
  */
-public class AttachmentEntity {
+public class AttachmentEntity implements Serializable {
 
     /**
      * S-Money attachment ID.

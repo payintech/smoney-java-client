@@ -28,6 +28,7 @@ import com.payintech.smoney.enumeration.UserRoleEnum;
 import com.payintech.smoney.enumeration.UserStatusEnum;
 import com.payintech.smoney.enumeration.UserTypeEnum;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -35,10 +36,11 @@ import java.util.List;
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class UserEntity {
+public class UserEntity implements Serializable {
 
     /**
      * S-Money user ID.

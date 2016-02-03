@@ -26,15 +26,18 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * StoredCardPaymentEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class StoredCardPaymentEntity {
+public class StoredCardPaymentEntity implements Serializable {
 
     /**
      * S-Money stored card payment ID.
@@ -105,5 +108,16 @@ public class StoredCardPaymentEntity {
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the operation date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getOperationDate(final TimeZone timeZone) {
+        return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

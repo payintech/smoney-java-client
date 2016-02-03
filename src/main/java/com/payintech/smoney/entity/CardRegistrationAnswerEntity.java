@@ -26,14 +26,17 @@ package com.payintech.smoney.entity;
 import com.payintech.smoney.enumeration.CardRegistrationStatusEnum;
 import com.payintech.smoney.enumeration.ErrorCodeEnum;
 
+import java.io.Serializable;
+
 /**
  * CardRegistrationAnswerEntity.
  *
  * @author Pierre Adam
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class CardRegistrationAnswerEntity {
+public class CardRegistrationAnswerEntity implements Serializable {
 
     /**
      * Card details.

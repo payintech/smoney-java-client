@@ -23,14 +23,17 @@
  */
 package com.payintech.smoney.entity;
 
+import java.io.Serializable;
+
 /**
  * ReferenceEntity.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class ReferenceEntity {
+public class ReferenceEntity implements Serializable {
 
     /**
      * S-Money reference ID.

@@ -26,15 +26,19 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * MoneyOutEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @author Pierre Adam
+ * @version 16.02
  * @since 15.11
  */
-public class MoneyOutEntity {
+public class MoneyOutEntity implements Serializable {
 
     /**
      * S-Money money-out transfer ID.
@@ -42,6 +46,13 @@ public class MoneyOutEntity {
      * @since 15.11
      */
     public Long Id;
+
+    /**
+     * Money out ID on the 3rd party application.
+     *
+     * @since 16.01
+     */
+    public String OrderId;
 
     /**
      * Used S-Money account for the transfer.
@@ -96,5 +107,16 @@ public class MoneyOutEntity {
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the operation date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getOperationDate(final TimeZone timeZone) {
+        return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

@@ -23,14 +23,17 @@
  */
 package com.payintech.smoney.entity;
 
+import java.io.Serializable;
+
 /**
  * ExtraResultsEntity.
  *
  * @author Pierre Adam
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class ExtraResultsEntity {
+public class ExtraResultsEntity implements Serializable {
 
     /**
      * Return code of the application for authorization

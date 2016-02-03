@@ -72,7 +72,6 @@ public class UserTest {
         Assert.assertEquals(u1.Profile.Birthdate, u2.Profile.Birthdate);
         Assert.assertEquals(u1.Profile.PhoneNumber, u2.Profile.PhoneNumber);
         Assert.assertEquals(u1.Profile.Email, u2.Profile.Email);
-        Assert.assertEquals(u1.Profile.Alias, u2.Profile.Alias);
         Assert.assertEquals(u1.Profile.Address.Street, u2.Profile.Address.Street);
         Assert.assertEquals(u1.Profile.Address.ZipCode, u2.Profile.Address.ZipCode);
         Assert.assertEquals(u1.Profile.Address.City, u2.Profile.Address.City);

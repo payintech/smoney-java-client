@@ -27,15 +27,18 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * PaymentScheduleEntity.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class PaymentScheduleEntity {
+public class PaymentScheduleEntity implements Serializable {
 
     /**
      * Payment number. For a payment in 3 times, the value would
@@ -83,5 +86,16 @@ public class PaymentScheduleEntity {
      */
     public DateTime getDate(final String timeZone) {
         return this.Date.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getDate(final TimeZone timeZone) {
+        return this.Date.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

@@ -27,15 +27,18 @@ import com.payintech.smoney.enumeration.BankTransferStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * BankTransferEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class BankTransferEntity {
+public class BankTransferEntity implements Serializable {
 
     /**
      * S-Money bank transfer ID.
@@ -99,5 +102,16 @@ public class BankTransferEntity {
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the payment date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getPaymentDate(final TimeZone timeZone) {
+        return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

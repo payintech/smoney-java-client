@@ -27,15 +27,18 @@ import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * PaymentEntity.
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class PaymentEntity {
+public class PaymentEntity implements Serializable {
 
     /**
      * S-Money payment ID.
@@ -113,5 +116,16 @@ public class PaymentEntity {
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the payment date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getPaymentDate(final TimeZone timeZone) {
+        return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

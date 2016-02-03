@@ -29,17 +29,19 @@ import com.payintech.smoney.enumeration.PaymentTypeEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.TimeZone;
 
 /**
  * CardPaymentEntity.
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class CardPaymentEntity {
+public class CardPaymentEntity implements Serializable {
 
     /**
      * S-Money card payment ID.
@@ -201,5 +203,16 @@ public class CardPaymentEntity {
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the payment date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getPaymentDate(final TimeZone timeZone) {
+        return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

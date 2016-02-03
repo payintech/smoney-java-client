@@ -27,16 +27,19 @@ import com.payintech.smoney.enumeration.CivilityEnum;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * ProfileEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class ProfileEntity {
+public class ProfileEntity implements Serializable {
 
     /**
      * Civility.
@@ -110,6 +113,23 @@ public class ProfileEntity {
      * @since 15.12
      */
     public DateTime getBirthdate(final String timeZone) {
-        return this.Birthdate.toDateTime(DateTimeZone.forID(timeZone));
+        if (this.Birthdate != null) {
+            return this.Birthdate.toDateTime(DateTimeZone.forID(timeZone));
+        }
+        return null;
+    }
+
+    /**
+     * Get the birthdate date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getBirthdate(final TimeZone timeZone) {
+        if (this.Birthdate != null) {
+            return this.Birthdate.toDateTime(DateTimeZone.forTimeZone(timeZone));
+        }
+        return null;
     }
 }

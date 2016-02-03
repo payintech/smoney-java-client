@@ -1,6 +1,6 @@
 # S-Money API client
 
-[![Latest release](https://img.shields.io/badge/latest_release-16.01u1-orange.svg)](https://github.com/payintech/smoney-java-client/releases)
+[![Latest release](https://img.shields.io/badge/latest_release-16.02-orange.svg)](https://github.com/payintech/smoney-java-client/releases)
 [![Build](https://img.shields.io/travis-ci/payintech/smoney-java-client.svg?branch=master&style=flat)](https://travis-ci.org/payintech/smoney-java-client)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/payintech/smoney-java-client/master/LICENSE)
 
@@ -60,7 +60,7 @@ the timeout value from 15 to a greater value.
 ### Gradle
 
     dependencies {
-        compile 'com.payintech:s-money-client:16.01u1'
+        compile 'com.payintech:s-money-client:16.02'
     }
 
 
@@ -69,13 +69,13 @@ the timeout value from 15 to a greater value.
     <dependency>
         <groupId>com.payintech</groupId>
         <artifactId>s-money-client</artifactId>
-        <version>16.01u1</version>
+        <version>16.02</version>
     </dependency>
 
 
 ### SBT
 
-    libraryDependencies += "com.payintech" % "s-money-client" % "16.01u1"
+    libraryDependencies += "com.payintech" % "s-money-client" % "16.02"
 
 
 

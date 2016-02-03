@@ -23,15 +23,23 @@
  */
 package com.payintech.smoney.entity;
 
+import com.payintech.smoney.enumeration.NetworkEnum;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * CardEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class CardEntity {
+public class CardEntity implements Serializable {
 
     /**
      * S-Money card ID.
@@ -77,9 +85,54 @@ public class CardEntity {
     public String Href;
 
     /**
-     * TODO: Add documentation about this variable.
+     * The card type (ie: Mastercard).
      *
      * @since 15.11
      */
-    public Long Network;
+    public NetworkEnum Network;
+
+    /**
+     * Card expiry date. In some cases, this variable could be {@code null}.
+     *
+     * @since 16.01
+     */
+    public DateTime ExpiryDate;
+
+    /**
+     * Get the card expiry date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.01
+     */
+    public DateTime getExpiryDate(final String timeZone) {
+        if (this.ExpiryDate == null) {
+            return null;
+        }
+        return this.ExpiryDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the card expiry date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getExpiryDate(final TimeZone timeZone) {
+        if (this.ExpiryDate == null) {
+            return null;
+        }
+        return this.ExpiryDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
+    }
+
+    /**
+     * Check if the card is expired.
+     *
+     * @return {@code true} if the card is expired, otherwise, {@code false}
+     * @since 16.01
+     */
+    public boolean isExpired() {
+        return this.ExpiryDate != null && this.ExpiryDate.isBeforeNow();
+    }
 }

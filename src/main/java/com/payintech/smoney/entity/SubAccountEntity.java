@@ -26,16 +26,19 @@ package com.payintech.smoney.entity;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.io.Serializable;
+import java.util.TimeZone;
+
 /**
  * SubAccountEntity.
  *
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 15.12
+ * @version 16.02
  * @since 15.11
  */
-public class SubAccountEntity {
+public class SubAccountEntity implements Serializable {
 
     /**
      * Account ID.
@@ -95,5 +98,16 @@ public class SubAccountEntity {
      */
     public DateTime getCreationDate(final String timeZone) {
         return this.CreationDate.toDateTime(DateTimeZone.forID(timeZone));
+    }
+
+    /**
+     * Get the creation date on a specific timezone.
+     *
+     * @param timeZone The timezone to use
+     * @return The datetime converted to the specific timezone
+     * @since 16.02
+     */
+    public DateTime getCreationDate(final TimeZone timeZone) {
+        return this.CreationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));
     }
 }

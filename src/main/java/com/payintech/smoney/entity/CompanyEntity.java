@@ -23,14 +23,17 @@
  */
 package com.payintech.smoney.entity;
 
+import java.io.Serializable;
+
 /**
  * CompanyEntity.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @author Thibault Meyer
+ * @version 16.02
  * @since 15.11
  */
-public class CompanyEntity {
+public class CompanyEntity implements Serializable {
 
     /**
      * Company name.
