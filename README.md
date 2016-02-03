@@ -1,8 +1,11 @@
 # S-Money API client
 
+
 [![Latest release](https://img.shields.io/badge/latest_release-16.02-orange.svg)](https://github.com/payintech/smoney-java-client/releases)
 [![Build](https://img.shields.io/travis-ci/payintech/smoney-java-client.svg?branch=master&style=flat)](https://travis-ci.org/payintech/smoney-java-client)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/payintech/smoney-java-client/master/LICENSE)
+[![Join the chat at https://gitter.im/payintech/smoney-java-client](https://badges.gitter.im/payintech/smoney-java-client.svg)](https://gitter.im/payintech/smoney-java-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 s-money-client is a Java based library compatible with Android facilitating
 the usage of the REST API provided by S-Money ([s-money.fr](http://www.s-money.fr)).
