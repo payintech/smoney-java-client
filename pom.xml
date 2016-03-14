@@ -6,7 +6,7 @@
 
     <groupId>com.payintech</groupId>
     <artifactId>s-money-client</artifactId>
-    <version>16.02</version>
+    <version>16.03</version>
     <packaging>jar</packaging>
     <name>S-Money API Client</name>
     <description>S-Money API client for Java and Android</description>
