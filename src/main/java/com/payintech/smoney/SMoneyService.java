@@ -37,7 +37,7 @@ import java.util.Map;
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.01
+ * @version 16.04
  * @since 15.11
  */
 public interface SMoneyService {
@@ -402,10 +402,21 @@ public interface SMoneyService {
     Call<PaymentEntity> createPayment(@Path("appuserid") String appUserId, @Body PaymentEntity payment);
 
     /**
-     * Create multiple payments. The sender is
-     * required in Payment Body.
+     * Create multiple payments.
+     * (Each payments require a sender)
+     * <pre>
+     * - OrderId         (required)
+     * - Beneficiary     (required)
+     * --- AppAccountId  (required)
+     * - Sender          (required)
+     * --- AppAccountId  (required)
+     * - Amount          (required)
+     * - message         (optional)
+     * - fee             (optional)
+     * --- AmountWithVAT (required)
+     * --- VAT           (required)
+     * </pre>
      *
-     * @param appUserId Sender 3rd party user ID
      * @param payments  A list of instantiated entity payment
      * @return A list of newly created {@code PaymentEntity}
      * @since 15.11
@@ -414,8 +425,8 @@ public interface SMoneyService {
             "Accept: application/vnd.s-money.v1+json",
             "Content-Type: application/vnd.s-money.v1+json"
     })
-    @POST("users/{appuserid}/payments")
-    Call<List<PaymentEntity>> createPayments(@Path("appuserid") String appUserId, @Body List<PaymentEntity> payments);
+    @POST("payments")
+    Call<List<PaymentEntity>> createPayments(@Body List<PaymentEntity> payments);
 
     /**
      * Get a payment by its 3rd party ID (OrderId).

@@ -41,7 +41,7 @@ import java.util.UUID;
  * PaymentTest.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
+ * @version 16.04
  * @since 15.11
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -143,7 +143,7 @@ public class PaymentTest {
         p2.Message = "Test";
         ps.add(p2);
 
-        final Call<List<PaymentEntity>> listCall = service.createPayments(TestSettings.testUserAppUserId, ps);
+        final Call<List<PaymentEntity>> listCall = service.createPayments(ps);
         final Response<List<PaymentEntity>> response = listCall.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());
