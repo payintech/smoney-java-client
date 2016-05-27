@@ -62,7 +62,7 @@ public enum PaymentOperationStatusEnum {
      * @since 16.05
      */
     @SerializedName("3")
-    FAILED,
+    REFUSED,
 
     /**
      * @since 16.05
