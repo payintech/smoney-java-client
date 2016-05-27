@@ -26,53 +26,58 @@ package com.payintech.smoney.enumeration;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * PaymentStatusEnum.
+ * PaymentOperationStatusEnum.
  *
- * @author Pierre Adam
  * @author Thibault Meyer
  * @version 16.05
- * @since 15.11
+ * @since 16.05
  */
-public enum PaymentStatusEnum {
+public enum PaymentOperationStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 16.05
+     */
+    @SerializedName("-1")
+    UNKNOWN,
+
+    /**
+     * @since 16.05
      */
     @SerializedName("0")
     PENDING,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("1")
     SUCCEEDED,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("2")
     REFUNDED,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("3")
     FAILED,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("4")
     WAITING_VALIDATION,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("5")
     CANCELED,
 
     /**
-     * @since 15.11
+     * @since 16.05
      */
     @SerializedName("6")
     WAITING_DELIVERY

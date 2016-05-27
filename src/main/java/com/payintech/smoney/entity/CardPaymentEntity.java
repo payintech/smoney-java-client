@@ -24,6 +24,7 @@
 package com.payintech.smoney.entity;
 
 import com.payintech.smoney.enumeration.ErrorCodeEnum;
+import com.payintech.smoney.enumeration.PaymentOperationStatusEnum;
 import com.payintech.smoney.enumeration.PaymentStatusEnum;
 import com.payintech.smoney.enumeration.PaymentTypeEnum;
 import org.joda.time.DateTime;
@@ -38,7 +39,7 @@ import java.util.TimeZone;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.02
+ * @version 16.05
  * @since 15.11
  */
 public class CardPaymentEntity implements Serializable {
@@ -82,9 +83,9 @@ public class CardPaymentEntity implements Serializable {
      * Payment status.
      *
      * @see PaymentStatusEnum
-     * @since 15.11
+     * @since 16.05
      */
-    public PaymentStatusEnum Status;
+    public PaymentOperationStatusEnum Status;
 
     /**
      * Beneficiary details.
