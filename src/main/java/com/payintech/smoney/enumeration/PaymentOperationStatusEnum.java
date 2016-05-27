@@ -50,7 +50,7 @@ public enum PaymentOperationStatusEnum {
      * @since 16.05
      */
     @SerializedName("1")
-    SUCCEEDED,
+    COMPLETED,
 
     /**
      * @since 16.05
