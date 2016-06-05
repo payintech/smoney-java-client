@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @author Jean-Pierre Boudic
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.02
+ * @version 16.06
  * @since 15.11
  */
 public class BankAccountEntity implements Serializable {
@@ -56,6 +56,13 @@ public class BankAccountEntity implements Serializable {
      * @since 15.11
      */
     public String DisplayName;
+
+    /**
+     * Bank account usual name.
+     *
+     * @since 16.06
+     */
+    public String Name;
 
     /**
      * Bank postal address details.
