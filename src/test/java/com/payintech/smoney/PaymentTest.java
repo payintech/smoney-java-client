@@ -143,7 +143,7 @@ public class PaymentTest {
         p2.Message = "Test";
         ps.add(p2);
 
-        final Call<List<PaymentEntity>> listCall = service.createPayments(ps);
+        final Call<List<PaymentEntity>> listCall = service.createPayments(TestSettings.testUserAppUserId, ps);
         final Response<List<PaymentEntity>> response = listCall.execute();
         if (response.code() != 201) {
             System.err.println(response.errorBody().string());

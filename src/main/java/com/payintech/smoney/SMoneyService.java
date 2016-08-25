@@ -417,6 +417,7 @@ public interface SMoneyService {
      * --- VAT           (required)
      * </pre>
      *
+     * @param appUserId Sender 3rd party user ID
      * @param payments  A list of instantiated entity payment
      * @return A list of newly created {@code PaymentEntity}
      * @since 15.11
@@ -425,8 +426,8 @@ public interface SMoneyService {
             "Accept: application/vnd.s-money.v1+json",
             "Content-Type: application/vnd.s-money.v1+json"
     })
-    @POST("payments")
-    Call<List<PaymentEntity>> createPayments(@Body List<PaymentEntity> payments);
+    @POST("users/{appuserid}/payments")
+    Call<List<PaymentEntity>> createPayments(@Path("appuserid") String appUserId, @Body List<PaymentEntity> payments);
 
     /**
      * Get a payment by its 3rd party ID (OrderId).
