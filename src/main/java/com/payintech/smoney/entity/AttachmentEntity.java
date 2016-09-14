@@ -30,43 +30,43 @@ import java.io.Serializable;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class AttachmentEntity implements Serializable {
 
     /**
      * S-Money attachment ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Usual name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Name;
 
     /**
      * Attachment type (ie: {@code image/png}).
      *
-     * @since 16.01
+     * @since 16.01.01
      */
     public String ContentType;
 
     /**
      * Attachment size (in octets).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Size;
 
     /**
      * URL to download attachment.
      *
-     * @since 16.01
+     * @since 16.01.01
      */
     public String Href;
 }

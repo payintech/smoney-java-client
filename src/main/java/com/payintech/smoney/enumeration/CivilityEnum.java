@@ -29,19 +29,19 @@ import com.google.gson.annotations.SerializedName;
  * CivilityEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum CivilityEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     MISTER,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     MISS

@@ -33,8 +33,8 @@ import java.io.Serializable;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class CardRegistrationAnswerEntity implements Serializable {
 
@@ -42,7 +42,7 @@ public class CardRegistrationAnswerEntity implements Serializable {
      * Card details.
      *
      * @see CardEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardEntity Card;
 
@@ -50,7 +50,7 @@ public class CardRegistrationAnswerEntity implements Serializable {
      * Card registration status.
      *
      * @see CardRegistrationStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardRegistrationStatusEnum Status;
 
@@ -59,21 +59,21 @@ public class CardRegistrationAnswerEntity implements Serializable {
      * card registration.
      *
      * @see ErrorCodeEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public ErrorCodeEnum ErrorCode;
 
     /**
      * Reference to the newly registered card.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
     /**
      * More information about the returned status codes.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public ExtraResultsEntity ExtraResults;
 }

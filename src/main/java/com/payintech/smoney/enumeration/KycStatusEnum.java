@@ -29,31 +29,31 @@ import com.google.gson.annotations.SerializedName;
  * KycStatusEnum.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum KycStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     INCOMPLETE,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     IN_PROGRESS,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     REFUSED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("3")
     ACCEPTED,

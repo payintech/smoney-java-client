@@ -29,25 +29,25 @@ import com.google.gson.annotations.SerializedName;
  * UserTypeEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum UserTypeEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     NA,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     PARTICULAR,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     PROFESSIONAL

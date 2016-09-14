@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @author Pierre Adam
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class CardRegistrationApplicationEntity implements Serializable {
 
@@ -39,14 +39,14 @@ public class CardRegistrationApplicationEntity implements Serializable {
      * Card details.
      *
      * @see CardEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardEntity Card;
 
     /**
      * URL to redirect user at the process end.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String UrlReturn;
 
@@ -54,14 +54,14 @@ public class CardRegistrationApplicationEntity implements Serializable {
      * List of allowed cards on the S-Money web page. By default, all cards
      * are allowed ({@code CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON}).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AvailableCards;
 
     /**
      * Build a basic instance.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardRegistrationApplicationEntity() {
         this.AvailableCards = "CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON";

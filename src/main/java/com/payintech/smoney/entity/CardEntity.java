@@ -36,43 +36,43 @@ import java.util.TimeZone;
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class CardEntity implements Serializable {
 
     /**
      * S-Money card ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Card ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AppCardId;
 
     /**
      * Usual card name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Name;
 
     /**
      * Masked card number (ie: {@code 597010XXXXXX0009}).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Hint;
 
     /**
      * Country where the card come from.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     //TODO: Use CountryCodeEnum rather than String?
     public String Country;
@@ -80,21 +80,21 @@ public class CardEntity implements Serializable {
     /**
      * Reference of the current card.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
     /**
      * The card type (ie: Mastercard).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public NetworkEnum Network;
 
     /**
      * Card expiry date. In some cases, this variable could be {@code null}.
      *
-     * @since 16.01
+     * @since 16.01.01
      */
     public DateTime ExpiryDate;
 
@@ -103,7 +103,7 @@ public class CardEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.01
+     * @since 16.01.01
      */
     public DateTime getExpiryDate(final String timeZone) {
         if (this.ExpiryDate == null) {
@@ -117,7 +117,7 @@ public class CardEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getExpiryDate(final TimeZone timeZone) {
         if (this.ExpiryDate == null) {
@@ -130,7 +130,7 @@ public class CardEntity implements Serializable {
      * Check if the card is expired.
      *
      * @return {@code true} if the card is expired, otherwise, {@code false}
-     * @since 16.01
+     * @since 16.01.01
      */
     public boolean isExpired() {
         return this.ExpiryDate != null && this.ExpiryDate.isBeforeNow();

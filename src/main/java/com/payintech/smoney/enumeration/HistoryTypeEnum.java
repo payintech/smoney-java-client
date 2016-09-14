@@ -31,15 +31,15 @@ import com.google.gson.annotations.SerializedName;
  * https://rest-pp.s-money.fr/api/sandbox/users/SMoney-testing-001/historyitems
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum HistoryTypeEnum {
 
     /**
      * Account to Account transfer.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     PAYMENT,
@@ -47,7 +47,7 @@ public enum HistoryTypeEnum {
     /**
      * Payment with bank card.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     CARD,
@@ -55,7 +55,7 @@ public enum HistoryTypeEnum {
     /**
      * Payment from S-Money account to bank account.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     MONEYOUT

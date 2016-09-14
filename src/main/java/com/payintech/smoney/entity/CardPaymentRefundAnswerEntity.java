@@ -35,36 +35,36 @@ import java.util.TimeZone;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class CardPaymentRefundAnswerEntity implements Serializable {
 
     /**
      * S-Money card payment refund ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Card payment refund ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String OrderId;
 
     /**
      * Refund amount (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Is fee amount has been refunded?
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean RefundedFee;
 
@@ -72,28 +72,28 @@ public class CardPaymentRefundAnswerEntity implements Serializable {
      * Card refund status.
      *
      * @see PaymentStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public PaymentStatusEnum Status;
 
     /**
      * Refund date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime PaymentDate;
 
     /**
      * The original payment linked to this refund.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardPaymentEntity OriginalPayment;
 
     /**
      * Refund type.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Type;
 
@@ -102,7 +102,7 @@ public class CardPaymentRefundAnswerEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -113,7 +113,7 @@ public class CardPaymentRefundAnswerEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getPaymentDate(final TimeZone timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

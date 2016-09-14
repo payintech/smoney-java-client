@@ -29,25 +29,25 @@ import com.google.gson.annotations.SerializedName;
  * CardRegistrationStatusEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum CardRegistrationStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     WAITING,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     SUCCESS,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     FAILURE

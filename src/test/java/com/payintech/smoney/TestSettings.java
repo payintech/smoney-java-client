@@ -26,7 +26,7 @@ package com.payintech.smoney;
 import com.payintech.smoney.entity.*;
 import com.payintech.smoney.enumeration.*;
 import org.joda.time.DateTime;
-import retrofit.Response;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -35,8 +35,8 @@ import java.util.UUID;
  * TestSettings.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public class TestSettings {
 

@@ -30,15 +30,15 @@ import java.io.Serializable;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class ReferenceEntity implements Serializable {
 
     /**
      * S-Money reference ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
@@ -46,26 +46,26 @@ public class ReferenceEntity implements Serializable {
      * Beneficiary details.
      *
      * @see SubAccountEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public SubAccountEntity Beneficiary;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsMine;
 
     /**
      * Reference.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Reference;
 
     /**
      * Bank account to use.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public BankAccountEntity BankAccount;
 }

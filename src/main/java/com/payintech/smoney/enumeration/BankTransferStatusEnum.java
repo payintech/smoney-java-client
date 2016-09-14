@@ -29,37 +29,37 @@ import com.google.gson.annotations.SerializedName;
  * BankTransferStatusEnum.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum BankTransferStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     PENDING,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     SUCCEEDED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     CANCELED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("3")
     FAILED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("4")
     REFUNDED

@@ -33,29 +33,29 @@ import java.io.Serializable;
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class AddressEntity implements Serializable {
 
     /**
      * Number and street name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Street;
 
     /**
      * City zipcode.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String ZipCode;
 
     /**
      * City name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String City;
 
@@ -63,7 +63,7 @@ public class AddressEntity implements Serializable {
      * Country where is located the city.
      *
      * @see CountryCodeEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public CountryCodeEnum Country;
 }

@@ -29,15 +29,15 @@ import com.google.gson.annotations.SerializedName;
  * NetworkEnum.
  *
  * @author Thibault Meyer
- * @version 16.02
- * @since 16.02
+ * @version 16.02.01
+ * @since 16.02.01
  */
 public enum NetworkEnum {
 
     /**
      * Unknown card type.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("-1")
     UNKNOWN,
@@ -45,7 +45,7 @@ public enum NetworkEnum {
     /**
      * American Express.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("0")
     AMEX,
@@ -53,7 +53,7 @@ public enum NetworkEnum {
     /**
      * No-name Bank Card.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("1")
     CB,
@@ -61,7 +61,7 @@ public enum NetworkEnum {
     /**
      * Mastercard.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("2")
     MASTERCARD,
@@ -69,7 +69,7 @@ public enum NetworkEnum {
     /**
      * Visa.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("3")
     VISA,
@@ -77,7 +77,7 @@ public enum NetworkEnum {
     /**
      * Mastercard Maestro.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("4")
     MASTERCARD_MAESTRO,
@@ -85,7 +85,7 @@ public enum NetworkEnum {
     /**
      * E-Card.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("5")
     ECARTEBLEUE,
@@ -93,7 +93,7 @@ public enum NetworkEnum {
     /**
      * Aurore Card.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("6")
     AUROREMULTI,
@@ -102,7 +102,7 @@ public enum NetworkEnum {
      * Buyster (Payment platform from Orange / Bouygues
      * Telecom / SFR / Atos SSII).
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("7")
     BUYSTER,
@@ -110,7 +110,7 @@ public enum NetworkEnum {
     /**
      * Cofinoga.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("8")
     COFINOGA,
@@ -118,7 +118,7 @@ public enum NetworkEnum {
     /**
      * JCB.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("9")
     JCB,
@@ -126,7 +126,7 @@ public enum NetworkEnum {
     /**
      * Oney.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("10")
     ONEY,
@@ -134,7 +134,7 @@ public enum NetworkEnum {
     /**
      * Oney (Sandbox).
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("11")
     ONEY_SANDBOX,
@@ -142,7 +142,7 @@ public enum NetworkEnum {
     /**
      * PayPal.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("12")
     PAYPAL,
@@ -150,7 +150,7 @@ public enum NetworkEnum {
     /**
      * PayPal (Sandbox)
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("13")
     PAYPAL_SANDBOX,
@@ -158,7 +158,7 @@ public enum NetworkEnum {
     /**
      * Paysafe.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("14")
     PAYSAFECARD,
@@ -166,7 +166,7 @@ public enum NetworkEnum {
     /**
      * Visa Electron.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("15")
     VISA_ELECTRON,
@@ -174,7 +174,7 @@ public enum NetworkEnum {
     /**
      * 3xCB Cofinoga.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("16")
     COF3XCB,
@@ -182,7 +182,7 @@ public enum NetworkEnum {
     /**
      * 3xCB Cofinoga (Sandbox).
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("17")
     COF3XCB_SANDBOX,
@@ -190,7 +190,7 @@ public enum NetworkEnum {
     /**
      * Sofort.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("19")
     SOFORT_BANKING,
@@ -198,7 +198,7 @@ public enum NetworkEnum {
     /**
      * Bancontact.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("20")
     BANCONTACT,
@@ -206,7 +206,7 @@ public enum NetworkEnum {
     /**
      * Ideal.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("21")
     IDEAL,
@@ -214,7 +214,7 @@ public enum NetworkEnum {
     /**
      * Postfinance.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("22")
     POSTFINANCE,
@@ -222,7 +222,7 @@ public enum NetworkEnum {
     /**
      * E-finance Postfinance.
      *
-     * @since 16.02
+     * @since 16.02.01
      */
     @SerializedName("23")
     POSTFINANCE_EFIN

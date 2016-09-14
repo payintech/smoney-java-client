@@ -29,49 +29,49 @@ import com.google.gson.annotations.SerializedName;
  * UserStatusEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum UserStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     NOT_CONFIRMED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     OK,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     FROZEN,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("3")
     ON_THE_FLY,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("4")
     BEING_CLOSED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("5")
     CLOSED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("6")
     WAITING_KYC,

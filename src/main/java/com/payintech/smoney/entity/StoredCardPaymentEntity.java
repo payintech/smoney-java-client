@@ -35,21 +35,21 @@ import java.util.TimeZone;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class StoredCardPaymentEntity implements Serializable {
 
     /**
      * S-Money stored card payment ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Stored card payment ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String OrderId;
 
@@ -57,7 +57,7 @@ public class StoredCardPaymentEntity implements Serializable {
      * Account used to receive the payment amount.
      *
      * @see SubAccountEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public SubAccountEntity AccountId;
 
@@ -65,14 +65,14 @@ public class StoredCardPaymentEntity implements Serializable {
      * Used card details.
      *
      * @see CardEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardEntity Card;
 
     /**
      * Payment amount (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
@@ -80,14 +80,14 @@ public class StoredCardPaymentEntity implements Serializable {
      * Fee details.
      *
      * @see FeeEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public FeeEntity Fee;
 
     /**
      * Stored card payment date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime OperationDate;
 
@@ -95,7 +95,7 @@ public class StoredCardPaymentEntity implements Serializable {
      * {@code true} if the account owner is the
      * same as the card owner.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsMine;
 
@@ -104,7 +104,7 @@ public class StoredCardPaymentEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -115,7 +115,7 @@ public class StoredCardPaymentEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getOperationDate(final TimeZone timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

@@ -30,43 +30,43 @@ import java.io.Serializable;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class HistoryUserAccountEntity implements Serializable {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Alias;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AppAccountId;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String DisplayName;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String PhoneNumber;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Email;
 }

@@ -37,22 +37,22 @@ import java.util.List;
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class UserEntity implements Serializable {
 
     /**
      * S-Money user ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * User ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AppUserId;
 
@@ -60,7 +60,7 @@ public class UserEntity implements Serializable {
      * Current role of the user.
      *
      * @see UserRoleEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("Role")
     public UserRoleEnum Role;
@@ -69,7 +69,7 @@ public class UserEntity implements Serializable {
      * User type.
      *
      * @see UserTypeEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("Type")
     public UserTypeEnum Type;
@@ -77,35 +77,35 @@ public class UserEntity implements Serializable {
     /**
      * User profile information.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public ProfileEntity Profile;
 
     /**
      * Cumulative amount from all sub-accounts (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * List of user's associated sub-accounts.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<SubAccountEntity> SubAccounts;
 
     /**
      * List of user's associated bank accounts.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<BankAccountEntity> BankAccounts;
 
     /**
      * List of user's associated bank cards.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<CardEntity> CBCards;
 
@@ -113,7 +113,7 @@ public class UserEntity implements Serializable {
      * User status.
      *
      * @see UserStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public UserStatusEnum Status;
 
@@ -121,7 +121,7 @@ public class UserEntity implements Serializable {
      * Information about the company. This field is only used
      * if the user have created a company.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public CompanyEntity Company;
 }

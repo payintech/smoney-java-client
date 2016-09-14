@@ -37,7 +37,7 @@ import java.util.TimeZone;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class ProfileEntity implements Serializable {
 
@@ -45,63 +45,63 @@ public class ProfileEntity implements Serializable {
      * Civility.
      *
      * @see CivilityEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public CivilityEnum Civility;
 
     /**
      * User first name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String FirstName;
 
     /**
      * User last name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String LastName;
 
     /**
      * User birthdate.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime Birthdate;
 
     /**
      * Phone number to contact user.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String PhoneNumber;
 
     /**
      * A valid email address used to contact user.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Email;
 
     /**
      * User nickname.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Alias;
 
     /**
      * Link to the user picture.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Photo;
 
     /**
      * Postal address.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public AddressEntity Address;
 
@@ -110,7 +110,7 @@ public class ProfileEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getBirthdate(final String timeZone) {
         if (this.Birthdate != null) {
@@ -124,7 +124,7 @@ public class ProfileEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getBirthdate(final TimeZone timeZone) {
         if (this.Birthdate != null) {

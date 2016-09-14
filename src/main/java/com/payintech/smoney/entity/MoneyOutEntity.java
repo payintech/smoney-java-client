@@ -36,14 +36,14 @@ import java.util.TimeZone;
  * @author Thibault Meyer
  * @author Pierre Adam
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class MoneyOutEntity implements Serializable {
 
     /**
      * S-Money money-out transfer ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
@@ -57,21 +57,21 @@ public class MoneyOutEntity implements Serializable {
     /**
      * Used S-Money account for the transfer.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public SubAccountEntity AccountId;
 
     /**
      * Used bank account as receiver.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public BankAccountEntity BankAccount;
 
     /**
      * Transfer amount (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
@@ -79,14 +79,14 @@ public class MoneyOutEntity implements Serializable {
      * Fee details.
      *
      * @see FeeEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public FeeEntity Fee;
 
     /**
      * Transfer date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime OperationDate;
 
@@ -94,7 +94,7 @@ public class MoneyOutEntity implements Serializable {
      * Customizable message (ie: {@code S-Money 2015-12-22}). This message
      * will be displayed on the bank account activity log.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Message;
 
@@ -103,7 +103,7 @@ public class MoneyOutEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -114,7 +114,7 @@ public class MoneyOutEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getOperationDate(final TimeZone timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

@@ -31,21 +31,21 @@ import java.io.Serializable;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class CompanyEntity implements Serializable {
 
     /**
      * Company name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Name;
 
     /**
      * Legal registration number: SIRET or RNA.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Siret;
 }

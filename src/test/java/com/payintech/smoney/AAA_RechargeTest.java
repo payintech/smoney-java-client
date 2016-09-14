@@ -28,8 +28,8 @@ import com.payintech.smoney.entity.StoredCardPaymentEntity;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import retrofit.Call;
-import retrofit.Response;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,16 +39,14 @@ import java.util.UUID;
  * AAA_RechargeTest.
  *
  * @author Pierre Adam
- * @version 16.01
- * @since 16.01
+ * @version 16.09.13
+ * @since 16.01.01
  */
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AAA_RechargeTest {
 
     public static final SMoneyService service = SMoneyServiceFactory.createService();
-
-    public static Long bankAccountId = 0L;
 
     @Test
     public void recharge_001_create() throws IOException {
@@ -57,7 +55,7 @@ public class AAA_RechargeTest {
         Call<List<CardEntity>> listCardsCall = service.listCards(TestSettings.testUserAppUserId);
         try {
             Response<List<CardEntity>> listCardsResponse = listCardsCall.execute();
-            if (!listCardsResponse.isSuccess()) {
+            if (!listCardsResponse.isSuccessful()) {
                 System.err.println("Failed to get the list of registered cards. " + listCardsResponse.errorBody().string());
                 return;
             }
@@ -80,7 +78,7 @@ public class AAA_RechargeTest {
         final Call<StoredCardPaymentEntity> callStoredCardPayment = service.createStoredCardPayment(TestSettings.testUserAppUserId, storedCardPaymentEntity);
         try {
             Response<StoredCardPaymentEntity> responseStoredCardPayment = callStoredCardPayment.execute();
-            if (!responseStoredCardPayment.isSuccess()) {
+            if (!responseStoredCardPayment.isSuccessful()) {
                 System.out.println("Error while paying. Unable to recharge. " + responseStoredCardPayment.errorBody().string());
             }
         } catch (IOException e) {

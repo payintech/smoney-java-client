@@ -29,55 +29,55 @@ import com.google.gson.annotations.SerializedName;
  * PaymentOperationStatusEnum.
  *
  * @author Thibault Meyer
- * @version 16.05
- * @since 16.05
+ * @version 16.05.01
+ * @since 16.05.01
  */
 public enum PaymentOperationStatusEnum {
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("-1")
     UNKNOWN,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("0")
     PENDING,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("1")
     COMPLETED,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("2")
     REFUNDED,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("3")
     REFUSED,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("4")
     WAITING_VALIDATION,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("5")
     CANCELED,
 
     /**
-     * @since 16.05
+     * @since 16.05.01
      */
     @SerializedName("6")
     WAITING_DELIVERY

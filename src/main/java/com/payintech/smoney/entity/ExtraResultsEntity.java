@@ -31,7 +31,7 @@ import java.io.Serializable;
  * @author Pierre Adam
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class ExtraResultsEntity implements Serializable {
 
@@ -39,28 +39,28 @@ public class ExtraResultsEntity implements Serializable {
      * Return code of the application for authorization
      * returned by the bank.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     Integer BankAuthResult;
 
     /**
      * Numeric code of risk controls result.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     Integer RiskControlResult;
 
     /**
      * Final status of 3D-Secure process.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     Integer ThreedsResult;
 
     /**
      * Payment warranty.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     Boolean WarrantyResult;
 }

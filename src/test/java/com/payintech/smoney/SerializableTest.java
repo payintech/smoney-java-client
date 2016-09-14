@@ -38,8 +38,8 @@ import java.io.*;
  * SerializableTest.
  *
  * @author Thibault Meyer
- * @version 16.02
- * @since 16.02
+ * @version 16.02.01
+ * @since 16.02.01
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SerializableTest {

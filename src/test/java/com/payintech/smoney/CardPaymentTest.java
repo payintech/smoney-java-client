@@ -29,8 +29,8 @@ import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import retrofit.Call;
-import retrofit.Response;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,8 +40,8 @@ import java.util.UUID;
  * CardPaymentTest.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CardPaymentTest {

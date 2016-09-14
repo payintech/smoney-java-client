@@ -35,22 +35,22 @@ import java.lang.reflect.Type;
  * Implementation of the JsonSerializer and JsonDeserializer for the Joda DateTime.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDeserializer<DateTime> {
 
     /**
      * The date formatter.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     private DateTimeFormatter formatter;
 
     /**
      * ISO Date formatter.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     private DateTimeFormatter isoFormatter;
 
@@ -59,7 +59,7 @@ public class JodaDateTimeConverter implements JsonSerializer<DateTime>, JsonDese
      *
      * @param pattern Pattern respecting the {@code Joda.DateTimeFormatter} syntax.
      * @see DateTimeFormatter
-     * @since 15.11
+     * @since 15.11.01
      */
     public JodaDateTimeConverter(final String pattern) {
         this.formatter = DateTimeFormat.forPattern(pattern);

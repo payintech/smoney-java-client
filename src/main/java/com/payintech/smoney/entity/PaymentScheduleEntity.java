@@ -36,7 +36,7 @@ import java.util.TimeZone;
  * @author Pierre Adam
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class PaymentScheduleEntity implements Serializable {
 
@@ -44,21 +44,21 @@ public class PaymentScheduleEntity implements Serializable {
      * Payment number. For a payment in 3 times, the value would
      * be 1, 2 or 3.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Integer SequenceNumber;
 
     /**
      * Amount (in cents) of the current occurrence.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Date when the payment will be processed.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime Date;
 
@@ -66,14 +66,14 @@ public class PaymentScheduleEntity implements Serializable {
      * Payment status.
      *
      * @see PaymentStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public PaymentStatusEnum Status;
 
     /**
      * Fee amount.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Fee;
 
@@ -82,7 +82,7 @@ public class PaymentScheduleEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getDate(final String timeZone) {
         return this.Date.toDateTime(DateTimeZone.forID(timeZone));
@@ -93,7 +93,7 @@ public class PaymentScheduleEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getDate(final TimeZone timeZone) {
         return this.Date.toDateTime(DateTimeZone.forTimeZone(timeZone));

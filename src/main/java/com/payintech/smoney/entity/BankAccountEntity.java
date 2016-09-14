@@ -31,64 +31,64 @@ import java.io.Serializable;
  * @author Jean-Pierre Boudic
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.06
- * @since 15.11
+ * @version 16.06.01
+ * @since 15.11.01
  */
 public class BankAccountEntity implements Serializable {
 
     /**
      * S-Money bank account ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Reference of the current bank account.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
     /**
      * Bank account usual name.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String DisplayName;
 
     /**
      * Bank account usual name.
      *
-     * @since 16.06
+     * @since 16.06.01
      */
     public String Name;
 
     /**
      * Bank postal address details.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public AddressEntity Address;
 
     /**
      * Bank International Code (ISO 9362).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Bic;
 
     /**
      * International Bank Account Number (ISO 9362).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Iban;
 
     /**
      * Is the bank account is owned by the user?
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsMine;
 
@@ -96,7 +96,7 @@ public class BankAccountEntity implements Serializable {
      * Get the Bank International Code (BIC) number with mask.
      *
      * @return The masked BIC
-     * @since 15.11
+     * @since 15.11.01
      */
     public String getMaskedBic() {
         return this.Bic.substring(0, 2) + "xxxx" + this.Bic.substring(6);
@@ -106,7 +106,7 @@ public class BankAccountEntity implements Serializable {
      * Get the International Bank Account Number (IBAN) number with mask.
      *
      * @return The masked IBAN
-     * @since 15.11
+     * @since 15.11.01
      */
     public String getMaskedIban() {
         return this.Iban.substring(0, 4) + "xxxxxxxxxxxxxxxx" + this.Iban.substring(20);

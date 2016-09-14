@@ -24,9 +24,9 @@
 package com.payintech.smoney;
 
 import com.payintech.smoney.entity.*;
-import com.squareup.okhttp.RequestBody;
-import retrofit.Call;
-import retrofit.http.*;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.http.*;
 
 import java.util.List;
 import java.util.Map;
@@ -37,8 +37,8 @@ import java.util.Map;
  * @author Pierre Adam
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.04
- * @since 15.11
+ * @version 16.09.13
+ * @since 15.11.01
  */
 public interface SMoneyService {
 
@@ -69,7 +69,7 @@ public interface SMoneyService {
      *
      * @param user A new user (local instance)
      * @return The newly created user as {@code UserEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -82,7 +82,7 @@ public interface SMoneyService {
      * List the first 50 registered users.
      *
      * @return A list of {@code UserEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users")
@@ -93,7 +93,7 @@ public interface SMoneyService {
      *
      * @param pageNumber The page to retrieve
      * @return A list of {@code UserEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users")
@@ -105,7 +105,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code UserEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users")
@@ -116,7 +116,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return The requested user as {@code UserEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}")
@@ -128,7 +128,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param user      User to update with new informatio
      * @return The updated user updated as {@code UserEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -147,7 +147,7 @@ public interface SMoneyService {
      *
      * @param userOptions Dictionary of criteria
      * @return A list of {@code UserEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/search")
@@ -164,7 +164,7 @@ public interface SMoneyService {
      * @param userOptions Dictionary of criteria
      * @param pageNumber  The page to retrieve
      * @return A list of {@code UserEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/search")
@@ -182,7 +182,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code UserEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/search")
@@ -193,7 +193,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code SubAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/subaccounts")
@@ -205,7 +205,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code SubAccountEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/subaccounts")
@@ -218,7 +218,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code SubAccountEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/subaccounts")
@@ -230,7 +230,7 @@ public interface SMoneyService {
      * @param appUserId    3rd party user ID
      * @param appAccountId The Account Id
      * @return The requested sub account as {@code SubAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/subaccounts/{appaccountid}")
@@ -247,7 +247,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param subAccount The sub account information
      * @return The newly created sub account as {@code SubAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -267,7 +267,7 @@ public interface SMoneyService {
      * @param appAccountId 3rd party account ID
      * @param subAccount   The sub account information
      * @return The updated sub account as {@code SubAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -282,7 +282,7 @@ public interface SMoneyService {
      * @param appUserId    3rd party user ID
      * @param appAccountId 3rd party account ID
      * @return Nothing
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -296,7 +296,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code CardEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards")
@@ -308,7 +308,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code CardEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards")
@@ -321,7 +321,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code CardEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards")
@@ -341,7 +341,7 @@ public interface SMoneyService {
      * @param appUserId       3rd party user ID
      * @param cardApplication The card application form
      * @return The newly created card as {@code CardRegistrationAnswerEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -356,7 +356,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param appCardId 3rd party card ID
      * @return The user's card
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/cards/{appcardid}")
@@ -368,7 +368,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param appCardId 3rd party card ID
      * @return Nothing
-     * @since 15.11
+     * @since 15.11.01
      */
     @DELETE("users/{appuserid}/cards/{appcardid}")
     Call<String> deleteCard(@Path("appuserid") String appUserId, @Path("appcardid") String appCardId);
@@ -392,7 +392,7 @@ public interface SMoneyService {
      * @param appUserId Sender 3rd party user ID
      * @param payment   An instantiated entity payment
      * @return The newly created payment as {@code PaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -420,7 +420,7 @@ public interface SMoneyService {
      * @param appUserId Sender 3rd party user ID
      * @param payments  A list of instantiated entity payment
      * @return A list of newly created {@code PaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -435,7 +435,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param orderId   3rd party payment ID
      * @return The requested payment as {@code PaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payments/{orderid}")
@@ -446,7 +446,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code PaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payments")
@@ -458,7 +458,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code PaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payments")
@@ -471,7 +471,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code PaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payments")
@@ -482,7 +482,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code BankAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts")
@@ -494,7 +494,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code BankAccountEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts")
@@ -507,7 +507,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code BankAccountEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts")
@@ -519,7 +519,7 @@ public interface SMoneyService {
      * @param appUserId     3rd party user ID
      * @param bankAccountId 3rd party bank account ID
      * @return The requested bank account as {@code BankAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/bankaccounts/{bankaccountid}")
@@ -538,7 +538,7 @@ public interface SMoneyService {
      * @param appUserId   3rd party user ID
      * @param bankAccount A bank account entity
      * @return The newly created bank account as {@code BankAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -553,7 +553,7 @@ public interface SMoneyService {
      * @param appUserId   3rd party user ID
      * @param bankAccount The bank account entity to update
      * @return The updated bank account as {@code BankAccountEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -568,7 +568,7 @@ public interface SMoneyService {
      * @param appUserId     3rd party user ID
      * @param bankAccountId 3rd party bank account ID to delete
      * @return Nothing
-     * @since 15.11
+     * @since 15.11.01
      */
     @DELETE("users/{appuserid}/bankaccounts/{bankaccountid}")
     Call<String> deleteBankAccount(@Path("appuserid") String appUserId, @Path("bankaccountid") Long bankAccountId);
@@ -578,7 +578,7 @@ public interface SMoneyService {
      *
      * @param appUserId User Client Id
      * @return A list of {@code MoneyOutEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts")
@@ -590,7 +590,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code MoneyOutEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts")
@@ -603,7 +603,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code MoneyOutEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts")
@@ -627,7 +627,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param moneyOut  An instantiated {@code MoneyOutEntity}
      * @return The newly created created {@code MoneyOutEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -657,7 +657,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param moneyOut  An instantiated {@code MoneyOutEntity}
      * @return The newly created {@code MoneyOutEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v1+json",
@@ -672,7 +672,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param moneyOutId S-Money money out ID
      * @return The requested money out information as {@code MoneyOutEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts/{moneyoutid}")
@@ -684,7 +684,7 @@ public interface SMoneyService {
      * @param appUserId       3rd party user ID
      * @param moneyOutOrderId 3rd party money out orderId
      * @return The requested money out information as {@code MoneyOutEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/moneyouts/{moneyoutid}")
@@ -716,7 +716,7 @@ public interface SMoneyService {
      * @param appUserId   3rd party user ID
      * @param cardPayment A CardPayment entity
      * @return The created card payment as {@code CardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -730,7 +730,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code CardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments")
@@ -742,7 +742,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code CardPaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments")
@@ -755,7 +755,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code CardPaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments")
@@ -767,7 +767,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param orderId   3rd party payment ID
      * @return The card payment as {@code CardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments/{orderid}")
@@ -780,7 +780,7 @@ public interface SMoneyService {
      * @param orderId        3rd party payment ID
      * @param sequenceNumber The scheduled payment sequence number
      * @return The scheduled payment
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v2+json")
     @GET("users/{appuserid}/payins/cardpayments/{orderid}/{sequencenumber}")
@@ -793,7 +793,7 @@ public interface SMoneyService {
      * @param orderId    3rd party payment ID
      * @param refundForm The form to refund
      * @return The refund information as {@code CardPaymentRefundAnswerEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -810,7 +810,7 @@ public interface SMoneyService {
      * @param sequenceNumber The scheduled payment sequence number
      * @param refundForm     The form to refund
      * @return The refund information as {@code CardPaymentRefundAnswerEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -827,7 +827,7 @@ public interface SMoneyService {
      * @param sequenceNumber The scheduled payment sequence number
      * @param payment        The scheduled payment information
      * @return The refund information as {@code PaymentScheduleEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -846,7 +846,7 @@ public interface SMoneyService {
      * @param appUserId Sender 3rd party user ID
      * @param file      The file to upload
      * @return The newly created KYC request as {@code KycEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Multipart
     @Headers("Accept: application/vnd.s-money.v1+json")
@@ -863,7 +863,7 @@ public interface SMoneyService {
      * @param appUserId Sender 3rd party user ID
      * @param files     The files to upload
      * @return The KYC (entity) in request status
-     * @since 15.11
+     * @since 15.11.01
      */
     @Multipart
     @Headers("Accept: application/vnd.s-money.v1+json")
@@ -878,7 +878,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @return The list of {@code KycEntity}
      * @see SMoneyService#listKYCRequests
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/kyc")
@@ -890,7 +890,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code KycEntity}
-     * @since 16.11
+     * @since 16.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/kyc")
@@ -902,7 +902,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code KycEntity}
-     * @since 16.11
+     * @since 16.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/kyc")
@@ -915,7 +915,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code KycEntity}
-     * @since 16.11
+     * @since 16.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/kyc")
@@ -929,7 +929,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @return A list of {@code StoredCardPaymentEntity}
      * @see SMoneyService#listStoredCardPayments
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments")
@@ -941,7 +941,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code StoredCardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments")
@@ -953,7 +953,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code StoredCardPaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments")
@@ -966,7 +966,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code StoredCardPaymentEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments")
@@ -991,7 +991,7 @@ public interface SMoneyService {
      * @param appUserId     Sender 3rd party user ID
      * @param storedCardPay The StoredCardPayment Entity
      * @return The newly created stored card payment as {@code StoredCardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -1006,7 +1006,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param orderId   3rd party payment ID
      * @return The requested stored card payment as {@code StoredCardPaymentEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/storedcardpayments/{orderid}")
@@ -1025,7 +1025,7 @@ public interface SMoneyService {
      * @param orderId       3rd party payment ID
      * @param refundRequest The request for refund
      * @return The newly created refund as {@code CardPaymentRefundAnswerEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -1039,7 +1039,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code HistoryItemEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/historyitems")
@@ -1050,7 +1050,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A List of {@code ReferenceEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references")
@@ -1062,7 +1062,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code ReferenceEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references")
@@ -1075,7 +1075,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code ReferenceEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references")
@@ -1093,7 +1093,7 @@ public interface SMoneyService {
      * @param appUserId 3rd party user ID
      * @param reference The reference for BankTransfer
      * @return The newly created {@code ReferenceEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers({
         "Accept: application/vnd.s-money.v2+json",
@@ -1108,7 +1108,7 @@ public interface SMoneyService {
      * @param appUserId   3rd party user ID
      * @param referenceId S-Money reference ID
      * @return The requested reference as {@code ReferenceEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references/{referenceid}")
@@ -1120,7 +1120,7 @@ public interface SMoneyService {
      * @param appUserId     3rd party user ID
      * @param referenceCode S-Money reference code
      * @return The requested reference as {@code ReferenceEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/references/{referencecode}")
@@ -1131,7 +1131,7 @@ public interface SMoneyService {
      *
      * @param appUserId 3rd party user ID
      * @return A list of {@code BankTransferEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers")
@@ -1143,7 +1143,7 @@ public interface SMoneyService {
      * @param appUserId  3rd party user ID
      * @param pageNumber The page to retrieve
      * @return A list of {@code BankTransferEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers")
@@ -1156,7 +1156,7 @@ public interface SMoneyService {
      * @param pageNumber  The page to retrieve
      * @param itemPerPage The number of items per page
      * @return A list of {@code BankTransferEntity}
-     * @since 16.01
+     * @since 16.01.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers")
@@ -1168,7 +1168,7 @@ public interface SMoneyService {
      * @param appUserId      3rd party user ID
      * @param bankTransferId S-Money bank transfer ID
      * @return A list of {@code BankTransferEntity}
-     * @since 15.11
+     * @since 15.11.01
      */
     @Headers("Accept: application/vnd.s-money.v1+json")
     @GET("users/{appuserid}/payins/banktransfers/{banktransferid}")

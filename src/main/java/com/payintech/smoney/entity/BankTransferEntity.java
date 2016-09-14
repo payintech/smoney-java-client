@@ -35,22 +35,22 @@ import java.util.TimeZone;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class BankTransferEntity implements Serializable {
 
     /**
      * S-Money bank transfer ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Bank transfer date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime PaymentDate;
 
@@ -58,7 +58,7 @@ public class BankTransferEntity implements Serializable {
      * Bank transfer status.
      *
      * @see BankTransferStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public BankTransferStatusEnum Status;
 
@@ -66,7 +66,7 @@ public class BankTransferEntity implements Serializable {
      * Transfer beneficiary.
      *
      * @see SubAccountEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public SubAccountEntity Beneficiary;
 
@@ -74,14 +74,14 @@ public class BankTransferEntity implements Serializable {
      * {@code true} if the account owner is the
      * same as the card owner.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsMine;
 
     /**
      * Reference about the bank transfer.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Reference;
 
@@ -89,7 +89,7 @@ public class BankTransferEntity implements Serializable {
      * Bank account to use for the transfer.
      *
      * @see BankTransferEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public BankTransferEntity BankAccount;
 
@@ -98,7 +98,7 @@ public class BankTransferEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -109,7 +109,7 @@ public class BankTransferEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getPaymentDate(final TimeZone timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

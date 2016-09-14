@@ -29,43 +29,43 @@ import com.google.gson.annotations.SerializedName;
  * ErrorCodeEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum ErrorCodeEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     BANK_MUST_BE_CONTACTED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     REFUSED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("3")
     CANCELED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("4")
     NOT_USING_3D_SECURE,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("5")
     AUTH_3D_SECURE_FAILED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("6")
     SYSTEM_PAY_TECHNICAL_ERROR

@@ -39,43 +39,43 @@ import java.util.TimeZone;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.05
- * @since 15.11
+ * @version 16.05.01
+ * @since 15.11.01
  */
 public class CardPaymentEntity implements Serializable {
 
     /**
      * S-Money card payment ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Card payment ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String OrderId;
 
     /**
      * Card payment date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime PaymentDate;
 
     /**
      * Payment amount (in cents) without fee.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Fee amount (int cents)
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Fee;
 
@@ -83,7 +83,7 @@ public class CardPaymentEntity implements Serializable {
      * Payment status.
      *
      * @see PaymentStatusEnum
-     * @since 16.05
+     * @since 16.05.01
      */
     public PaymentOperationStatusEnum Status;
 
@@ -91,14 +91,14 @@ public class CardPaymentEntity implements Serializable {
      * Beneficiary details.
      *
      * @see SubAccountEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public SubAccountEntity Beneficiary;
 
     /**
      * Customizable message.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Message;
 
@@ -106,7 +106,7 @@ public class CardPaymentEntity implements Serializable {
      * {@code true} if the account owner is the
      * same as the card owner.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsMine;
 
@@ -114,7 +114,7 @@ public class CardPaymentEntity implements Serializable {
      * Card payment error code.
      *
      * @see ErrorCodeEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public ErrorCodeEnum ErrorCode;
 
@@ -122,21 +122,21 @@ public class CardPaymentEntity implements Serializable {
      * More information about results.
      *
      * @see ExtraResultsEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public ExtraResultsEntity ExtraResults;
 
     /**
      * URL used to redirect user at the process end.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String UrlReturn;
 
     /**
      * Callback URL to use (only server to server).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String UrlCallback;
 
@@ -144,14 +144,14 @@ public class CardPaymentEntity implements Serializable {
      * List of allowed cards on the S-Money web page. By default, all cards
      * are allowed ({@code CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON}).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AvailableCards;
 
     /**
      * Reference to this card payment.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
@@ -159,7 +159,7 @@ public class CardPaymentEntity implements Serializable {
      * Card payment type.
      *
      * @see PaymentTypeEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public PaymentTypeEnum Type;
 
@@ -167,7 +167,7 @@ public class CardPaymentEntity implements Serializable {
      * Card details.
      *
      * @see CardEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardEntity Card;
 
@@ -175,21 +175,21 @@ public class CardPaymentEntity implements Serializable {
      * List of scheduled payments (if applicable).
      *
      * @see PaymentScheduleEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<PaymentScheduleEntity> PaymentSchedule;
 
     /**
      * List of payments in case of multiple beneficiaries (if applicable).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<PaymentEntity> Payments;
 
     /**
      * Build a basic instance.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public CardPaymentEntity() {
         this.AvailableCards = "CB;MASTERCARD;MAESTRO;VISA;VISA_ELECTRON";
@@ -200,7 +200,7 @@ public class CardPaymentEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getPaymentDate(final String timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -211,7 +211,7 @@ public class CardPaymentEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getPaymentDate(final TimeZone timeZone) {
         return this.PaymentDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

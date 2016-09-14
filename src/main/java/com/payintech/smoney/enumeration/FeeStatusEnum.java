@@ -29,43 +29,43 @@ import com.google.gson.annotations.SerializedName;
  * FeeStatusEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum FeeStatusEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("0")
     PENDING,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     SUCCEEDED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     CANCELLED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("3")
     FAILED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("4")
     EXPIRED,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("5")
     REFUNDED

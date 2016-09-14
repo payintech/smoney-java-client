@@ -37,21 +37,21 @@ import java.util.TimeZone;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class KycEntity implements Serializable {
 
     /**
      * S-Money KYC request ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public long Id;
 
     /**
      * KYC request date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime RequestDate;
 
@@ -59,7 +59,7 @@ public class KycEntity implements Serializable {
      * KYC request status.
      *
      * @see KycStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public KycStatusEnum Status;
 
@@ -67,7 +67,7 @@ public class KycEntity implements Serializable {
      * Files attached to this KYC request.
      *
      * @see AttachmentEntity
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<AttachmentEntity> VoucherCopies;
 
@@ -76,7 +76,7 @@ public class KycEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getRequestDate(final String timeZone) {
         return this.RequestDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -87,7 +87,7 @@ public class KycEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getRequestDate(final TimeZone timeZone) {
         return this.RequestDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

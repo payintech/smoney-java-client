@@ -29,19 +29,19 @@ import com.google.gson.annotations.SerializedName;
  * UserRoleEnum.
  *
  * @author Pierre Adam
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum UserRoleEnum {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     CLIENT,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     EXTENDED_CLIENT

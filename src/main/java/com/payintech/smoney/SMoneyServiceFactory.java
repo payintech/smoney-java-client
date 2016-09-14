@@ -26,13 +26,13 @@ package com.payintech.smoney;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.payintech.smoney.toolbox.JodaDateTimeConverter;
-import com.squareup.okhttp.Interceptor;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.joda.time.DateTime;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,37 +50,37 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.01
+ * @version 16.09.14
  * @see SMoneyService
- * @since 15.11
+ * @since 15.11.01
  */
 public final class SMoneyServiceFactory {
 
     /**
      * Define the date format to use with S-Money API: {@code yyyy-MM-dd'T'HH:mm:ss}.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     /**
      * Define the default API URL.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     private static final String DEFAULT_API_URL = "https://rest-pp.s-money.fr/api/";
 
     /**
      * Define the default network transport timeout value (in seconds).
      *
-     * @since 16.01
+     * @since 16.01.01
      */
     private static final int DEFAULT_TRANSPORT_TIMEOUT = 8;
 
     /**
      * Default constructor.
      *
-     * @since 16.01
+     * @since 16.01.01
      */
     private SMoneyServiceFactory() {
     }
@@ -93,7 +93,7 @@ public final class SMoneyServiceFactory {
      *
      * @return The newly created {@code SMoneyService} instance or {@code null}
      * @see SMoneyService
-     * @since 15.11
+     * @since 15.11.01
      */
     public static SMoneyService createService() {
         final Properties properties = new Properties();
@@ -137,7 +137,7 @@ public final class SMoneyServiceFactory {
      * @param baseUrl The base URL to use
      * @return The newly created {@code SMoneyService} instance
      * @see SMoneyService
-     * @since 15.11
+     * @since 15.11.01
      */
     public static SMoneyService createService(final String token, final String baseUrl) {
         return SMoneyServiceFactory.createService(token, baseUrl, SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT);
@@ -151,29 +151,28 @@ public final class SMoneyServiceFactory {
      * @param timeout The http transport timeout value
      * @return The newly created {@code SMoneyService} instance
      * @see SMoneyService
-     * @since 15.11
+     * @since 15.11.01
      */
     public static SMoneyService createService(final String token, final String baseUrl, final int timeout) {
         final String userAgent = String.format("SMoneyJavaClient/%s", Version.projectVersion);
         final String authBearer = String.format("Bearer %s", token);
-        final OkHttpClient httpClient = new OkHttpClient();
+        final OkHttpClient httpClient = new OkHttpClient().newBuilder()
+            .readTimeout(timeout, TimeUnit.SECONDS)
+            .connectTimeout(timeout, TimeUnit.SECONDS)
+            .addInterceptor(new Interceptor() {
 
-        httpClient.setReadTimeout(timeout, TimeUnit.SECONDS);
-        httpClient.setConnectTimeout(timeout, TimeUnit.SECONDS);
-        httpClient.interceptors().clear();
-        httpClient.interceptors().add(new Interceptor() {
-
-            @Override
-            public Response intercept(final Chain chain) throws IOException {
-                final Request original = chain.request();
-                final Request.Builder requestBuilder = original.newBuilder()
-                    .header("User-Agent", userAgent)
-                    .header("Authorization", authBearer)
-                    .method(original.method(), original.body());
-                final Request request = requestBuilder.build();
-                return chain.proceed(request);
-            }
-        });
+                @Override
+                public Response intercept(final Chain chain) throws IOException {
+                    final Request original = chain.request();
+                    final Request.Builder requestBuilder = original.newBuilder()
+                        .header("User-Agent", userAgent)
+                        .header("Authorization", authBearer)
+                        .method(original.method(), original.body());
+                    final Request request = requestBuilder.build();
+                    return chain.proceed(request);
+                }
+            })
+            .build();
 
         final Gson gson = new GsonBuilder()
             .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(SMoneyServiceFactory.DATE_FORMAT))

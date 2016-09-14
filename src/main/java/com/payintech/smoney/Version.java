@@ -31,8 +31,8 @@ import java.util.Properties;
  * Get information about version.
  *
  * @author Thibault Meyer
- * @version 16.01
- * @since 16.01
+ * @version 16.01.01
+ * @since 16.01.01
  */
 final class Version {
 

@@ -26,14 +26,14 @@ package com.payintech.smoney;
 import com.payintech.smoney.entity.AttachmentEntity;
 import com.payintech.smoney.entity.KycEntity;
 import com.payintech.smoney.enumeration.KycStatusEnum;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import retrofit.Call;
-import retrofit.Response;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,8 +47,8 @@ import java.util.Map;
  * KycTest.
  *
  * @author Jean-Pierre Boudic
- * @version 16.01
- * @since 15.11
+ * @version 16.01.01
+ * @since 15.11.01
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class KycTest {

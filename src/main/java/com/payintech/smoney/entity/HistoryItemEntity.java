@@ -39,82 +39,82 @@ import java.util.TimeZone;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class HistoryItemEntity implements Serializable {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public HistoryUserAccountEntity Account;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public HistoryUserAccountEntity Benificiary;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public HistoryUserAccountEntity Sender;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AccountLabel;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public AttachmentEntity Attachment;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public HistoryDirection Direction;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsNew;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Label;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime OperationDate;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String OrderId;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public PaymentStatusEnum Status;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public HistoryTypeEnum Type;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public String PaymentRequest;
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     public List<String> ChatMessages;
 
@@ -123,7 +123,7 @@ public class HistoryItemEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getOperationDate(final String timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -134,7 +134,7 @@ public class HistoryItemEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getOperationDate(final TimeZone timeZone) {
         return this.OperationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

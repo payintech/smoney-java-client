@@ -33,28 +33,28 @@ import java.io.Serializable;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class FeeEntity implements Serializable {
 
     /**
      * Net amount of the fee (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Fee's percentage (in percentage).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long AmountWithVAT;
 
     /**
      * Tax price of the fee (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Double VAT;
 
@@ -62,7 +62,7 @@ public class FeeEntity implements Serializable {
      * Fee status.
      *
      * @see FeeStatusEnum
-     * @since 15.11
+     * @since 15.11.01
      */
     public FeeStatusEnum Status;
 }

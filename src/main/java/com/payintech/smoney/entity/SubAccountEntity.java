@@ -36,56 +36,56 @@ import java.util.TimeZone;
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
  * @version 16.02
- * @since 15.11
+ * @since 15.11.01
  */
 public class SubAccountEntity implements Serializable {
 
     /**
      * Account ID.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Id;
 
     /**
      * Account ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String AppAccountId;
 
     /**
      * Usual name of the account.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String DisplayName;
 
     /**
      * Account amount (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Is the user's principal account?
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean IsDefault;
 
     /**
      * Account creation date.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public DateTime CreationDate;
 
     /**
      * Reference to the account details.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String Href;
 
@@ -94,7 +94,7 @@ public class SubAccountEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 15.12
+     * @since 15.12.01
      */
     public DateTime getCreationDate(final String timeZone) {
         return this.CreationDate.toDateTime(DateTimeZone.forID(timeZone));
@@ -105,7 +105,7 @@ public class SubAccountEntity implements Serializable {
      *
      * @param timeZone The timezone to use
      * @return The datetime converted to the specific timezone
-     * @since 16.02
+     * @since 16.02.01
      */
     public DateTime getCreationDate(final TimeZone timeZone) {
         return this.CreationDate.toDateTime(DateTimeZone.forTimeZone(timeZone));

@@ -30,29 +30,29 @@ import java.io.Serializable;
  *
  * @author Pierre Adam
  * @author Thibault Meyer
- * @version 16.02
- * @since 15.11
+ * @version 16.02.01
+ * @since 15.11.01
  */
 public class CardPaymentRefundApplicationEntity implements Serializable {
 
     /**
      * Card payment refund ID on the 3rd party application.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public String OrderId;
 
     /**
      * Refund amount (in cents) without fee.
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Long Amount;
 
     /**
      * Fee amount (in cents).
      *
-     * @since 15.11
+     * @since 15.11.01
      */
     public Boolean RefundFee;
 }

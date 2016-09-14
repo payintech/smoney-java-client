@@ -29,19 +29,19 @@ import com.google.gson.annotations.SerializedName;
  * HistoryDirection.
  *
  * @author Jean-Pierre Boudic
- * @version 15.11
- * @since 15.11
+ * @version 15.11.01
+ * @since 15.11.01
  */
 public enum HistoryDirection {
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("1")
     DEBIT,
 
     /**
-     * @since 15.11
+     * @since 15.11.01
      */
     @SerializedName("2")
     CREDIT
