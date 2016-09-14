@@ -6,7 +6,7 @@
 
     <groupId>com.payintech</groupId>
     <artifactId>s-money-client</artifactId>
-    <version>16.08</version>
+    <version>16.09</version>
     <packaging>jar</packaging>
     <name>S-Money API Client</name>
     <description>S-Money API client for Java and Android</description>
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
@@ -97,7 +97,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.2</version>
+                <version>2.10.4</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <show>package</show>
@@ -115,7 +115,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>

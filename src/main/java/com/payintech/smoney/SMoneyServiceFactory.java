@@ -121,9 +121,9 @@ public final class SMoneyServiceFactory {
             }
 
             return SMoneyServiceFactory.createService(
-                    properties.getProperty("smoney.api.token"),
-                    properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
-                    Integer.valueOf(properties.getProperty("smoney.transport.timeout", String.valueOf(SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT))));
+                properties.getProperty("smoney.api.token"),
+                properties.getProperty("smoney.api.endpoint", SMoneyServiceFactory.DEFAULT_API_URL),
+                Integer.valueOf(properties.getProperty("smoney.transport.timeout", String.valueOf(SMoneyServiceFactory.DEFAULT_TRANSPORT_TIMEOUT))));
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
@@ -167,22 +167,22 @@ public final class SMoneyServiceFactory {
             public Response intercept(final Chain chain) throws IOException {
                 final Request original = chain.request();
                 final Request.Builder requestBuilder = original.newBuilder()
-                        .header("User-Agent", userAgent)
-                        .header("Authorization", authBearer)
-                        .method(original.method(), original.body());
+                    .header("User-Agent", userAgent)
+                    .header("Authorization", authBearer)
+                    .method(original.method(), original.body());
                 final Request request = requestBuilder.build();
                 return chain.proceed(request);
             }
         });
 
         final Gson gson = new GsonBuilder()
-                .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(SMoneyServiceFactory.DATE_FORMAT))
-                .create();
+            .registerTypeAdapter(DateTime.class, new JodaDateTimeConverter(SMoneyServiceFactory.DATE_FORMAT))
+            .create();
         final Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(httpClient)
-                .build();
+            .baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .client(httpClient)
+            .build();
 
         return retrofit.create(SMoneyService.class);
     }

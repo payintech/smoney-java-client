@@ -72,8 +72,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users")
     Call<UserEntity> createUser(@Body UserEntity user);
@@ -131,8 +131,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @PUT("users/{appuserid}")
     Call<UserEntity> updateUser(@Path("appuserid") String appUserId, @Body UserEntity user);
@@ -250,8 +250,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/subaccounts")
     Call<SubAccountEntity> createSubAccount(@Path("appuserid") String appUserId, @Body SubAccountEntity subAccount);
@@ -270,8 +270,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @PUT("users/{appuserid}/subaccounts/{appaccountid}")
     Call<SubAccountEntity> updateSubAccount(@Path("appuserid") String appUserId, @Path("appaccountid") String appAccountId, @Body SubAccountEntity subAccount);
@@ -285,8 +285,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @DELETE("users/{appuserid}/subaccounts/{appaccountid}")
     Call<String> deleteSubAccount(@Path("appuserid") String appUserId, @Path("appaccountid") String appAccountId);
@@ -344,8 +344,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/cards/registrations")
     Call<CardRegistrationAnswerEntity> createCard(@Path("appuserid") String appUserId, @Body CardRegistrationApplicationEntity cardApplication);
@@ -395,8 +395,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/payments")
     Call<PaymentEntity> createPayment(@Path("appuserid") String appUserId, @Body PaymentEntity payment);
@@ -423,8 +423,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/payments")
     Call<List<PaymentEntity>> createPayments(@Path("appuserid") String appUserId, @Body List<PaymentEntity> payments);
@@ -541,8 +541,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/bankaccounts")
     Call<BankAccountEntity> createBankAccount(@Path("appuserid") String appUserId, @Body BankAccountEntity bankAccount);
@@ -556,8 +556,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @PUT("users/{appuserid}/bankaccounts")
     Call<BankAccountEntity> updateBankAccount(@Path("appuserid") String appUserId, @Body BankAccountEntity bankAccount);
@@ -630,8 +630,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/moneyouts/oneshot")
     Call<MoneyOutEntity> createMoneyOutOneShot(@Path("appuserid") String appUserId, @Body MoneyOutEntity moneyOut);
@@ -660,8 +660,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v1+json",
-            "Content-Type: application/vnd.s-money.v1+json"
+        "Accept: application/vnd.s-money.v1+json",
+        "Content-Type: application/vnd.s-money.v1+json"
     })
     @POST("users/{appuserid}/moneyouts/recurring")
     Call<MoneyOutEntity> createMoneyOutRecurring(@Path("appuserid") String appUserId, @Body MoneyOutEntity moneyOut);
@@ -719,8 +719,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/cardpayments")
     Call<CardPaymentEntity> createCardPayment(@Path("appuserid") String appUserId, @Body CardPaymentEntity cardPayment);
@@ -796,8 +796,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/cardpayments/{orderid}/refunds")
     Call<CardPaymentRefundAnswerEntity> refundCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Body CardPaymentRefundApplicationEntity refundForm);
@@ -813,8 +813,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/cardpayments/{orderid}/{sequencenumber}/refunds")
     Call<CardPaymentRefundAnswerEntity> refundCardScheduledPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Path("sequencenumber") Integer sequenceNumber, @Body CardPaymentRefundApplicationEntity refundForm);
@@ -830,8 +830,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @PUT("users/{appuserid}/payins/cardpayments/{orderid}/{sequencenumber}")
     Call<PaymentScheduleEntity> refundCardScheduledPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Path("sequencenumber") Integer sequenceNumber, @Body PaymentScheduleEntity payment);
@@ -994,8 +994,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/storedcardpayments")
     Call<StoredCardPaymentEntity> createStoredCardPayment(@Path("appuserid") String appUserId, @Body StoredCardPaymentEntity storedCardPay);
@@ -1028,8 +1028,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/storedcardpayments/{orderid}/refunds")
     Call<CardPaymentRefundAnswerEntity> refundStoredCardPayment(@Path("appuserid") String appUserId, @Path("orderid") String orderId, @Body CardPaymentRefundApplicationEntity refundRequest);
@@ -1096,8 +1096,8 @@ public interface SMoneyService {
      * @since 15.11
      */
     @Headers({
-            "Accept: application/vnd.s-money.v2+json",
-            "Content-Type: application/vnd.s-money.v2+json"
+        "Accept: application/vnd.s-money.v2+json",
+        "Content-Type: application/vnd.s-money.v2+json"
     })
     @POST("users/{appuserid}/payins/banktransfers/references")
     Call<ReferenceEntity> createReference(@Path("appuserid") String appUserId, @Body ReferenceEntity reference);
