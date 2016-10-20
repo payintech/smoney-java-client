@@ -35,7 +35,7 @@ import java.util.TimeZone;
  *
  * @author Jean-Pierre Boudic
  * @author Thibault Meyer
- * @version 16.02.01
+ * @version 16.10.20
  * @since 15.11.01
  */
 public class BankTransferEntity implements Serializable {
@@ -92,6 +92,13 @@ public class BankTransferEntity implements Serializable {
      * @since 15.11.01
      */
     public BankTransferEntity BankAccount;
+
+    /**
+     * Transfer amount in cents.
+     *
+     * @since 16.10.20
+     */
+    public Long Amount;
 
     /**
      * Get the payment date on a specific timezone.
